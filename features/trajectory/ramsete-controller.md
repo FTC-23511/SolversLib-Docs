@@ -4,7 +4,7 @@ description: import com.seattlesolvers.solverslib.wpilibcontroller.RamseteContro
 
 # Ramsete Controller
 
-The Ramsete Controller is a trajectory tracker that is built in to FTCLib. This tracker can be used to accurately track trajectories with correction for minor disturbances.
+The Ramsete Controller is a trajectory tracker that is built in to SolversLib. This tracker can be used to accurately track trajectories with correction for minor disturbances.
 
 Ramsete is a nonlinear time-varying feedback controller for unicycle models
  that drives the model to a desired pose along a two-dimensional trajectory.

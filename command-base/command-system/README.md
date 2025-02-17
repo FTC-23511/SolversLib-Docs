@@ -4,9 +4,9 @@ description: package com.seattlesolvers.solverslib.command
 
 # Command System
 
-The current command system for FTCLib is modeled closely after that of [WPILib](https://docs.wpilib.org/en/latest/docs/software/commandbased/index.html). Some of the following information may be copied from the source material.
+The current command system for SolversLib is modeled closely after that of [WPILib](https://docs.wpilib.org/en/latest/docs/software/commandbased/index.html). Some of the following information may be copied from the source material.
 
-The command-based paradigm is one that allows programming to follow a set design pattern. The specific command system that FTCLib uses follows a declarative programming style. The emphasis is, instead, on what the program _should_ do rather than how to do it. This minimizes the iteration-by-iteration robot logic needed to write out a certain action. Very simply, you can bind some actions to buttons/triggers such as the example below:
+The command-based paradigm is one that allows programming to follow a set design pattern. The specific command system that SolversLib uses follows a declarative programming style. The emphasis is, instead, on what the program _should_ do rather than how to do it. This minimizes the iteration-by-iteration robot logic needed to write out a certain action. Very simply, you can bind some actions to buttons/triggers such as the example below:
 
 ```java
 aButton.whenPressed(intake::run);

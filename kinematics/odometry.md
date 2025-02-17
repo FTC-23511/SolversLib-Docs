@@ -4,7 +4,7 @@ description: package com.seattlesolvers.solverslib.kinematics
 
 # Odometry
 
-FTCLib offers its own odometry classes for the use of differential and holonomic drives. The odometry classes track the robot position as a `Pose2d`, which means it is represented using the vector $$\begin{pmatrix} x\\ y\\ \theta \end{pmatrix}$$ . $$x$$ is the distance in the forward direction of the robot, $$y$$ is the horizontal distance, and $$\theta$$ is the heading of the robot.
+SolversLib offers its own odometry classes for the use of differential and holonomic drives. The odometry classes track the robot position as a `Pose2d`, which means it is represented using the vector $$\begin{pmatrix} x\\ y\\ \theta \end{pmatrix}$$ . $$x$$ is the distance in the forward direction of the robot, $$y$$ is the horizontal distance, and $$\theta$$ is the heading of the robot.
 
 When using these classes, it is important to keep angles in radians. Distances should be consistent.
 
@@ -24,7 +24,7 @@ To tune these values, make a rough estimate with a measured value and then use s
 
 ## Creating the Odometry
 
-A sample usage of FTCLib odometry can be found in this [sample folder](https://github.com/FTCLib/FTCLib/tree/v2.0.1/examples/src/main/java/com/example/ftclibexamples/SharedOdometry). A sample for dead wheels can be found [here](https://github.com/FTCLib/FTCLib/blob/v2.0.1/examples/src/main/java/com/example/ftclibexamples/DeadWheelsSample.java).
+A sample usage of SolversLib odometry can be found in this [sample folder](https://github.com/FTC-23511/SolversLib/tree/master/examples/src/main/java/org/firstinspires/ftc/teamcode/SharedOdometry). A sample for dead wheels can be found [here](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/DeadWheelsSample.java).
 
 ### Using the Odometry Class
 
@@ -65,7 +65,7 @@ You should call the respective update method once every cycle of the control loo
 
 ### Using the Odometry Subsystem
 
-The [OdometrySubsystem](https://github.com/FTCLib/FTCLib/blob/v2.0.1/core/src/main/java/com/arcrobotics/ftclib/command/OdometrySubsystem.java) class is a template subsystem meant to make command-based programming around odometry much simpler and functional. Using the odometry subsystem makes it more accurate because the position will update itself through the scheduler's call to its `periodic()` method, which updates the position. The subsystem makes use of the suppliers, so you will **need** to use that constructor instead of the other for the FTCLib subsystem. Alternatively, you can create your own odometry subsystem.
+The [OdometrySubsystem](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/command/OdometrySubsystem.java) class is a template subsystem meant to make command-based programming around odometry much simpler and functional. Using the odometry subsystem makes it more accurate because the position will update itself through the scheduler's call to its `periodic()` method, which updates the position. The subsystem makes use of the suppliers, so you will **need** to use that constructor instead of the other for the SolversLib subsystem. Alternatively, you can create your own odometry subsystem.
 
 ```java
 // define our constants
@@ -95,4 +95,4 @@ HolonomicOdometry holOdom = new HolonomicOdometry(
 OdometrySubsystem odometry = new OdometrySubsystem(holOdom);
 ```
 
-The [PurePursuitCommand](https://docs.ftclib.org/ftclib/pathing/pure-pursuit#using-the-pure-pursuit-command) makes use of the OdometrySubsystem class.
+The [PurePursuitCommand](https://docs.seattlesolvers.com/pathing/pure-pursuit#using-the-pure-pursuit-command) makes use of the OdometrySubsystem class.
