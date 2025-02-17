@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.kinematics.wpilibkinematics
+description: package com.seattlesolvers.solverslib.kinematics.wpilibkinematics
 ---
 
 # WPILib Kinematics
@@ -8,21 +8,21 @@ Check out the [WPILib documentation](https://docs.wpilib.org/en/latest/docs/soft
 
 ## What are Kinematics?
 
-The kinematics suite contains classes for differential drive, swerve drive, and mecanum drive kinematics and odometry. The kinematics classes help convert between a universal `ChassisSpeeds` object, containing linear and angular velocities for a robot to usable speeds for each individual type of [drivetrain](../../features/drivebases.md) i.e. left and right wheel speeds for a differential drive, four wheel speeds for a mecanum drive, or individual module states \(speed and angle\) for a swerve drive.
+The kinematics suite contains classes for differential drive, swerve drive, and mecanum drive kinematics and odometry. The kinematics classes help convert between a universal `ChassisSpeeds` object, containing linear and angular velocities for a robot to usable speeds for each individual type of [drivetrain](../../features/drivebases.md) i.e. left and right wheel speeds for a differential drive, four wheel speeds for a mecanum drive, or individual module states (speed and angle) for a swerve drive.
 
 ## What is Odometry?
 
-Odometry involves using sensors on the robot to create an estimate of the position of the robot on the field. In FTC, these sensors are typically several encoders \(the exact number depends on the drive type\) and an optional gyroscope to measure robot angle. The odometry classes utilize the kinematics classes along with periodic user inputs about speeds \(and angles in the case of swerve\) to create an estimate of the robot’s location on the field. This odometry is a means of working around the odometer system that is often used by FTC teams.
+Odometry involves using sensors on the robot to create an estimate of the position of the robot on the field. In FTC, these sensors are typically several encoders (the exact number depends on the drive type) and an optional gyroscope to measure robot angle. The odometry classes utilize the kinematics classes along with periodic user inputs about speeds (and angles in the case of swerve) to create an estimate of the robot’s location on the field. This odometry is a means of working around the odometer system that is often used by FTC teams.
 
 ## The `ChassisSpeeds` Class
 
 The `ChassisSpeeds` object is essential to the WPILib kinematics and odometry suite. The `ChassisSpeeds` object represents the speeds of a robot chassis. This struct has three components:
 
-* `vx`: The velocity of the robot in the x \(forward\) direction.
-* `vy`: The velocity of the robot in the y \(sideways\) direction. \(Positive values mean the robot is moving to the left\).
+* `vx`: The velocity of the robot in the x (forward) direction.
+* `vy`: The velocity of the robot in the y (sideways) direction. (Positive values mean the robot is moving to the left).
 * `omega`: The angular velocity of the robot in radians per second.
 
-A non-holonomic drivetrain \(i.e. a drivetrain that cannot move sideways, ex: a differential drive\) will have a `vy` component of zero because of its inability to move sideways.
+A non-holonomic drivetrain (i.e. a drivetrain that cannot move sideways, ex: a differential drive) will have a `vy` component of zero because of its inability to move sideways.
 
 ### Constructing a ChassisSpeeds Object
 
@@ -37,9 +37,9 @@ ChassisSpeeds speeds = new ChassisSpeeds(3.0, -2.0, Math.PI);
 
 ### Creating a ChassisSpeeds Object from Field-Relative Speeds
 
-A `ChassisSpeeds` object can also be created from a set of field-relative speeds when the robot angle is given. This converts a set of desired velocities relative to the field \(for example, toward the opposite alliance station and toward the right field boundary\) to a `ChassisSpeeds` object which represents speeds that are relative to the robot frame. This is useful for implementing field-oriented controls for a swerve or mecanum drive robot.
+A `ChassisSpeeds` object can also be created from a set of field-relative speeds when the robot angle is given. This converts a set of desired velocities relative to the field (for example, toward the opposite alliance station and toward the right field boundary) to a `ChassisSpeeds` object which represents speeds that are relative to the robot frame. This is useful for implementing field-oriented controls for a swerve or mecanum drive robot.
 
-The static `ChassisSpeeds.fromFieldRelativeSpeeds()` method can be used to generate the `ChassisSpeeds` object from field-relative speeds. This method accepts the `vx` \(relative to the field\), `vy` \(relative to the field\), `omega`, and the robot angle.
+The static `ChassisSpeeds.fromFieldRelativeSpeeds()` method can be used to generate the `ChassisSpeeds` object from field-relative speeds. This method accepts the `vx` (relative to the field), `vy` (relative to the field), `omega`, and the robot angle.
 
 ```java
 // The desired field relative speed here is 2 meters per second
@@ -54,4 +54,3 @@ ChassisSpeeds speeds = ChassisSpeeds.fromFieldRelativeSpeeds
 ```
 
 The angular velocity is not explicitly stated to be “relative to the field” because the angular velocity is the same as measured from a field perspective or a robot perspective.
-

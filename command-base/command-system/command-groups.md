@@ -1,12 +1,12 @@
 ---
-description: import com.arcrobotics.ftclib.command.CommandGroup
+description: package com.seattlesolvers.solverslib.command.CommandGroup
 ---
 
 # Command Groups
 
 Individual commands are capable of accomplishing a large variety of robot tasks, but the simple three-state format can quickly become cumbersome when more advanced functionality requiring extended sequences of robot tasks or coordination of multiple robot subsystems is required. In order to accomplish this, users are encouraged to use the powerful command group functionality included in the command-based library.
 
-As the name suggests, command groups are combinations of multiple commands. The act of combining multiple objects \(such as commands\) into a bigger object is known as [composition](https://en.wikipedia.org/wiki/Object_composition). Command groups _compose_ multiple commands into a _composite_ command. This allows code to be kept much cleaner and simpler, as the individual _component_ commands may be written independently of the code that combines them, greatly reducing the amount of complexity at any given step of the process.
+As the name suggests, command groups are combinations of multiple commands. The act of combining multiple objects (such as commands) into a bigger object is known as [composition](https://en.wikipedia.org/wiki/Object_composition). Command groups _compose_ multiple commands into a _composite_ command. This allows code to be kept much cleaner and simpler, as the individual _component_ commands may be written independently of the code that combines them, greatly reducing the amount of complexity at any given step of the process.
 
 Most importantly, however, command groups _are themselves commands_ - they implement the `Command` interface. This allows command groups to be [recursively composed](https://en.wikipedia.org/wiki/Object_composition#Recursive_composition) - that is, a command group may contain _other command groups_ as components.
 
@@ -16,7 +16,7 @@ The command-based library supports four basic types of command groups: `Sequenti
 
 ### SequentialCommandGroup
 
-A `SequentialCommandGroup` runs a list of commands in sequence - the first command will be executed, then the second, then the third, and so on until the list finishes. The sequential group finishes after the last command in the sequence finishes. It is therefore usually important to ensure that each command in the sequence does actually finish \(if a given command does not finish, the next command will never start!\).
+A `SequentialCommandGroup` runs a list of commands in sequence - the first command will be executed, then the second, then the third, and so on until the list finishes. The sequential group finishes after the last command in the sequence finishes. It is therefore usually important to ensure that each command in the sequence does actually finish (if a given command does not finish, the next command will never start!).
 
 ### ParallelCommandGroup
 
@@ -28,7 +28,7 @@ A `ParallelRaceGroup` is much like a `ParallelCommandgroup`, in that it runs a s
 
 ### ParallelDeadlineGroup
 
-A `ParallelDeadlineGroup`also runs a set of commands concurrently. However, the deadline group ends when a _specific_ command \(the “deadline”\) ends, interrupting all other commands in the group that are still running at that point.
+A `ParallelDeadlineGroup`also runs a set of commands concurrently. However, the deadline group ends when a _specific_ command (the “deadline”) ends, interrupting all other commands in the group that are still running at that point.
 
 ## Creating Command Groups
 
@@ -107,4 +107,3 @@ Since command group components are run through their encapsulating command group
 For this reason, command instances that have been added to a command group cannot be independently scheduled or added to a second command group. Attempting to do so will throw an exception and crash the user program.
 
 Advanced users who wish to re-use a command instance and are _certain_ that it is safe to do so may bypass this restriction with the `clearGroupedCommand()` method in the `CommandGroupBase` class.
-

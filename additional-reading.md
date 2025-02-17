@@ -12,7 +12,3 @@ The first resource we recommend you reading is [Game Manual 0](https://gm0.coppe
 We also recommend that you read the [SDK documentation](https://ftctechnh.github.io/ftc_app/doc/javadoc/index.html). Now, it is quite a handful. However, if you are interested in learning what is available for use in the SDK, this is the best way to do it. The javadocs are there for you to utilize in the first place.
 
 Please be sure to check out other libraries that have inspired us, like [Road Runner](https://acme-robotics.gitbook.io/road-runner/) and [EasyOpenCV](https://github.com/OpenFTC/EasyOpenCV). You can use these libraries in conjunction with FTCLib if you would like; although, FTCLib already uses EasyOpenCV in its vision package.
-
-Currently, there is a Road Runner quickstart that uses FTCLib [here](https://www.github.com/FTCLib/RoadRunner-FTCLib-Quickstart), It makes use of the [command-based](command-base/command-system/) paradigm. **This project is out-of-date and will be sunset** It will be replaced by a new quickstart project that
-utilizes FTCLib trajectories and features rather than relying on Road Runner.
-

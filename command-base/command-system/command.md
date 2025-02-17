@@ -1,5 +1,5 @@
 ---
-description: import com.arcrobotics.ftclib.command.Command
+description: package com.seattlesolvers.solverslib.command.Command
 ---
 
 # Command
@@ -43,9 +43,9 @@ To schedule a command to the scheduler, you will need to call the `schedule()` m
 m_command.schedule();
 ```
 
-## The Structure of  a Command
+## The Structure of a Command
 
-While subsystems are fairly freeform, and may generally look like whatever the user wishes them to, commands are quite a bit more constrained. Command code must specify what the command will do in each of its possible states. This is done by overriding the `initialize()`, `execute()`, and `end()` methods. Additionally, a command must be able to tell the scheduler when \(if ever\) it has finished execution - this is done by overriding the `isFinished()` method. All of these methods are defaulted to reduce clutter in user code: `initialize()`, `execute()`, and `end()` are defaulted to simply do nothing, while `isFinished()` is defaulted to return false \(resulting in a command that never ends\).
+While subsystems are fairly freeform, and may generally look like whatever the user wishes them to, commands are quite a bit more constrained. Command code must specify what the command will do in each of its possible states. This is done by overriding the `initialize()`, `execute()`, and `end()` methods. Additionally, a command must be able to tell the scheduler when (if ever) it has finished execution - this is done by overriding the `isFinished()` method. All of these methods are defaulted to reduce clutter in user code: `initialize()`, `execute()`, and `end()` are defaulted to simply do nothing, while `isFinished()` is defaulted to return false (resulting in a command that never ends).
 
 ### Initialization
 
@@ -57,7 +57,7 @@ The `execute()` method is called repeatedly while the command is scheduled, when
 
 ### Ending
 
-The `end()` method is called once when the command ends, whether it finishes normally \(i.e. `isFinished()` returned true\) or it was interrupted \(either by another command or by being explicitly canceled\). The method argument specifies the manner in which the command ended; users can use this to differentiate the behavior of their command end accordingly. The end block should be used to “wrap up” command state in a neat way, such as setting motors back to zero or reverting a solenoid actuator to a “default” state.
+The `end()` method is called once when the command ends, whether it finishes normally (i.e. `isFinished()` returned true) or it was interrupted (either by another command or by being explicitly canceled). The method argument specifies the manner in which the command ended; users can use this to differentiate the behavior of their command end accordingly. The end block should be used to “wrap up” command state in a neat way, such as setting motors back to zero or reverting a solenoid actuator to a “default” state.
 
 ### Specifying End Conditions
 
@@ -102,7 +102,7 @@ public class GrabStone extends CommandBase {
 
 Notice that, here, the gripper subsystem is passed into the constructor in order to produce the command action. This is called [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), and allows users to avoid declaring their subsystems as global variables. This is widely accepted as a best-practice.
 
-Notice also that the above command calls the subsystem method once from initialize, and then immediately ends \(as `isFinished()` simply returns true\).
+Notice also that the above command calls the subsystem method once from initialize, and then immediately ends (as `isFinished()` simply returns true).
 
 Below is a more complex example of a custom command.
 
@@ -149,4 +149,3 @@ public class DefaultDrive extends CommandBase {
 ```
 
 Notice that this command does not override `isFinished()`, and thus will never end.
-

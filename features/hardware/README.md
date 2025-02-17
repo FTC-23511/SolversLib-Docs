@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.hardware
+description: package com.seattlesolvers.solverslib.hardware
 ---
 
 # Hardware
@@ -9,7 +9,7 @@ Each hardware device in FTCLib is based on the `HardwareDevice` interface. This 
 * `disable()`: disables the device
 * `getDeviceType()`: returns a String characterization of the device
 
-FTCLib offers _a lot_ of hardware devices that can be implemented or customized into your program. The best advice we can give to users is to take a look at the [hardware package](https://github.com/FTCLib/FTCLib/tree/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/hardware) in the FTCLib repository. Here is the list of devices we currently have available \(not including motors\):
+FTCLib offers _a lot_ of hardware devices that can be implemented or customized into your program. The best advice we can give to users is to take a look at the [hardware package](https://github.com/FTCLib/FTCLib/tree/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/hardware) in the FTCLib repository. Here is the list of devices we currently have available (not including motors):
 
 ## Gyro Extensions
 
@@ -92,5 +92,4 @@ To turn to positions and angles, utilize the following methods:
 * `rotateByAngle`: turns the servo a number of angle units relative to the current angle
 * `turnToAngle`: sets the absolute angle of the servo
 * `rotateBy`: turns the servo a relative positional distance from the current position
-* `setPosition`: set the absolute position of the servo \(from 0 to 1\)
-
+* `setPosition`: set the absolute position of the servo (from 0 to 1)

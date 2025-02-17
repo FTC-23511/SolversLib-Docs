@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.gamepad
+description: package com.seattlesolvers.solverslib.gamepad
 ---
 
 # Gamepad
@@ -10,26 +10,35 @@ The FTCLib provides enhanced Gamepad features. These classes are essentially ext
 
 Provides enum representations of the buttons, D-Pad, bumpers, and triggers. Buttons, D-Pad, and bumpers are stored in `GamepadKeys.Button` and triggers are stored in `GamepadKeys.Trigger`.
 
-| Buttons |
-| :--- |
-| Y |
-| X |
-| A |
-| B |
-| LEFT\_BUMPER |
-| RIGHT\_BUMPER |
-| BACK |
-| START |
-| DPAD\_UP |
-| DPAD\_DOWN |
-| DPAD\_LEFT |
-| DPAD\_RIGHT |
-| LEFT\_STICK\_BUTTON |
+| Buttons              |
+| -------------------- |
+| Y                    |
+| X                    |
+| A                    |
+| B                    |
+| TRIANGLE             |
+| CIRCLE               |
+| SQUARE               |
+| CROSS                |
+| LEFT\_BUMPER         |
+| RIGHT\_BUMPER        |
+| BACK                 |
+| START                |
+| DPAD\_UP             |
+| DPAD\_DOWN           |
+| DPAD\_LEFT           |
+| DPAD\_RIGHT          |
+| LEFT\_STICK\_BUTTON  |
 | RIGHT\_STICK\_BUTTON |
+| PS                   |
+| SHARE                |
+| TOUCHPAD             |
+| TOUCHPAD\_FINGER\_1  |
+| TOUCHPAD\_FINGER\_1  |
 
-| Trigger |
-| :--- |
-| LEFT\_TRIGGER |
+| Trigger        |
+| -------------- |
+| LEFT\_TRIGGER  |
 | RIGHT\_TRIGGER |
 
 ```java
@@ -55,13 +64,13 @@ An extension of the stock FTC SDK `Gamepad` class. Constructed simply from a Gam
 gamepadEx.getButton(GamepadKeys.Button.A);
 ```
 
-* `getTrigger()`: Given a `GamepadKeys.Trigger`, this method will return the value of the Trigger \(0 if unpressed, 1 if fully depressed\).
+* `getTrigger()`: Given a `GamepadKeys.Trigger`, this method will return the value of the Trigger (0 if unpressed, 1 if fully depressed).
 
 ```java
 gamepadEx.getTrigger(GamepadKeys.Trigger.RIGHT_TRIGGER);
 ```
 
-* `getLeftY()`: Returns the value of the y-axis of the left joystick \(note that the value returned is the opposite of what would be returned from the standard gamepad object\).
+* `getLeftY()`: Returns the value of the y-axis of the left joystick (note that the value returned is the opposite of what would be returned from the standard gamepad object).
 
 ```java
 gamepadEx.getLeftY();
@@ -81,7 +90,7 @@ gamepadEx.getLeftX();
 
 * `getRightX()`: Returns the value of the x-axis of the right joystick
 
-```text
+```
 gamepadEx.getRightX();
 ```
 
@@ -91,8 +100,8 @@ The `KeyReader` interface is the base for objects that monitor an individual but
 
 * `readValue()`: Reads the current value of the key, true or false, and updates the values used by the reader. Returns nothing. This must be called once every loop.
 * `isDown()` : Checks if key is currently down. Will return a boolean of whether that key is pressed.
-* `wasJustPressed()` : Returns boolean whether the key is pressed, but only if it was previously not pressed. 
-* `wasJustReleased()` : Returns boolean indicating whether the key is not pressed, but only if it was previously pressed. 
+* `wasJustPressed()` : Returns boolean whether the key is pressed, but only if it was previously not pressed.
+* `wasJustReleased()` : Returns boolean indicating whether the key is not pressed, but only if it was previously pressed.
 * `stateJustChanged` : Returns boolean indicating that the key's value has switched.
 
 ## TriggerReader
@@ -127,7 +136,7 @@ ButtonReader reader = new ButtonReader(
 );
 ```
 
-* `ButtonReader(GamepadEx gamepad, GamepadKeys.Button button)`: Constructs a new Button Reader with a `GamepadEx` gamepad and a `GamepadKeys.Button` button. 
+* `ButtonReader(GamepadEx gamepad, GamepadKeys.Button button)`: Constructs a new Button Reader with a `GamepadEx` gamepad and a `GamepadKeys.Button` button.
 * `ButtonReader(BooleanSupplier supplier)`: Constructs a new Button Reader using the value of a boolean supplier instead of a gamepad, which allows reading value states easily without a gamepad.
 
 ```java
@@ -194,4 +203,3 @@ while (...) {
   aReader.readValue();
 }
 ```
-

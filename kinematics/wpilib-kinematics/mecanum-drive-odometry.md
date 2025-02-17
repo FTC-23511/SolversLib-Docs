@@ -1,17 +1,19 @@
 ---
-description: import com.arcrobotics.ftclib.kinematics.wpilibkinematics.MecanumDriveOdometry
+description: >-
+  import
+  com.seattlesolvers.solverslib.kinematics.wpilibkinematics.MecanumDriveOdometry
 ---
 
 # Mecanum Drive Odometry
 
 A user can use the mecanum drive kinematics classes in order to perform [odometry](./#what-is-odometry). WPILib/FTCLib contains a `MecanumDriveOdometry` class that can be used to track the position of a mecanum drive robot on the field.
 
-**Note**:  
+**Note**:\
 Because this method only uses encoders and a gyro, the estimate of the robot’s position on the field will drift over time, especially as your robot comes into contact with other robots during gameplay. However, odometry is usually very accurate during the autonomous period.
 
 ## Creating the Odometry Object
 
-The `MecanumDriveOdometry` class requires two mandatory arguments and one optional argument. The mandatory arguments are the kinematics object that represents your mecanum drive \(in the form of a `MecanumDriveKinematics` class\) and the angle reported by your gyroscope \(as a Rotation2d\). The third optional argument is the starting pose of your robot on the field \(as a `Pose2d`\). By default, the robot will start at $$\begin{pmatrix} x\\ y\\ \theta \end{pmatrix} = \begin{pmatrix} 0\\ 0\\ 0 \end{pmatrix}$$ .
+The `MecanumDriveOdometry` class requires two mandatory arguments and one optional argument. The mandatory arguments are the kinematics object that represents your mecanum drive (in the form of a `MecanumDriveKinematics` class) and the angle reported by your gyroscope (as a Rotation2d). The third optional argument is the starting pose of your robot on the field (as a `Pose2d`). By default, the robot will start at $$\begin{pmatrix} x\\ y\\ \theta \end{pmatrix} = \begin{pmatrix} 0\\ 0\\ 0 \end{pmatrix}$$ .
 
 0 degrees / radians represents the robot angle when the robot is facing directly toward your opponent’s alliance station. As your robot turns to the left, your gyroscope angle should increase.
 
@@ -76,4 +78,3 @@ The robot pose can be reset via the `resetPose` method. This method accepts two 
 If at any time, you decide to reset your gyroscope, the `resetPose` method MUST be called with the new gyro angle.
 
 In addition, the `getPoseMeters()` method can be used to retrieve the current robot pose without an update.
-

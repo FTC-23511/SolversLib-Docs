@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.command.old
+description: package com.seattlesolvers.solverslib.command.old
 ---
 
 # Old Commands
@@ -14,7 +14,7 @@ Defines an organized module on your robot. One such example is a linear slide li
 
 A Subsystem has five lifecycle phases:
 
-* `initialize()`: Prepares the physical hardware for activation of the Subsystem. This phase is intended to be used for hardware map initialization, zeroing of encoders \(as required\), and gathering any initially required sensor data.
+* `initialize()`: Prepares the physical hardware for activation of the Subsystem. This phase is intended to be used for hardware map initialization, zeroing of encoders (as required), and gathering any initially required sensor data.
 * `reset()`: Returns the Subsystem back to its original state. This phase is distinct from `initialize()` as it is expected that the hardware map is already initialized. This phase is intended to return Subsystem hardware to its original condition and clear saved data.
 * `loop()`: This is the main lifecycle phase of a Subsystem. This is where [Commands ](old-commands.md#command)could be issued to the Subsystem, or user/sensor input is used to operate the Subsystem. This phase is intended to repeatedly loop until `stop()` is called.
 * `stop()`: Halts all action of the Subsystem, bringing all hardware devices to stop. It is recommended to set the Zero Power Behavior of Motors to `BRAKE` in this phase, as motion is designed to entirely cease. A Subsystem should be designed to enable a `reset()` from this phase to return it to normal operation.
@@ -22,7 +22,7 @@ A Subsystem has five lifecycle phases:
 
 ## Command
 
-Defines a single, executable command. A Command defines the actions of multiples parts \(or [`Subsystem`](old-commands.md#subsystem)\) of the robot to take at once. A Command has three lifecycle phases:
+Defines a single, executable command. A Command defines the actions of multiples parts (or [`Subsystem`](old-commands.md#subsystem)) of the robot to take at once. A Command has three lifecycle phases:
 
 * `initialize()`: The initial subroutine of a Command. Called once when the Command is initially scheduled.
 * `execute()`: The main body of a Command. Called repeatedly while the Command is scheduled.
@@ -34,9 +34,9 @@ Defines a single, executable command. A Command defines the actions of multiples
 
 Defines an `OpMode` which is designed to run on [Commands](old-commands.md#command) as opposed to manual method calls. Before using a CommandOpMode, Commands and [Subsystems](old-commands.md#subsystem) need to be defined. CommandOpMode runs an internal `ElapsedTimer` which ensures Commands terminate after their specified timeouts.
 
-Although CommandOpMode extends `LinearOpMode` , it is not required to use any of the methods provided explicitly. These methods are all called internally by `runOpMode()` \(it is not necessary to override this method within your own extension of CommandOpMode\) within the three lifecycle phases of a CommandOpMode \(it _is_ required to override these methods\):
+Although CommandOpMode extends `LinearOpMode` , it is not required to use any of the methods provided explicitly. These methods are all called internally by `runOpMode()` (it is not necessary to override this method within your own extension of CommandOpMode) within the three lifecycle phases of a CommandOpMode (it _is_ required to override these methods):
 
-* `initialize()`: Sets up and calls `initialize()` of all attached Subsystems and Commands. It is vital to setup Subsystems before their Commands, as doing the reverse could likely raise NullPointerExceptions. 
+* `initialize()`: Sets up and calls `initialize()` of all attached Subsystems and Commands. It is vital to setup Subsystems before their Commands, as doing the reverse could likely raise NullPointerExceptions.
 * `initLoop()`: Called repeatedly after `initialize()` but before the user presses "Play" on the Driver Station
 * `run()`: The main loop of a CommandOpMode. Called immediately after the user presses the "Play" button on the Driver Station.
 
@@ -54,5 +54,4 @@ public void runOpMode() throws InterruptedException {
 }
 ```
 
-Once the user defines Commands, Subsystems, and the three lifecycle phases, the user can add Commands to the workflow using `addSequential()`. `addSequential()` adds a Command to be run within a certain specified timeout. The user can also optionally set a custom loop interval time \(which defaults to 20 ms\). `addSequential()` first initializes its passed-in Command, runs it every 20 ms \(terminating if it reaches its timeout\), and checks if the Command `isFinished()`. If true, the Command will exit the loop and run its `end()` lifecycle method.
-
+Once the user defines Commands, Subsystems, and the three lifecycle phases, the user can add Commands to the workflow using `addSequential()`. `addSequential()` adds a Command to be run within a certain specified timeout. The user can also optionally set a custom loop interval time (which defaults to 20 ms). `addSequential()` first initializes its passed-in Command, runs it every 20 ms (terminating if it reaches its timeout), and checks if the Command `isFinished()`. If true, the Command will exit the loop and run its `end()` lifecycle method.

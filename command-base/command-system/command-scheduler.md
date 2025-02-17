@@ -1,5 +1,5 @@
 ---
-description: import com.arcrobotics.ftclib.command.CommandScheduler
+description: package com.seattlesolvers.solverslib.command.CommandScheduler
 ---
 
 # Command Scheduler
@@ -12,15 +12,15 @@ The `CommandScheduler` also runs the `periodic()` method of each registered `Sub
 
 The `CommandScheduler` is a _singleton_, meaning that it is a globally-accessible class with only one instance. Accordingly, in order to access the scheduler, users must call the `CommandScheduler.getInstance()` command.
 
-For the most part, users do not have to call scheduler methods directly - almost all important scheduler methods have convenience wrappers elsewhere \(e.g. in the `Command` and `Subsystem` interfaces\).
+For the most part, users do not have to call scheduler methods directly - almost all important scheduler methods have convenience wrappers elsewhere (e.g. in the `Command` and `Subsystem` interfaces).
 
 However, there is one exception: users _must_ call `CommandScheduler.getInstance().run()` from the periodic method of their opmode. If this is not done, the scheduler will never run, and the command framework will not work.
 
-To schedule a command, users call the `schedule()` method. This method takes a command \(and, optionally, a specification as to whether that command is interruptible\), and attempts to add it to list of currently-running commands, pending whether it is already running or whether its requirements are available. If it is added, its `initialize()` method is called.
+To schedule a command, users call the `schedule()` method. This method takes a command (and, optionally, a specification as to whether that command is interruptible), and attempts to add it to list of currently-running commands, pending whether it is already running or whether its requirements are available. If it is added, its `initialize()` method is called.
 
 ## The Scheduler Run Sequence
 
-The `initialize()` method of each `Command` is called when the command is scheduled, which is not necessarily when the scheduler runs \(unless that command is bound to a button\).
+The `initialize()` method of each `Command` is called when the command is scheduled, which is not necessarily when the scheduler runs (unless that command is bound to a button).
 
 What does a single iteration of the scheduler’s `run()` method actually do? The following section walks through the logic of a scheduler iteration.
 
@@ -40,7 +40,7 @@ Note that this sequence of calls is done in order for each command - thus, one c
 
 ### Step 4: Schedule Default Commands
 
-Finally, any registered `Subsystem` has its default command scheduled \(if it has one\). Note that the `initialize()` method of the default command will be called at this time.
+Finally, any registered `Subsystem` has its default command scheduled (if it has one). Note that the `initialize()` method of the default command will be called at this time.
 
 ## Disabling the Scheduler
 
@@ -48,11 +48,11 @@ The scheduler can be disabled by calling `CommandScheduler.getInstance().disable
 
 The scheduler may be re-enabled by calling `CommandScheduler.getInstance().enable()`.
 
-If you want to reset the scheduler \(clear the instance\), call `CommandScheduler.getInstance().reset()`.
+If you want to reset the scheduler (clear the instance), call `CommandScheduler.getInstance().reset()`.
 
 ## Command Event Methods
 
-Occasionally, it is desirable to have the scheduler execute a custom action whenever a certain command event \(initialization, execution, or ending\) occurs. This can be done with the following three methods:
+Occasionally, it is desirable to have the scheduler execute a custom action whenever a certain command event (initialization, execution, or ending) occurs. This can be done with the following three methods:
 
 ### onCommandInitialize
 
@@ -64,9 +64,8 @@ The `onCommandExecute` method runs a specified action whenever a command is exec
 
 ### onCommandFinish
 
-The `onCommandFinish` method runs a specified action whenever a command finishes normally \(i.e. the `isFinished()` method returned true\).
+The `onCommandFinish` method runs a specified action whenever a command finishes normally (i.e. the `isFinished()` method returned true).
 
 ### onCommandInterrupt
 
-The `onCommandInterrupt` method runs a specified action whenever a command is interrupted \(i.e. by being explicitly canceled or by another command that shares one of its requirements\).
-
+The `onCommandInterrupt` method runs a specified action whenever a command is interrupted (i.e. by being explicitly canceled or by another command that shares one of its requirements).

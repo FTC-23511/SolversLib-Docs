@@ -1,7 +1,7 @@
 ---
 description: >-
   import
-  com.arcrobotics.ftclib.kinematics.wpilibkinematics.SwerveDriveKinematics
+  com.seattlesolvers.solverslib.kinematics.wpilibkinematics.SwerveDriveKinematics
 ---
 
 # Swerve Drive Kinematics
@@ -16,7 +16,7 @@ The velocity of the wheel must be in meters per second. An angle of 0 from the m
 
 ## Constructing the Kinematics Object
 
-The `SwerveDriveKinematics` class accepts a variable number of constructor arguments, with each argument being the location of a swerve module relative to the robot center \(as a `Translation2d`. The number of constructor arguments corresponds to the number of swerve modules. A swerve bot must have AT LEAST two swerve modules.
+The `SwerveDriveKinematics` class accepts a variable number of constructor arguments, with each argument being the location of a swerve module relative to the robot center (as a `Translation2d`. The number of constructor arguments corresponds to the number of swerve modules. A swerve bot must have AT LEAST two swerve modules.
 
 The locations for the modules must be relative to the center of the robot. Positive x values represent moving toward the front of the robot whereas positive y values represent moving toward the left of the robot.
 
@@ -90,7 +90,7 @@ SwerveModuleState[] moduleStates =
 
 ### Using Custom Centers of Rotation
 
-Sometimes, rotating around one specific corner might be desirable for certain evasive maneuvers. This type of behavior is also supported by the WPILib classes. The same `ToSwerveModuleStates()` method accepts a second parameter for the center of rotation \(as a `Translation2d`\). Just like the wheel locations, the `Translation2d` representing the center of rotation should be relative to the robot center.
+Sometimes, rotating around one specific corner might be desirable for certain evasive maneuvers. This type of behavior is also supported by the WPILib classes. The same `ToSwerveModuleStates()` method accepts a second parameter for the center of rotation (as a `Translation2d`). Just like the wheel locations, the `Translation2d` representing the center of rotation should be relative to the robot center.
 
 Because all robots are a rigid frame, the provided `vx` and `vy` velocities from the `ChassisSpeeds` object will still apply for the entirety of the robot. However, the `omega` from the `ChassisSpeeds` object will be measured from the center of rotation.
 
@@ -121,4 +121,3 @@ double forward = chassisSpeeds.vxMetersPerSecond;
 double sideways = chassisSpeeds.vyMetersPerSecond;
 double angular = chassisSpeeds.omegaRadiansPerSecond;
 ```
-

@@ -1,20 +1,20 @@
 ---
-description: package com.arcrobotics.ftclib.controller
+description: package com.seattlesolvers.solverslib.controller
 ---
 
 # Controllers
 
 In FTCLib, there are controllers that can improve the motion of mechanisms in FTC. This includes PID control and feedforward control. For information on the theory behind PID control, we recommend reading [this page](https://gm0.org/en/stable/docs/software/control-loops.html) in gm0.
 
-## PID Control 
+## PID Control
 
 The following post from Noah in the [FTC Discord](https://discord.gg/first-tech-challenge) best explains PID control.
 
-> You'll hear the term PID Controller used a lot \(F is tacked on sometimes\) in robotics. It's relatively simple and pretty effective at a lot of simple tasks. A PID controller is a form of "closed loop control." This basically just means you're altering an input to some "plant" based on feedback. This concept applies to a wide range of actions but we'll take a look at velocity PID control as that is what's relevant for this year's game. So say you have a goBILDA 3:1 1620RPM motor powering a flywheel. You want that flywheel to spin at a constant speed to ensure consistency between your shots. So you run a `motor.setPower(0.5)` which sends 50% of 12v to the motor. The motor is getting a 6v signal \(technically not true bc of PWM but that's another topic\). The motor should be running at 810 RPM right? That's 50% of 1620RPM. Chances are, it's not actually running at this speed. Motors have +- 10% tolerance between them. The voltage-torque curve isn't linear. Or there is something resisting the motor \(like the inertia of the flywheel\) so it takes extra power to get it up to that speed. So how do we actually ensure that our motor is running at exactly 810RPM? Most FTC motors come with an encoder built it. This allows us to measure the velocity of the output shaft. So with the encoder all hooked up, we know that our motor isn't spinning as fast as we want it to. But how do we actually correct for this? You slap a PID Controller on it. A PID controller is a pretty basic controller \(despite the daunting equation when you look it up\) that basically responds to your the difference between your measured velocity and desired velocity \(error\) and will add more or less power based on error. You just check the velocity every loop, feed the value in the controlled, and it gives you the power you want to set it to the desired velocity.
+> You'll hear the term PID Controller used a lot (F is tacked on sometimes) in robotics. It's relatively simple and pretty effective at a lot of simple tasks. A PID controller is a form of "closed loop control." This basically just means you're altering an input to some "plant" based on feedback. This concept applies to a wide range of actions but we'll take a look at velocity PID control as that is what's relevant for this year's game. So say you have a goBILDA 3:1 1620RPM motor powering a flywheel. You want that flywheel to spin at a constant speed to ensure consistency between your shots. So you run a `motor.setPower(0.5)` which sends 50% of 12v to the motor. The motor is getting a 6v signal (technically not true bc of PWM but that's another topic). The motor should be running at 810 RPM right? That's 50% of 1620RPM. Chances are, it's not actually running at this speed. Motors have +- 10% tolerance between them. The voltage-torque curve isn't linear. Or there is something resisting the motor (like the inertia of the flywheel) so it takes extra power to get it up to that speed. So how do we actually ensure that our motor is running at exactly 810RPM? Most FTC motors come with an encoder built it. This allows us to measure the velocity of the output shaft. So with the encoder all hooked up, we know that our motor isn't spinning as fast as we want it to. But how do we actually correct for this? You slap a PID Controller on it. A PID controller is a pretty basic controller (despite the daunting equation when you look it up) that basically responds to your the difference between your measured velocity and desired velocity (error) and will add more or less power based on error. You just check the velocity every loop, feed the value in the controlled, and it gives you the power you want to set it to the desired velocity.
 
 The following video does a good job explaining each gain:
 
-{% embed url="https://www.youtube.com/watch?v=XfAt6hNV8XM" caption="Great video for showing how PID gains work and can be controlled" %}
+{% embed url="https://www.youtube.com/watch?v=XfAt6hNV8XM" %}
 
 Our base class is `PIDFController` for the FTCLib PID control scheme. This class performs the calculations for PIDF, which are proportional, integral, derivative, and feedforward values. The additional F term is an additional gain for creating offset, for purposes like maintaining a position, counteracting weight/gravity, or overcoming friction.
 
@@ -117,7 +117,7 @@ If only a position tolerance is specified, the velocity tolerance defaults to in
 
 As above, “position” refers to the process variable measurement, and “velocity” to its derivative - thus, for a velocity loop, these are actually velocity and acceleration, respectively.
 
-Occasionally, it is useful to know if a controller has tracked the setpoint to within a given tolerance - for example, to determine if a command should be ended, or \(while following a motion profile\) if motion is being impeded and needs to be re-planned.
+Occasionally, it is useful to know if a controller has tracked the setpoint to within a given tolerance - for example, to determine if a command should be ended, or (while following a motion profile) if motion is being impeded and needs to be re-planned.
 
 To do this, we first must specify the tolerances with the `setTolerance()` method; then, we can check it with the `atSetPoint()` method.
 
@@ -133,13 +133,13 @@ pidf.atSetPoint();
 
 #### Resetting the Controller
 
-It is sometimes desirable to clear the internal state \(most importantly, the integral accumulator\) of a `PIDFController`, as it may be no longer valid \(e.g. when the `PIDFController` has been disabled and then re-enabled\). This can be accomplished by calling the `reset()` method.
+It is sometimes desirable to clear the internal state (most importantly, the integral accumulator) of a `PIDFController`, as it may be no longer valid (e.g. when the `PIDFController` has been disabled and then re-enabled). This can be accomplished by calling the `reset()` method.
 
 ## Feedforward Control
 
-So far, we’ve used feedback control for reference tracking \(making a system’s output follow a desired reference signal\). While this is effective, it’s a reactionary measure; the system won’t start applying control effort until the system is already behind. If we could tell the controller about the desired movement and required input beforehand, the system could react quicker and the feedback controller could do less work. A controller that feeds information forward into the plant like this is called a feedforward controller.
+So far, we’ve used feedback control for reference tracking (making a system’s output follow a desired reference signal). While this is effective, it’s a reactionary measure; the system won’t start applying control effort until the system is already behind. If we could tell the controller about the desired movement and required input beforehand, the system could react quicker and the feedback controller could do less work. A controller that feeds information forward into the plant like this is called a feedforward controller.
 
-A feedforward controller injects information about the system’s dynamics \(like a mathematical model does\) or the intended movement. Feedforward handles parts of the control actions we already know must be applied to make a system track a reference, then feedback compensates for what we do not or cannot know about the system’s behavior at runtime.
+A feedforward controller injects information about the system’s dynamics (like a mathematical model does) or the intended movement. Feedforward handles parts of the control actions we already know must be applied to make a system track a reference, then feedback compensates for what we do not or cannot know about the system’s behavior at runtime.
 
 There are two types of feedforwards: model-based feedforward and feedforward for unmodeled dynamics. The first solves a mathematical model of the system for the inputs required to meet desired velocities and accelerations. The second compensates for unmodeled forces or behaviors directly so the feedback controller doesn’t have to. Both types can facilitate simpler feedback controllers. We’ll cover several examples below.
 
@@ -219,7 +219,7 @@ feedforward.calculate(10, 20, 30);
 
 ### Using Feedforward to Control a Mechanism
 
-Feedforward control can be used entirely on its own, without a feedback controller. This is known as “open-loop” control, and for many mechanisms \(especially robot drives\) can be perfectly satisfactory. A `SimpleMotorFeedforward` might be employed to control a robot drive as follows:
+Feedforward control can be used entirely on its own, without a feedback controller. This is known as “open-loop” control, and for many mechanisms (especially robot drives) can be perfectly satisfactory. A `SimpleMotorFeedforward` might be employed to control a robot drive as follows:
 
 ```java
 public void tankDriveWithFeedforward(double leftVelocity,
@@ -228,4 +228,3 @@ public void tankDriveWithFeedforward(double leftVelocity,
   rightMotor.set(feedforward.calculate(rightVelocity));
 }
 ```
-

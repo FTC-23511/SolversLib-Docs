@@ -1,12 +1,12 @@
 ---
-description: package com.arcrobotics.ftclib.command.button
+description: package com.seattlesolvers.solverslib.command.button
 ---
 
 # Binding Commands to Triggers
 
 Apart from autonomous commands, which are scheduled at the start of the autonomous period, and default commands, which are automatically scheduled whenever their subsystem is not currently in-use, the most common way to run a command is by binding it to a triggering event, such as a button being pressed by a human operator. The command-based paradigm makes this extremely easy to do.
 
-As mentioned earlier, command-based is a [declarative](https://en.wikipedia.org/wiki/Declarative_programming) paradigm. Accordingly, binding buttons to commands is done declaratively; the association of a button and a command is “declared” once, during robot initialization. The library then does all the hard work of checking the button state and scheduling \(or cancelling\) the command as needed, behind-the-scenes. Users only need to worry about designing their desired UI setup - not about implementing it!
+As mentioned earlier, command-based is a [declarative](https://en.wikipedia.org/wiki/Declarative_programming) paradigm. Accordingly, binding buttons to commands is done declaratively; the association of a button and a command is “declared” once, during robot initialization. The library then does all the hard work of checking the button state and scheduling (or cancelling) the command as needed, behind-the-scenes. Users only need to worry about designing their desired UI setup - not about implementing it!
 
 Command binding is done through the `Trigger` class and its various `Button` subclasses.
 
@@ -16,29 +16,29 @@ There are a number of bindings available for the `Trigger` class. All of these b
 
 ### whenActive/whenPressed
 
-This binding schedules a command when a trigger changes from inactive to active \(or, accordingly, when a button changes is initially pressed\). The command will be scheduled on the iteration when the state changes, and will not be scheduled again unless the trigger becomes inactive and then active again \(or the button is released and then re-pressed\).
+This binding schedules a command when a trigger changes from inactive to active (or, accordingly, when a button changes is initially pressed). The command will be scheduled on the iteration when the state changes, and will not be scheduled again unless the trigger becomes inactive and then active again (or the button is released and then re-pressed).
 
 ### whileActiveContinuous/whileHeld
 
-This binding schedules a command repeatedly while a trigger is active \(or, accordingly, while a button is held\), and cancels it when the trigger becomes inactive \(or when the button is released\). Note that scheduling an already-running command has no effect; but if the command finishes while the trigger is still active, it will be re-scheduled.
+This binding schedules a command repeatedly while a trigger is active (or, accordingly, while a button is held), and cancels it when the trigger becomes inactive (or when the button is released). Note that scheduling an already-running command has no effect; but if the command finishes while the trigger is still active, it will be re-scheduled.
 
 ### whileActiveOnce/whenHeld
 
-This binding schedules a command when a trigger changes from inactive to active \(or, accordingly, when a button is initially pressed\) and cancels it when the trigger becomes inactive again \(or the button is released\). The command will _not_ be re-scheduled if it finishes while the trigger is still active.
+This binding schedules a command when a trigger changes from inactive to active (or, accordingly, when a button is initially pressed) and cancels it when the trigger becomes inactive again (or the button is released). The command will _not_ be re-scheduled if it finishes while the trigger is still active.
 
 ### whenInactive/whenReleased
 
-This binding schedules a command when a trigger changes from active to inactive \(or, accordingly, when a button is initially released\). The command will be scheduled on the iteration when the state changes, and will not be re-scheduled unless the trigger becomes active and then inactive again \(or the button is pressed and then re-released\).
+This binding schedules a command when a trigger changes from active to inactive (or, accordingly, when a button is initially released). The command will be scheduled on the iteration when the state changes, and will not be re-scheduled unless the trigger becomes active and then inactive again (or the button is pressed and then re-released).
 
 ### toggleWhenActive/toggleWhenPressed
 
-This binding toggles a command, scheduling it when a trigger changes from inactive to active \(or a button is initially pressed\), and cancelling it under the same condition if the command is currently running. Note that while this functionality is supported, toggles are _not_ a highly-recommended option for user control, as they require the driver to mentally keep track of the robot state.
+This binding toggles a command, scheduling it when a trigger changes from inactive to active (or a button is initially pressed), and cancelling it under the same condition if the command is currently running. Note that while this functionality is supported, toggles are _not_ a highly-recommended option for user control, as they require the driver to mentally keep track of the robot state.
 
 Since v1.2.0, courtesy of Ethan Leitner, the toggle binding has an additional option of switching between two commands. This is a replacement of the `ConditionalCommand` option for toggling. Simply pass two commands into the method instead of one, and the binding will toggle between those two commands.
 
 ### cancelWhenActive/cancelWhenPressed
 
-This binding cancels a command when a trigger changes from inactive to active \(or, accordingly, when a button is initially pressed\). the command is canceled on the iteration when the state changes, and will not be canceled again unless the trigger becomes inactive and then active again \(or the button is released and re-pressed\). Note that cancelling a command that is not currently running has no effect.
+This binding cancels a command when a trigger changes from inactive to active (or, accordingly, when a button is initially pressed). the command is canceled on the iteration when the state changes, and will not be canceled again unless the trigger becomes inactive and then active again (or the button is released and re-pressed). Note that cancelling a command that is not currently running has no effect.
 
 ## Binding a Command to a Gamepad Button
 
@@ -108,7 +108,7 @@ Remember that button binding is _declarative._ Bindings only need to be declared
 
 ## Composing Triggers
 
-The `Trigger` class \(including its `Button` subclasses\) can be composed to create composite triggers through the `and()`, `or()`, and `negate()` methods. For example:
+The `Trigger` class (including its `Button` subclasses) can be composed to create composite triggers through the `and()`, `or()`, and `negate()` methods. For example:
 
 ```java
 // Binds an ExampleCommand to be scheduled when both the 'X' and
@@ -142,4 +142,3 @@ Trigger exampleTrigger = new Trigger(condition::get);
 ```
 
 This can be used for implementing a type of "triggering condition," which one might see with a sensor. On the activation of the trigger, you can cause certain commands to be scheduled or cancelled.
-

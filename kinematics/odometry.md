@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.kinematics
+description: package com.seattlesolvers.solverslib.kinematics
 ---
 
 # Odometry
@@ -28,7 +28,7 @@ A sample usage of FTCLib odometry can be found in this [sample folder](https://g
 
 ### Using the Odometry Class
 
-To use the odometry class, there are three different constructors depending on how you want to run your odometry. One method of running the odometry is using suppliers to have the class update your positions for you. The other is to manually input the sensor data into the `update()` method, which has parameters of the left encoder value, right encoder value, and horizontal encoder value \(which is only used for holonomic\). If you use suppliers, you can just call the `updatePose()` method which uses the suppliers to call the `update()` method.
+To use the odometry class, there are three different constructors depending on how you want to run your odometry. One method of running the odometry is using suppliers to have the class update your positions for you. The other is to manually input the sensor data into the `update()` method, which has parameters of the left encoder value, right encoder value, and horizontal encoder value (which is only used for holonomic). If you use suppliers, you can just call the `updatePose()` method which uses the suppliers to call the `update()` method.
 
 ```java
 // define our trackwidth
@@ -96,4 +96,3 @@ OdometrySubsystem odometry = new OdometrySubsystem(holOdom);
 ```
 
 The [PurePursuitCommand](https://docs.ftclib.org/ftclib/pathing/pure-pursuit#using-the-pure-pursuit-command) makes use of the OdometrySubsystem class.
-

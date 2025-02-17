@@ -1,17 +1,19 @@
 ---
-description: import com.arcrobotics.ftclib.kinematics.wpilibkinematics.SwerveDriveOdometry
+description: >-
+  import
+  com.seattlesolvers.solverslib.kinematics.wpilibkinematics.SwerveDriveOdometry
 ---
 
 # Swerve Drive Odometry
 
 A user can use the swerve drive kinematics classes in order to perform [odometry](./#what-is-odometry). WPILib/FTCLib contains a `SwerveDriveOdometry` class that can be used to track the position of a swerve drive robot on the field.
 
-**Note**:  
+**Note**:\
 Because this method only uses encoders and a gyro, the estimate of the robot’s position on the field will drift over time, especially as your robot comes into contact with other robots during gameplay. However, odometry is usually very accurate during the autonomous period.
 
 ## Creating the Odometry Object
 
-The `SwerveDriveOdometry` class requires two mandatory arguments, and one optional argument. The mandatory arguments are the kinematics object that represents your swerve drive \(in the form of a `SwerveDriveKinematics` class\) and the angle reported by your gyroscope \(as a Rotation2d\). The third optional argument is the starting pose of your robot on the field \(as a `Pose2d`\). By default, the robot will start at $$\begin{pmatrix} x\\ y\\ \theta \end{pmatrix} = \begin{pmatrix} 0\\ 0\\ 0 \end{pmatrix}$$ .
+The `SwerveDriveOdometry` class requires two mandatory arguments, and one optional argument. The mandatory arguments are the kinematics object that represents your swerve drive (in the form of a `SwerveDriveKinematics` class) and the angle reported by your gyroscope (as a Rotation2d). The third optional argument is the starting pose of your robot on the field (as a `Pose2d`). By default, the robot will start at $$\begin{pmatrix} x\\ y\\ \theta \end{pmatrix} = \begin{pmatrix} 0\\ 0\\ 0 \end{pmatrix}$$ .
 
 0 degrees / radians represents the robot angle when the robot is facing directly toward your opponent’s alliance station. As your robot turns to the left, your gyroscope angle should increase.
 
@@ -47,7 +49,7 @@ SwerveDriveOdometry m_odometry = new SwerveDriveOdometry
 
 ## Updating the Robot Pose
 
-The `update` method of the odometry class updates the robot position on the field. The update method takes in the gyro angle of the robot, along with a series of module states \(speeds and angles\) in the form of a `SwerveModuleState` each. It is important that the order in which you pass the `SwerveModuleState` objects is the same as the order in which you created the kinematics object.
+The `update` method of the odometry class updates the robot position on the field. The update method takes in the gyro angle of the robot, along with a series of module states (speeds and angles) in the form of a `SwerveModuleState` each. It is important that the order in which you pass the `SwerveModuleState` objects is the same as the order in which you created the kinematics object.
 
 This `update` method must be called periodically, preferably in the `periodic()` method of a [Subsystem](../../command-base/command-system/subsystems.md). The `update` method returns the new updated pose of the robot.
 
@@ -73,7 +75,6 @@ The robot pose can be reset via the `resetPose` method. This method accepts two 
 
 If at any time, you decide to reset your gyroscope, the `resetPose` method MUST be called with the new gyro angle.
 
-The implementation of `getState()` above is left to the user. The idea is to get the module state \(speed and angle\) from each module.
+The implementation of `getState()` above is left to the user. The idea is to get the module state (speed and angle) from each module.
 
 In addition, the `getPoseMeters()` method can be used to retrieve the current robot pose without an update.
-

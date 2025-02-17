@@ -1,12 +1,12 @@
 ---
-description: package com.arcrobotics.ftclib.drivebase
+description: package com.seattlesolvers.solverslib.drivebase
 ---
 
 # Drivebases
 
 All of the [FTCLib drivebase classes](https://github.com/FTCLib/FTCLib/tree/dev/core/src/main/java/com/arcrobotics/ftclib/drivebase) are based on the `RobotBase` abstract class. This is functionally similar to the [RobotDriveBase ](https://github.com/wpilibsuite/allwpilib/blob/50db653f8d864c594c6a9ab7dd5a0f45b4483a03/wpilibj/src/main/java/edu/wpi/first/wpilibj/drive/RobotDriveBase.java)class in WPILib. It contains:
 
-* An enumerator for the different motor types \(i.e. the indices of the motors in the array\)
+* An enumerator for the different motor types (i.e. the indices of the motors in the array)
 * Maximum possible speed for the drivebase to approach
 * A clipping method between a minimum and maximum value
 * Normalization of wheel speeds
@@ -71,10 +71,7 @@ HDrive kiwi_B = new HDrive(left, right, slide,
                            leftAngle, rightAngle, slideAngle);
 ```
 
-Your slide motor is generally the back of the kiwi drive and the others are self-explanatory.
-Note that the motor angles above are in Radians.
-Ensure that you're associating the correct motor/wheel with the corresponding argument as they _don't_ go around the robot in order.
-Forward is 0 degrees.
+Your slide motor is generally the back of the kiwi drive and the others are self-explanatory. Note that the motor angles above are in Radians. Ensure that you're associating the correct motor/wheel with the corresponding argument as they _don't_ go around the robot in order. Forward is 0 degrees.
 
 #### X-Drive
 
@@ -98,7 +95,7 @@ A mecanum drivebase is a type of holonomic drive that utilizes [mecanum wheels](
 
 For more information on mecanum drives, please watch this video:
 
-{% embed url="https://www.youtube.com/watch?v=8rhAkjViHEQ" caption="" %}
+{% embed url="https://www.youtube.com/watch?v=8rhAkjViHEQ" %}
 
 You can create the mecanum drive as such:
 
@@ -110,7 +107,7 @@ MecanumDrive mecanum = new MecanumDrive(frontLeft, frontRight,
 
 ### Control Scheme
 
-Like how the differential drive has two different control schemes, so too does holonomic. There is field-centric and robot-centric. The only difference is that there is some sort of interpolation of the robot's heading \(the direction the forward face is pointing globally\).
+Like how the differential drive has two different control schemes, so too does holonomic. There is field-centric and robot-centric. The only difference is that there is some sort of interpolation of the robot's heading (the direction the forward face is pointing globally).
 
 #### Robot-Centric
 
@@ -131,6 +128,7 @@ For all types of holonomic drive you do this by calling the .`driveFieldCentric(
 ```java
 m_drive.driveFieldCentric(strafeSpeed, forwardSpeed, turn, heading);
 ```
+
 The `heading` argument is the current heading of the robot, usually from the IMU. Note that it is in _degress_ here, not radians.
 
 ### Sample

@@ -1,7 +1,7 @@
 ---
 description: >-
   import
-  com.arcrobotics.ftclib.kinematics.wpilibkinematics.DifferentialDriveKinematics
+  com.seattlesolvers.solverslib.kinematics.wpilibkinematics.DifferentialDriveKinematics
 ---
 
 # Differential Drive Kinematics
@@ -16,7 +16,7 @@ The `DifferentialDriveKinematics` object accepts one constructor argument, which
 
 ## Converting Chassis Speeds to Wheel Speeds
 
-The `toWheelSpeeds(ChassisSpeeds speeds)` method should be used to convert a `ChassisSpeeds` object to a `DifferentialDriveWheelSpeeds` object. This is useful in situations where you have to convert a linear velocity \(`vx`\) and an angular velocity \(`omega`\) to left and right wheel velocities.
+The `toWheelSpeeds(ChassisSpeeds speeds)` method should be used to convert a `ChassisSpeeds` object to a `DifferentialDriveWheelSpeeds` object. This is useful in situations where you have to convert a linear velocity (`vx`) and an angular velocity (`omega`) to left and right wheel velocities.
 
 ```java
 // Creating my kinematics object: track width of 15 inches
@@ -40,7 +40,7 @@ double rightVelocity = wheelSpeeds.rightMetersPerSecond;
 
 ## Converting Wheel Speeds to Chassis Speeds
 
-One can also use the kinematics object to convert individual wheel speeds \(left and right\) to a singular `ChassisSpeeds` object. The `toChassisSpeeds(DifferentialDriveWheelSpeeds speeds)` method should be used to achieve this.
+One can also use the kinematics object to convert individual wheel speeds (left and right) to a singular `ChassisSpeeds` object. The `toChassisSpeeds(DifferentialDriveWheelSpeeds speeds)` method should be used to achieve this.
 
 ```java
 // Creating my kinematics object: track width of 15 inches
@@ -61,4 +61,3 @@ double linearVelocity = chassisSpeeds.vxMetersPerSecond;
 // Angular velocity
 double angularVelocity = chassisSpeeds.omegaRadiansPerSecond;
 ```
-

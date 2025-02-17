@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.hardware.motors
+description: package com.seattlesolvers.solverslib.hardware.motors
 ---
 
 # Motors
@@ -8,7 +8,7 @@ FTCLib offers fully-featured motor wrappers for the ease of the user. Behind the
 
 ## Creating a Motor Object
 
-Creating a motor is as simple as passing in the hardware map, the name of the device in the robot controller config, and an optional third parameter of a GoBILDA motor type. This is necessary because the goBILDA motors in the configuration don't specify the different max RPM \(rotations per minute\) and CPR \(counts per revolution\).
+Creating a motor is as simple as passing in the hardware map, the name of the device in the robot controller config, and an optional third parameter of a GoBILDA motor type. This is necessary because the goBILDA motors in the configuration don't specify the different max RPM (rotations per minute) and CPR (counts per revolution).
 
 There is also an option of using a custom CPR and RPM value.
 
@@ -46,7 +46,7 @@ m_motor.setRunMode(Motor.RunMode.RawPower);
 m_motor.set(0.37);    // 37% of maximum speed in current direction
 ```
 
-Position control has the motor run to a desired position based on the input speed and the distance between current motor position and target position \(in counts\). This utilizes a P controller whose coefficient can be changed using `setPositionCoefficient(double)`. This is a tuned value. For tuning, we currently recommend using [FTC Dashboard](https://acmerobotics.github.io/ftc-dashboard/basics).
+Position control has the motor run to a desired position based on the input speed and the distance between current motor position and target position (in counts). This utilizes a P controller whose coefficient can be changed using `setPositionCoefficient(double)`. This is a tuned value. For tuning, we currently recommend using [FTC Dashboard](https://acmerobotics.github.io/ftc-dashboard/basics).
 
 ```java
 // set the run mode
@@ -174,11 +174,11 @@ m_motor.stopAndResetEncoder();
 
 `MotorEx` is an implementation of the Motor class with better integrated velocity control. Unlike the Motor object, it uses the corrected velocity by default instead of the raw velocity returned by the SDK's encoder estimates. It also uses the `DcMotorEx` object instead of the `DcMotor`. Calling `getVelocity()` will return the velocity.
 
-You can also set the velocity directly using `setVelocity()`. You can pass the angular rate and the angle unit \(optional\). Passing just the angular rate will set the velocity in ticks per second. Passing an angle unit will set the velocity to units per second, depending on the unit that is passed into the method.
+You can also set the velocity directly using `setVelocity()`. You can pass the angular rate and the angle unit (optional). Passing just the angular rate will set the velocity in ticks per second. Passing an angle unit will set the velocity to units per second, depending on the unit that is passed into the method.
 
 ### Bulk Reading
 
-A bulk read reads all of the sensor data \(except I2C\) on a lynx module to save cycle times. Bulk reads were introduced in SDK version 5.4. Since FTCLib uses wrappers, we can treat them the same way as other sensors.
+A bulk read reads all of the sensor data (except I2C) on a lynx module to save cycle times. Bulk reads were introduced in SDK version 5.4. Since FTCLib uses wrappers, we can treat them the same way as other sensors.
 
 Here's a sample implementation of auto-caching.
 
@@ -211,14 +211,10 @@ Th [CRServo](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com
 
 ## MotorGroup
 
-A motor group object takes several motors and runs them in parallel like a single motor. Motor groups have one leader
-and a set of followers. For any group, there _must_ be a leader, but the number of followers can be zero. This makes
-creating different drive profiles simpler. The constructor for a `MotorGroup` is as follows:
+A motor group object takes several motors and runs them in parallel like a single motor. Motor groups have one leader and a set of followers. For any group, there _must_ be a leader, but the number of followers can be zero. This makes creating different drive profiles simpler. The constructor for a `MotorGroup` is as follows:
 
 ```java
 MotorGroup myMotors = new MotorGroup(leader, follower1, follower2, ...);
 ```
 
-The number of followers is variable. The other methods of the `MotorGroup` are the same as the ones found in `Motor`. You can very simply treat a `MotorGroup` object
-like a single `Motor` object. The [flywheel sample](https://github.com/FTCLib/FTCLib/blob/v2.1.1/examples/src/main/java/com/example/ftclibexamples/FlywheelSample.java)
-in the examples folder shows a few other methods you can utilize with the `MotorGroup`.
+The number of followers is variable. The other methods of the `MotorGroup` are the same as the ones found in `Motor`. You can very simply treat a `MotorGroup` object like a single `Motor` object. The [flywheel sample](https://github.com/FTCLib/FTCLib/blob/v2.1.1/examples/src/main/java/com/example/ftclibexamples/FlywheelSample.java) in the examples folder shows a few other methods you can utilize with the `MotorGroup`.

@@ -1,7 +1,7 @@
 ---
 description: >-
   import
-  com.arcrobotics.ftclib.kinematics.wpilibkinematics.MecanumDriveKinematics
+  com.seattlesolvers.solverslib.kinematics.wpilibkinematics.MecanumDriveKinematics
 ---
 
 # Mecanum Drive Kinematics
@@ -10,7 +10,7 @@ The `MecanumDriveKinematics` class is a useful tool that converts between a `Cha
 
 ## Constructing the Kinematics Object
 
-The `MecanumDriveKinematics` class accepts four constructor arguments, with each argument being the location of a wheel relative to the robot center \(as a `Translation2d`\). The order for the arguments is front left, front right, back left, and back right. The locations for the wheels must be relative to the center of the robot. Positive x values represent moving toward the front of the robot whereas positive y values represent moving toward the left of the robot.
+The `MecanumDriveKinematics` class accepts four constructor arguments, with each argument being the location of a wheel relative to the robot center (as a `Translation2d`). The order for the arguments is front left, front right, back left, and back right. The locations for the wheels must be relative to the center of the robot. Positive x values represent moving toward the front of the robot whereas positive y values represent moving toward the left of the robot.
 
 ```java
 // Locations of the wheels relative to the robot center.
@@ -73,7 +73,7 @@ MecanumDriveWheelSpeeds wheelSpeeds =
 
 ### Using Custom Centers of Rotation
 
-Sometimes, rotating around one specific corner might be desirable for certain evasive maneuvers. This type of behavior is also supported by the WPILib classes. The same `toWheelSpeeds()` method accepts a second parameter for the center of rotation \(as a `Translation2d`\). Just like the wheel locations, the `Translation2d` representing the center of rotation should be relative to the robot center.
+Sometimes, rotating around one specific corner might be desirable for certain evasive maneuvers. This type of behavior is also supported by the WPILib classes. The same `toWheelSpeeds()` method accepts a second parameter for the center of rotation (as a `Translation2d`). Just like the wheel locations, the `Translation2d` representing the center of rotation should be relative to the robot center.
 
 Because all robots are a rigid frame, the provided `vx` and `vy` velocities from the `ChassisSpeeds` object will still apply for the entirety of the robot. However, the `omega` from the `ChassisSpeeds` object will be measured from the center of rotation.
 
@@ -97,4 +97,3 @@ double forward = chassisSpeeds.vxMetersPerSecond;
 double sideways = chassisSpeeds.vyMetersPerSecond;
 double angular = chassisSpeeds.omegaRadiansPerSecond;
 ```
-

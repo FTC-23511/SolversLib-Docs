@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.geometry
+description: package com.seattlesolvers.solverslib.geometry
 ---
 
 # Geometry
@@ -35,4 +35,3 @@ FTCLib provides 2 classes, `Transform2d`, which represents a transformation to a
 `Twist2d` represents a change in distance along an arc. For a given arc traveled, $$x$$ is the distance traveled forward as measured from the robot's perspective throughout the movement (for a differential drive, this is the arc length), $$y$$ is the distance traveled sideways from the robot's perspective (for a differential drive, this is 0), and $$\theta$$ is the change in heading.
 
 Both classes can be used to estimate robot location. `Twist2d` is used in some of the FTCLib odometry classes to update the robot’s pose based on movement, while `Transform2d` can be used to estimate the robot’s global position from vision data.
-

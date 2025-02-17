@@ -1,12 +1,12 @@
 ---
-description: import com.arcrobotics.ftclib.command.Subsystem
+description: package com.seattlesolvers.solverslib.command.Subsystem
 ---
 
 # Subsystems
 
-Subsystems are the basic unit of robot organization in the command-based paradigm. A subsystem is an abstraction for a collection of robot hardware that _operates together as a unit_. Subsystems [encapsulate](https://en.wikipedia.org/wiki/Encapsulation_%28computer_programming%29) this hardware, “hiding” it from the rest of the robot code \(e.g. commands\) and restricting access to it except through the subsystem’s public methods. Restricting the access in this way provides a single convenient place for code that might otherwise be duplicated in multiple places \(such as scaling motor outputs or checking limit switches\) if the subsystem internals were exposed. It also allows changes to the specific details of how the subsystem works \(the “implementation”\) to be isolated from the rest of robot code, making it far easier to make substantial changes if/when the design constraints change.
+Subsystems are the basic unit of robot organization in the command-based paradigm. A subsystem is an abstraction for a collection of robot hardware that _operates together as a unit_. Subsystems [encapsulate](https://en.wikipedia.org/wiki/Encapsulation_\(computer_programming\)) this hardware, “hiding” it from the rest of the robot code (e.g. commands) and restricting access to it except through the subsystem’s public methods. Restricting the access in this way provides a single convenient place for code that might otherwise be duplicated in multiple places (such as scaling motor outputs or checking limit switches) if the subsystem internals were exposed. It also allows changes to the specific details of how the subsystem works (the “implementation”) to be isolated from the rest of robot code, making it far easier to make substantial changes if/when the design constraints change.
 
-Subsystems also serve as the backbone of the `CommandScheduler`’s resource management system. Commands may declare resource requirements by specifying which subsystems they interact with; the scheduler will never concurrently schedule more than one command that requires a given subsystem. An attempt to schedule a command that requires a subsystem that is already-in-use will either interrupt the currently-running command \(if the command has been scheduled as interruptible\), or else be ignored.
+Subsystems also serve as the backbone of the `CommandScheduler`’s resource management system. Commands may declare resource requirements by specifying which subsystems they interact with; the scheduler will never concurrently schedule more than one command that requires a given subsystem. An attempt to schedule a command that requires a subsystem that is already-in-use will either interrupt the currently-running command (if the command has been scheduled as interruptible), or else be ignored.
 
 Subsystems can be associated with “default commands” that will be automatically scheduled when no other command is currently using the subsystem. This is useful for continuous “background” actions such as controlling the robot drive, or keeping an arm held at a setpoint. Similar functionality can be achieved in the subsystem’s `periodic()` method, which is run once per run of the scheduler; teams should try to be consistent within their codebase about which functionality is achieved through either of these methods. Subsystems are represented in the command-based library by the Subsystem interface.
 
@@ -32,7 +32,7 @@ public class ExampleSubsystem extends SubsystemBase {
 }
 ```
 
-This class contains automatically calls the `register()` method in its constructor to register the subsystem with the scheduler \(this is necessary for the `periodic()` method to be called when the scheduler runs\).
+This class contains automatically calls the `register()` method in its constructor to register the subsystem with the scheduler (this is necessary for the `periodic()` method to be called when the scheduler runs).
 
 Advanced users seeking more flexibility may simply create a class that implements the `Subsystem` interface.
 
@@ -90,4 +90,3 @@ CommandScheduler.getInstance().setDefaultCommand(exampleSubsystem, exampleComman
 ```java
 exampleSubsystem.setDefaultCommand(exampleCommand);
 ```
-

@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.util;
+description: package com.seattlesolvers.solverslib.ftclib.util;
 ---
 
 # Utility Functions
@@ -17,17 +17,17 @@ A look up table or LUT for short is used to store values and be able to quickly 
 
 The FTCLib provides 2 different variations of look up tables. In this year's game they can be used to store different set and tested velocities or angles. You can either retrieve the closest reference or you can interpolate through them.
 
-## LUT \(Look Up Table\)
+## LUT (Look Up Table)
 
 Provides a way to store values in a table to quickly retrieve them. For example, this might be used to store different speeds or angles based on certain distances. This class allows you to find the closest entry to the input.
 
 For example if you enter:
 
 | Input | Output |
-| :---: | :---: |
-| 0 | 0 |
-| 1 | 1 |
-| 2 | 1 |
+| :---: | :----: |
+|   0   |    0   |
+|   1   |    1   |
+|   2   |    1   |
 
 When you request 1.1, it will return 1.
 
@@ -49,7 +49,7 @@ double distance = odometry.getPose().getTranslation().getDistance(new Translatio
 shooter.set(speeds.getClosest(distance));
 ```
 
-## InterpLUT \(Interpolated Look Up Table\)
+## InterpLUT (Interpolated Look Up Table)
 
 Provides a way to fill in the gaps in the data. Similarly to the LUT above, this allows you to add data points and retrieve a data point given an output. The difference between a normal LUT and InterpLUT is that the interpolated LUT uses math to fill in all the gaps. Effectively generating filler data based on the data around it.
 
@@ -84,15 +84,15 @@ FTCLib Comes with multiple timers and Timing Functions. They let you set the len
 
 A timer can be created with a length or length and Time Unit. The various functions nested within the Timer object are:
 
-| Function | Return Type | Description |
-| :--- | :--- | :--- |
-| `timer.start()` | Void | Starts the Timer |
-| `timer.pause()` | Void | Pauses the Timer |
-| `timer.resume()` | Void | Resumes the Timer |
-| `timer.elapsedTime()` | long | Returns the Passed Time |
-| `timer.remainingTime()` | long | Returns Time Left |
-| `timer.done()` | Boolean | Returns if the Timer is Completed |
-| `timer.isTimerOn()` | Boolean | Returns if the Timer is Active |
+| Function                | Return Type | Description                       |
+| ----------------------- | ----------- | --------------------------------- |
+| `timer.start()`         | Void        | Starts the Timer                  |
+| `timer.pause()`         | Void        | Pauses the Timer                  |
+| `timer.resume()`        | Void        | Resumes the Timer                 |
+| `timer.elapsedTime()`   | long        | Returns the Passed Time           |
+| `timer.remainingTime()` | long        | Returns Time Left                 |
+| `timer.done()`          | Boolean     | Returns if the Timer is Completed |
+| `timer.isTimerOn()`     | Boolean     | Returns if the Timer is Active    |
 
 ## Math Utilities
 
@@ -133,13 +133,12 @@ int OutputVal = clamp(ValueToClamp,
 FTCLib comes with multiple directional enums for all your directional needs! You can use these for any autonomous or TeleOP States or anything you want!
 
 | Direction | Index |
-| :--- | :--- |
-| LEFT | 0 |
-| RIGHT | 1 |
-| UP | 2 |
-| DOWN | 3 |
-| FORWARD | 4 |
-| BACKWARDS | 5 |
+| --------- | ----- |
+| LEFT      | 0     |
+| RIGHT     | 1     |
+| UP        | 2     |
+| DOWN      | 3     |
+| FORWARD   | 4     |
+| BACKWARDS | 5     |
 
 You can find some examples in the [sample folder](https://github.com/FTCLib/FTCLib/tree/v1.1.2/examples/src/main/java/com/example/ftclibexamples).
-
