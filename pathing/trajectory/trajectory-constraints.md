@@ -6,7 +6,7 @@ For example, a custom constraint can keep the velocity of the trajectory under a
 
 ## Provided Constraints
 
-FTCLib includes a set of predefined constraints that users can utilize when generating trajectories. The list of FTCLib-provided constraints is as follows:
+SolversLib includes a set of predefined constraints that users can utilize when generating trajectories. The list of SolversLib-provided constraints is as follows:
 
 * `CentripetalAccelerationConstraint`: Limits the centripetal acceleration of the robot as it traverses along the trajectory. This can help slow down the robot around tight turns.
 * `DifferentialDriveKinematicsConstraint`: Limits the velocity of the robot around turns such that no wheel of a differential-drive robot goes over a specified maximum velocity.
@@ -20,7 +20,7 @@ The `DifferentialDriveVoltageConstraint` only ensures that theoretical voltage c
 
 ## Creating a Custom Constraint
 
-Users can create their own constraint by implementing the `TrajectoryConstraint` [interface](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/trajectory/constraint/TrajectoryConstraint.java).
+Users can create their own constraint by implementing the `TrajectoryConstraint` [interface](https://github.com/FTC-23511/SolversLib/tree/master/core/src/main/java/com/seattlesolvers/solverslib/trajectory/constraint/TrajectoryConstraint.java).
 
 ```java
 @Override

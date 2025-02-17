@@ -4,7 +4,7 @@ description: package com.seattlesolvers.solverslib.controller
 
 # Controllers
 
-In FTCLib, there are controllers that can improve the motion of mechanisms in FTC. This includes PID control and feedforward control. For information on the theory behind PID control, we recommend reading [this page](https://gm0.org/en/stable/docs/software/control-loops.html) in gm0.
+In SolversLib, there are controllers that can improve the motion of mechanisms in FTC. This includes PID control and feedforward control. For information on the theory behind PID control, we recommend reading [this page](https://gm0.org/en/stable/docs/software/control-loops.html) in gm0.
 
 ## PID Control
 
@@ -16,13 +16,13 @@ The following video does a good job explaining each gain:
 
 {% embed url="https://www.youtube.com/watch?v=XfAt6hNV8XM" %}
 
-Our base class is `PIDFController` for the FTCLib PID control scheme. This class performs the calculations for PIDF, which are proportional, integral, derivative, and feedforward values. The additional F term is an additional gain for creating offset, for purposes like maintaining a position, counteracting weight/gravity, or overcoming friction.
+Our base class is `PIDFController` for the SolversLib PID control scheme. This class performs the calculations for PIDF, which are proportional, integral, derivative, and feedforward values. The additional F term is an additional gain for creating offset, for purposes like maintaining a position, counteracting weight/gravity, or overcoming friction.
 
 ### Using the PIDFController Class
 
 #### Constructing a PIDFController
 
-In order to use FTCLib's PIDF control functionality, users must first construct a `PIDFController` object with the desired gains:
+In order to use SolversLib's PIDF control functionality, users must first construct a `PIDFController` object with the desired gains:
 
 ```java
 // Creates a PIDFController with gains kP, kI, kD, and kF
@@ -143,9 +143,9 @@ A feedforward controller injects information about the system’s dynamics (like
 
 There are two types of feedforwards: model-based feedforward and feedforward for unmodeled dynamics. The first solves a mathematical model of the system for the inputs required to meet desired velocities and accelerations. The second compensates for unmodeled forces or behaviors directly so the feedback controller doesn’t have to. Both types can facilitate simpler feedback controllers. We’ll cover several examples below.
 
-FTCLib provides a number of classes to help users implement accurate feedforward control for their mechanisms. In many ways, an accurate feedforward is more important than feedback to effective control of a mechanism. Since most FTC mechanisms closely obey well-understood system equations, starting with an accurate feedforward is both easy and hugely beneficial to accurate and robust mechanism control.
+SolversLib provides a number of classes to help users implement accurate feedforward control for their mechanisms. In many ways, an accurate feedforward is more important than feedback to effective control of a mechanism. Since most FTC mechanisms closely obey well-understood system equations, starting with an accurate feedforward is both easy and hugely beneficial to accurate and robust mechanism control.
 
-FTCLib currently provides the following three helper classes for feedforward control. The feedforward components will calculate outputs in units determined by the units of the user-provided feedforward gains. Users _must_ take care to keep units consistent as it does not have a type-safe unit system.
+SolversLib currently provides the following three helper classes for feedforward control. The feedforward components will calculate outputs in units determined by the units of the user-provided feedforward gains. Users _must_ take care to keep units consistent as it does not have a type-safe unit system.
 
 ### SimpleMotorFeedforward
 

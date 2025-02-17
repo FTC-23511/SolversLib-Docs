@@ -1,21 +1,21 @@
 ---
-description: package com.seattlesolvers.solverslib.ftclib.util;
+description: package com.seattlesolvers.solverslib.solverslib.util;
 ---
 
 # Utility Functions
 
-FTCLib comes with many different Utility Functions:
+SolversLib comes with many different Utility Functions:
 
-* [Look Up Tables](https://docs.ftclib.org/ftclib/features/util#what-is-a-look-up-table)
-* [Timing Functions](https://docs.ftclib.org/ftclib/features/util#timing-functions)
-* [Math Utilities](https://docs.ftclib.org/ftclib/features/util#math-utilities)
-* [Directional Enums](https://docs.ftclib.org/ftclib/features/util#directional-enums)
+* [Look Up Tables](https://docs.seattlesolvers.com/features/util#what-is-a-look-up-table)
+* [Timing Functions](https://docs.seattlesolvers.com/features/util#timing-functions)
+* [Math Utilities](https://docs.seattlesolvers.com/features/util#math-utilities)
+* [Directional Enums](https://docs.seattlesolvers.com/features/util#directional-enums)
 
 ## What is a Look Up Table?
 
 A look up table or LUT for short is used to store values and be able to quickly recall them.
 
-The FTCLib provides 2 different variations of look up tables. In this year's game they can be used to store different set and tested velocities or angles. You can either retrieve the closest reference or you can interpolate through them.
+The SolversLib provides 2 different variations of look up tables. In this year's game they can be used to store different set and tested velocities or angles. You can either retrieve the closest reference or you can interpolate through them.
 
 ## LUT (Look Up Table)
 
@@ -78,7 +78,7 @@ shooter.set(lut.get(distance));
 
 ## Timing Functions
 
-FTCLib Comes with multiple timers and Timing Functions. They let you set the length, unit, can act as a stopwatch or even return the loop time.
+SolversLib Comes with multiple timers and Timing Functions. They let you set the length, unit, can act as a stopwatch or even return the loop time.
 
 ### Timer
 
@@ -96,7 +96,7 @@ A timer can be created with a length or length and Time Unit. The various functi
 
 ## Math Utilities
 
-FTCLib currently adds 1 math utility, clamp. It lets you restrict a value to a certain max and min and is usable in double and int.
+SolversLib currently adds 1 math utility, clamp. It lets you restrict a value to a certain max and min and is usable in double and int.
 
 **Example Usage:**
 
@@ -130,7 +130,7 @@ int OutputVal = clamp(ValueToClamp,
 
 ## Directional Enums
 
-FTCLib comes with multiple directional enums for all your directional needs! You can use these for any autonomous or TeleOP States or anything you want!
+SolversLib comes with multiple directional enums for all your directional needs! You can use these for any autonomous or TeleOP States or anything you want!
 
 | Direction | Index |
 | --------- | ----- |
@@ -141,4 +141,4 @@ FTCLib comes with multiple directional enums for all your directional needs! You
 | FORWARD   | 4     |
 | BACKWARDS | 5     |
 
-You can find some examples in the [sample folder](https://github.com/FTCLib/FTCLib/tree/v1.1.2/examples/src/main/java/com/example/ftclibexamples).
+You can find some examples in the [sample folder](https://github.com/FTC-23511/SolversLib/tree/master/examples/src/main/java/org/firstinspires/ftc/teamcode).

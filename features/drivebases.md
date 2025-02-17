@@ -4,7 +4,7 @@ description: package com.seattlesolvers.solverslib.drivebase
 
 # Drivebases
 
-All of the [FTCLib drivebase classes](https://github.com/FTCLib/FTCLib/tree/dev/core/src/main/java/com/arcrobotics/ftclib/drivebase) are based on the `RobotBase` abstract class. This is functionally similar to the [RobotDriveBase ](https://github.com/wpilibsuite/allwpilib/blob/50db653f8d864c594c6a9ab7dd5a0f45b4483a03/wpilibj/src/main/java/edu/wpi/first/wpilibj/drive/RobotDriveBase.java)class in WPILib. It contains:
+All of the [SolversLib drivebase classes](https://github.com/FTC-23511/SolversLib/tree/dev/core/src/main/java/com/arcrobotics/ftclib/drivebase) are based on the `RobotBase` abstract class. This is functionally similar to the [RobotDriveBase ](https://github.com/wpilibsuite/allwpilib/blob/50db653f8d864c594c6a9ab7dd5a0f45b4483a03/wpilibj/src/main/java/edu/wpi/first/wpilibj/drive/RobotDriveBase.java)class in WPILib. It contains:
 
 * An enumerator for the different motor types (i.e. the indices of the motors in the array)
 * Maximum possible speed for the drivebase to approach
@@ -13,7 +13,7 @@ All of the [FTCLib drivebase classes](https://github.com/FTCLib/FTCLib/tree/dev/
 * A `stop()` method
 * Square input method
 
-All of the following drive types are available for use in FTCLib. All that's needed for the user to do is plug in the values to an instantiation of the object.
+All of the following drive types are available for use in SolversLib. All that's needed for the user to do is plug in the values to an instantiation of the object.
 
 ## Differential
 
@@ -49,7 +49,7 @@ m_drive.tankDrive(leftSpeed, rightSpeed);
 
 ## Holonomic
 
-In FTCLib, we shortened holonomic drive to the generic term H-Drive. A holonomic drive is one that can move in omnidirectional space, which is why it is often called an omnidirectional drive. There are different sub-types of holonomic drivebases.
+In SolversLib, we shortened holonomic drive to the generic term H-Drive. A holonomic drive is one that can move in omnidirectional space, which is why it is often called an omnidirectional drive. There are different sub-types of holonomic drivebases.
 
 ### Holonomic Drivebases
 
@@ -57,7 +57,7 @@ In FTCLib, we shortened holonomic drive to the generic term H-Drive. A holonomic
 
 A three wheel holonomic drivebase, otherwise known as a "Kiwi" or "Killough," is a drivetrain with omnidirectional motion while utilizing three omniwheels.
 
-![Rendered by Pranay from FTC 16236, CAD made by Eric from FTC 18246](../.gitbook/assets/ftclib_kiwi_v4.png)
+![Rendered by Pranay from FTC 16236, CAD made by Eric from FTC 18246](../.gitbook/assets/solverslib_kiwi_v4.png)
 
 You can create the kiwi drive as such:
 
@@ -163,4 +163,4 @@ public class BasicDriveOpMode extends OpMode {
 ```
 {% endcode %}
 
-You can find an additional sample [here](https://github.com/FTCLib/FTCLib/blob/v2.1.1/examples/src/main/java/com/example/ftclibexamples/MecanumDrivingSample.java) which is more thoroughly detailed.
+You can find an additional sample [here](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/MecanumDrivingSample.java) which is more thoroughly detailed.

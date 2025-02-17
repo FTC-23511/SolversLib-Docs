@@ -1,6 +1,6 @@
 # Support SolversLib
 
-## Support FTCLib
+## Support SolversLib
 
 SolversLib is solely community-driven and currently is not the standard tool for programming in FTC. In order to get to that point, we need to garner a large audience. If you have worked with our library, consider using some of our branding tools that you can find under the [brand package](https://github.com/FTC-23511/SolversLib/tree/master/brand) in our repository. Spreading news by word of mouth also works and make sure to point them towards [our website](http://ftc-23511.github.io).
 

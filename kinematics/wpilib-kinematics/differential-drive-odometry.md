@@ -6,7 +6,7 @@ description: >-
 
 # Differential Drive Odometry
 
-A user can use the differential drive kinematics classes in order to perform [odometry](./#what-is-odometry). WPILib/FTCLib contains a `DifferentialDriveOdometry` class that can be used to track the position of a differential drive robot on the field.
+A user can use the differential drive kinematics classes in order to perform [odometry](./#what-is-odometry). WPILib/SolversLib contains a `DifferentialDriveOdometry` class that can be used to track the position of a differential drive robot on the field.
 
 **Note**:\
 Because this method only uses encoders and a gyro, the estimate of the robot’s position on the field will drift over time, especially as your robot comes into contact with other robots during gameplay. However, odometry is usually very accurate during the autonomous period.

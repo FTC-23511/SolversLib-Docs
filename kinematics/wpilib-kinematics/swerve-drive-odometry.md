@@ -6,7 +6,7 @@ description: >-
 
 # Swerve Drive Odometry
 
-A user can use the swerve drive kinematics classes in order to perform [odometry](./#what-is-odometry). WPILib/FTCLib contains a `SwerveDriveOdometry` class that can be used to track the position of a swerve drive robot on the field.
+A user can use the swerve drive kinematics classes in order to perform [odometry](./#what-is-odometry). WPILib/SolversLib contains a `SwerveDriveOdometry` class that can be used to track the position of a swerve drive robot on the field.
 
 **Note**:\
 Because this method only uses encoders and a gyro, the estimate of the robot’s position on the field will drift over time, especially as your robot comes into contact with other robots during gameplay. However, odometry is usually very accurate during the autonomous period.
