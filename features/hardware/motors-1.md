@@ -1,10 +1,10 @@
 ---
-description: package com.seattlesolvers.solverslib.hardware.motors
+description: package com.seattlesolvers.solverslib.solversHardware
 ---
 
 # SolversHardware
 
-FTCLib offers fully-featured motor wrappers for the ease of the user. Behind the scenes, it utilizes the advanced features of FTCLib to produce a more powerful implementation of the DcMotor objects offered in the SDK. Similarly, FTCLib has a `Motor` and `MotorEx` object, each of which allow for the user to directly access the instance object from the hardware map in the case of wanting to work with it directly.
+SolversLib also offers much simpler motor wrappers for caching the ease of the user. Behind the scenes, it utilizes the advanced features of FTCLib to produce a more powerful implementation of the DcMotor objects offered in the SDK. Similarly, FTCLib has a `Motor` and `MotorEx` object, each of which allow for the user to directly access the instance object from the hardware map in the case of wanting to work with it directly.
 
 ## Creating a Motor Object
 

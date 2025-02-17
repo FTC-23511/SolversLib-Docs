@@ -4,7 +4,7 @@ description: package com.seattlesolvers.solverslib.hardware.motors
 
 # Motors
 
-FTCLib offers fully-featured motor wrappers for the ease of the user. Behind the scenes, it utilizes the advanced features of FTCLib to produce a more powerful implementation of the DcMotor objects offered in the SDK. Similarly, FTCLib has a `Motor` and `MotorEx` object, each of which allow for the user to directly access the instance object from the hardware map in the case of wanting to work with it directly.
+SolversLib offers fully-featured motor wrappers for the ease of the user. Behind the scenes, it utilizes the advanced features of SolversLib to produce a more powerful implementation of the DcMotor objects offered in the SDK. Similarly, SolversLib has a `Motor` and `MotorEx` object, each of which allow for the user to directly access the instance object from the hardware map in the case of wanting to work with it directly.
 
 ## Creating a Motor Object
 
@@ -115,7 +115,7 @@ m_motor.set(-0.54);
 
 ### Setting Behaviors
 
-FTCLib, like the SDK, has wrapper methods for setting the ZeroPowerBehavior and the direction of the motors. ZeroPowerBehavior is often used for mechanisms other than the drivetrain; for example, like how you would use the BRAKE behavior for a lift.
+SolversLib, like the SDK, has wrapper methods for setting the ZeroPowerBehavior and the direction of the motors. ZeroPowerBehavior is often used for mechanisms other than the drivetrain; for example, like how you would use the BRAKE behavior for a lift.
 
 ```java
 // set the inversion factor
@@ -130,7 +130,7 @@ m_motor.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
 
 ### The Built-In Encoder
 
-A lot of motors have built-in encoders. FTCLib offers a nested class `Motor.Encoder` that utilizes advanced mechanics and corrects for [velocity overflow](https://github.com/FIRST-Tech-Challenge/SkyStone/issues/241). One of the other great things is that resetting the encoder does not require stopping the motor. It calculates an offset and subtracts that from the current position. This offset is set to the current position of the encoder each time the `reset()` method is called. The Motor object also has methods that manipulate the encoder so that you don't have to grab the internal encoder instance from the object.
+A lot of motors have built-in encoders. SolversLib offers a nested class `Motor.Encoder` that utilizes advanced mechanics and corrects for [velocity overflow](https://github.com/FIRST-Tech-Challenge/SkyStone/issues/241). One of the other great things is that resetting the encoder does not require stopping the motor. It calculates an offset and subtracts that from the current position. This offset is set to the current position of the encoder each time the `reset()` method is called. The Motor object also has methods that manipulate the encoder so that you don't have to grab the internal encoder instance from the object.
 
 You can also use the built-in encoder as an encoder itself when using an external encoder.
 
@@ -178,7 +178,7 @@ You can also set the velocity directly using `setVelocity()`. You can pass the a
 
 ### Bulk Reading
 
-A bulk read reads all of the sensor data (except I2C) on a lynx module to save cycle times. Bulk reads were introduced in SDK version 5.4. Since FTCLib uses wrappers, we can treat them the same way as other sensors.
+A bulk read reads all of the sensor data (except I2C) on a lynx module to save cycle times. Bulk reads were introduced in SDK version 5.4. Since SolversLib uses wrappers, we can treat them the same way as other sensors.
 
 Here's a sample implementation of auto-caching.
 
@@ -207,7 +207,7 @@ You can also take a look at [this sample](https://github.com/FIRST-Tech-Challeng
 
 ## CRServo
 
-Th [CRServo](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/hardware/motors/CRServo.java) class is just a motor object intended to be used for a continuous rotation servo. Its general purpose is to be used in FTCLib classes that require a `Motor` input. It works just like a regular motor, without any of the encoder stuff.
+Th [CRServo](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/hardware/motors/CRServo.java) class is just a motor object intended to be used for a continuous rotation servo. Its general purpose is to be used in SolversLib classes that require a `Motor` input. It works just like a regular motor, without any of the encoder stuff.
 
 ## MotorGroup
 
