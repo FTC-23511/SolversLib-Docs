@@ -207,7 +207,7 @@ You can also take a look at [this sample](https://github.com/FIRST-Tech-Challeng
 
 ## CRServo
 
-Th [CRServo](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/hardware/motors/CRServo.java) class is just a motor object intended to be used for a continuous rotation servo. Its general purpose is to be used in SolversLib classes that require a `Motor` input. It works just like a regular motor, without any of the encoder stuff.
+The [CRServo](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/motors/CRServo.java) class is just a motor object intended to be used for a continuous rotation servo. Its general purpose is to be used in SolversLib classes that require a `Motor` input. It works just like a regular motor, without any of the encoder stuff.
 
 ## MotorGroup
 
@@ -217,4 +217,4 @@ A motor group object takes several motors and runs them in parallel like a singl
 MotorGroup myMotors = new MotorGroup(leader, follower1, follower2, ...);
 ```
 
-The number of followers is variable. The other methods of the `MotorGroup` are the same as the ones found in `Motor`. You can very simply treat a `MotorGroup` object like a single `Motor` object. The [flywheel sample](https://github.com/FTCLib/FTCLib/blob/v2.1.1/examples/src/main/java/com/example/ftclibexamples/FlywheelSample.java) in the examples folder shows a few other methods you can utilize with the `MotorGroup`.
+The number of followers is variable. The other methods of the `MotorGroup` are the same as the ones found in `Motor`. You can very simply treat a `MotorGroup` object like a single `Motor` object. The [flywheel sample](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/FlywheelSample.java) in the examples folder shows a few other methods you can utilize with the `MotorGroup`.
