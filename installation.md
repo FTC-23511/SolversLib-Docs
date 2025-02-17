@@ -109,9 +109,29 @@ dependencies {
 
 Because the package names will be different, you can either manually replace all instances of `com.arcrobotics.ftclib` with `com.seattlesolvers.solverslib` , or use a command in a terminal to replace them all at once for you. Please make sure you either open a terminal into your Android Studio project or use the built-in Android Studio terminal to run the commands below.
 
-<table><thead><tr><th width="203">Import Replacement Type</th><th>MacOS/Linux</th></tr></thead><tbody><tr><td>FTCLib -> SolversLib</td><td><code>find . -type f -name "*.java" -exec sed -i '' 's/com.arcrobotics.ftclib/com.seattlesolvers.solverslib/g' {} +</code></td></tr><tr><td>SolversLib -> FTCLib</td><td><code>find . -type f -name "*.java" -exec sed -i '' 's/com.seattlesolvers.solverslib/com.arcrobotics.ftclib/g' {} +</code></td></tr></tbody></table>
+FTCLib Imports to SolversLib Imports (MacOS/Linux):
 
-<table><thead><tr><th width="203">Import Replacement Type</th><th>Windows</th></tr></thead><tbody><tr><td>FTCLib -> SolversLib</td><td><code>Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $</code><em><code>.FullName) -replace 'com.arcrobotics.ftclib', 'com.seattlesolvers.solverslib' | Set-Content $</code></em><code>.FullName }</code></td></tr><tr><td>SolversLib -> FTCLib</td><td><code>Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $</code><em><code>.FullName) -replace 'com.seattlesolvers.solverslib', 'com.arcrobotics.ftclib' | Set-Content $</code></em><code>.FullName }</code></td></tr></tbody></table>
+```bash
+find . -type f -name "*.java" -exec sed -i '' 's/com.arcrobotics.ftclib/com.seattlesolvers.solverslib/g' {} +
+```
+
+SolversLib Imports to FTCLib Imports (MacOS/Linux):
+
+```bash
+find . -type f -name "*.java" -exec sed -i '' 's/com.seattlesolvers.solverslib/com.arcrobotics.ftclib/g' {} +
+```
+
+FTCLib Imports to SolversLib Imports  (Windows):
+
+```powershell
+Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $.FullName) -replace 'com.arcrobotics.ftclib', 'com.seattlesolvers.solverslib' | Set-Content $.FullName }
+```
+
+SolversLib Imports to FTCLib Imports (Windows):
+
+```powershell
+Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $.FullName) -replace 'com.seattlesolvers.solverslib', 'com.arcrobotics.ftclib' | Set-Content $.FullName }
+```
 
 ### Sync Gradle and Finished!
 
