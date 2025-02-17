@@ -11,7 +11,7 @@ description: How to import SolversLib into your Android Studio FTC Project
 The only thing you need to change from FTCLib is the dependency in `build.gradle`
 
 {% code title="build.gradle (Module: TeamCode)" %}
-```groovy
+```gradle
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
@@ -24,7 +24,7 @@ dependencies {
 Or, if you are using pedroPathing, change to this dependency block
 
 {% code title="build.gradle (Module: TeamCode)" %}
-```groovy
+```gradle
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
@@ -47,7 +47,7 @@ Lastly, follow the steps in the [Changing Imports](installation.md#changing-impo
 First, you need to add the `mavenCentral` library repository to your `build.gradle` file at the project root:
 
 {% code title="build.gradle" %}
-```groovy
+```gradle
     repositories {
         mavenCentral()
     }
@@ -57,7 +57,7 @@ First, you need to add the `mavenCentral` library repository to your `build.grad
 Next, `minSdkVersion` to `24` and `multiDexEnabled` to `true`:
 
 {% code title="build.common.gradle" %}
-```groovy
+```gradle
 defaultConfig {
     applicationId 'com.qualcomm.ftcrobotcontroller'
     minSdkVersion 24
@@ -69,7 +69,7 @@ defaultConfig {
 Next, change `JavaVersion` to `8` :
 
 {% code title="build.common.gradle" %}
-```groovy
+```gradle
 compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
@@ -82,14 +82,14 @@ compileOptions {
 Add this dependency block for the base library:
 
 {% code title="build.gradle (Module: TeamCode)" %}
-```groovy
+```gradle
 dependencies {
     implementation "org.solverslib:core:0.2.3" // core
 ```
 {% endcode %}
 
 {% code title="build.gradle (Module: TeamCode)" %}
-```groovy
+```gradle
 dependencies {
     implementation "org.solverslib:core:0.2.3" // core
     implementation "org.pedroPathing:core:0.2.3" // pedroPathing
@@ -99,7 +99,7 @@ dependencies {
 
 The latest version numbers (as well as a list of all version numbers) are available at:
 
-* Latest `core` version: [https://re1po.dairy.foundation/#/releases/org/solverslib/core](https://repo.dairy.foundation/#/releases/org/solverslib/core)
+* Latest `core` version: [https://repo.dairy.foundation/#/releases/org/solverslib/core](https://repo.dairy.foundation/#/releases/org/solverslib/core)
 * Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
 
 {% hint style="warning" %}
@@ -154,4 +154,4 @@ Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $.FullName
 
 ### Sync Gradle and Finished!
 
-![Click that button and if successful, you can now use FTCLib](.gitbook/assets/gradle-sync.png)
+![Click that button and if successful, you can now use SolversLib](.gitbook/assets/gradle-sync.png)

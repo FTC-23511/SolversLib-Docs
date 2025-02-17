@@ -4,11 +4,13 @@ description: package com.seattlesolvers.solverslib.purepursuit
 
 # Pure Pursuit
 
-## This is buggy and may be replaced in future version of SolversLib. Its use is currently not recommend.
+## This is buggy and may be replaced in future version of SolversLib. Its use is currently not recommend.&#x20;
+
+## Please use [Pedro Pathing](https://pedropathing.com) instead.
 
 ## Pure Pursuit
 
-The pure pursuit algorithm in SolversLib is developed so that the user only needs to add the desired waypoints and call the `followPath()` method in the [Path](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/purepursuit/Path.java) class. To use this, you need to pass the [mecanum](https://docs.SolversLib.org/SolversLib/features/drivebases#mecanum) drivetrain as well as the odometry for the robot. Once the method is finished, it will return true or false depending on if it was successful or not.
+The pure pursuit algorithm in SolversLib is developed so that the user only needs to add the desired waypoints and call the `followPath()` method in the [Path](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/purepursuit/Path.java) class. To use this, you need to pass the [mecanum](https://docs.solverslib.org/SolversLib/features/drivebases#mecanum) drivetrain as well as the odometry for the robot. Once the method is finished, it will return true or false depending on if it was successful or not.
 
 As an alternative, you can call the `loop()` method and directly input your odometry positions there. Make sure you update the odometry positions with each iteration of the loop.
 
@@ -264,7 +266,7 @@ m_path.reset();
 
 The `followPath()` method is the automatic implementation of pure pursuit for SolversLib. For teams that want to use all of SolversLib's features to the fullest, this is the recommended process.
 
-An important note for the pure pursuit algorithm is that it only works well with odometry. You can use the various odometry systems provided by SolversLib. An important thing to note is that `followPath()` makes use of the [Odometry](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/kinematics/Odometry.java) abstract class and the [mecanum drivebase](https://docs.SolversLib.org/SolversLib/features/drivebases#mecanum). Then, the method will call the loop method and do everything for you.
+An important note for the pure pursuit algorithm is that it only works well with odometry. You can use the various odometry systems provided by SolversLib. An important thing to note is that `followPath()` makes use of the [Odometry](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/kinematics/Odometry.java) abstract class and the [mecanum drivebase](https://docs.solverslib.org/SolversLib/features/drivebases#mecanum). Then, the method will call the loop method and do everything for you.
 
 ```java
 // follow path
@@ -337,7 +339,7 @@ If you're using your odometry for multiple subsystems, you're likely going to wa
 
 #### Creating an Odometry Subsystem
 
-The pre-built PurePursuitCommand requires the use of SolversLib's [OdometrySubsystem](https://docs.SolversLib.org/SolversLib/kinematics/odometry#using-the-odometry-subsystem). It is fairly easy to set up. All that is needed is for the user to pass in their odometry class into the constructor of the subsystem.
+The pre-built PurePursuitCommand requires the use of SolversLib's [OdometrySubsystem](https://docs.solverslib.org/SolversLib/kinematics/odometry#using-the-odometry-subsystem). It is fairly easy to set up. All that is needed is for the user to pass in their odometry class into the constructor of the subsystem.
 
 ```java
 // create the odometry object
