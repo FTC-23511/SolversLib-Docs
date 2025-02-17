@@ -34,7 +34,7 @@ When you request 1.1, it will return 1.
 ### Example Usage:
 
 ```java
-import com.arcrobotics.ftclib.util.LUT;
+import com.seattlesolvers.solverslib.util.LUT;
 
 LUT<Double, Double> speeds = new LUT<Double, Double>()
 {{
@@ -56,7 +56,7 @@ Provides a way to fill in the gaps in the data. Similarly to the LUT above, this
 ### Example Usage:
 
 ```java
-import com.arcrobotics.ftclib.util.InterpLUT;
+import com.seattlesolvers.solverslib.util.InterpLUT;
 
 //Init the Look up table
 InterpLUT lut = new InterpLUT();
@@ -103,7 +103,7 @@ FTCLib currently adds 1 math utility, clamp. It lets you restrict a value to a c
 Double Method:
 
 ```java
-import com.arcrobotics.ftclib.util;
+import com.seattlesolvers.solverslib.util;
 
 double ValueToClamp;
 double LowestPossibleValue;
@@ -117,7 +117,7 @@ double OutputVal = clamp(ValueToClamp,
 Int Method:
 
 ```java
-import com.arcrobotics.ftclib.util;
+import com.seattlesolvers.solverslib.util;
 
 int ValueToClamp;
 int LowestPossibleValue;

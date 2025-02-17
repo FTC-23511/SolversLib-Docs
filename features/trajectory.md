@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.trajectory
+description: package com.seattlesolvers.solverslib.trajectory
 ---
 
 # Trajectory

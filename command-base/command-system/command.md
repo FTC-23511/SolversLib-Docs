@@ -11,7 +11,7 @@ Commands are simple state machines that perform high-level robot functions using
 Similarly to subsystems, the recommended method for most users to create a command is to subclass the abstract `CommandBase` class, as seen in the command-based template.
 
 ```java
-import com.arcrobotics.ftclib.command.CommandBase;
+import com.seattlesolvers.solverslib.command.CommandBase;
 
 /**
  * An example command that uses an example subsystem.
@@ -73,14 +73,14 @@ The `isFinished()` method is called repeatedly while the command is scheduled, w
 Taking the gripper example from the [Subsystem](subsystems.md) page, we can develop the following action to grab a stone from the quarry:
 
 ```java
-import com.arcrobotics.ftclib.command.CommandBase;
+import com.seattlesolvers.solverslib.command.CommandBase;
 
 /**
  * A simple command that grabs a stone with the
  * {@link GripperSubsystem}.  Written explicitly for
  * pedagogical purposes. Actual code should inline a
  * command this simple with {@link
- * com.arcrobotics.ftclib.command.InstantCommand}.
+ * com.seattlesolvers.solverslib.command.InstantCommand}.
  */
 public class GrabStone extends CommandBase {
 
@@ -112,7 +112,7 @@ Notice also that the above command calls the subsystem method once from initiali
 Below is a more complex example of a custom command.
 
 ```java
-import com.arcrobotics.ftclib.command.CommandBase;
+import com.seattlesolvers.solverslib.command.CommandBase;
 
 import java.util.function.DoubleSupplier;
 

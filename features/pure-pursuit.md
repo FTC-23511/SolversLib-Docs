@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.purepursuit
+description: package com.seattlesolvers.solverslib.purepursuit
 ---
 
 # Pure Pursuit

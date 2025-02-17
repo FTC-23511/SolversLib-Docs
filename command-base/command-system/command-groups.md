@@ -35,7 +35,7 @@ A `ParallelDeadlineGroup`also runs a set of commands concurrently. However, the 
 Users have several options for creating command groups. One way - similar to the previous implementation of the command-based library - is to subclass one of the command group classes. Below is an example of a command group:
 
 ```java
-import com.arcrobotics.ftclib.command.SequentialCommandGroup;
+import com.seattlesolvers.solverslib.command.SequentialCommandGroup;
 
 /**
  * A complex auto command that drives forward,

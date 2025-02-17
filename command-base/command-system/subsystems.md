@@ -15,7 +15,7 @@ Subsystems can be associated with “default commands” that will be automatica
 The recommended method to create a subsystem for most users is to subclass the abstract `SubsystemBase` class, as seen in the command-based template:
 
 ```java
-import com.arcrobotics.ftclib.command.SubsystemBase;
+import com.seattlesolvers.solverslib.command.SubsystemBase;
 
 public class ExampleSubsystem extends SubsystemBase {
   /**
@@ -43,7 +43,7 @@ Subsystems are easy to create. They combine different sets of hardware to produc
 ```java
 package org.firstinspires.ftc.robotcontroller.external.samples.CommandSample;
 
-import com.arcrobotics.ftclib2.command.SubsystemBase;
+import com.seattlesolvers.solverslib..command.SubsystemBase;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 

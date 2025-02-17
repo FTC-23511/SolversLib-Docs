@@ -1,5 +1,5 @@
 ---
-description: package com.arcrobotics.ftclib.command
+description: package com.seattlesolvers.solverslib.command
 ---
 
 # Commands

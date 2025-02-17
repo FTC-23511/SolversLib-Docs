@@ -1,5 +1,5 @@
 ---
-description: import com.arcrobotics.ftclib.controller.wpilibcontroller.RamseteController
+description: import com.seattlesolvers.solverslib.controller.wpilibcontroller.RamseteController
 ---
 
 # Ramsete Controller
