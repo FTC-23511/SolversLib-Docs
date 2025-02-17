@@ -17,9 +17,6 @@
 ## Vision
 
 * [EasyOpenCV](vision/easyopencv.md)
-* [Setting Up Vision](vision/computer-vision.md)
-* [Ring Stack Detection](vision/ring-stack-detection.md)
-* [High Goal Detection](vision/high-goal-detection.md)
 
 ## Kinematics
 
@@ -56,5 +53,5 @@
 
 ***
 
-* [Support SolversLib](support-solverslib)
+* [Support SolversLib](support-solverslib.md)
 * [Additional Reading](additional-reading.md)
