@@ -4,7 +4,7 @@ description: import com.seattlesolvers.solverslib.controller.wpilibcontroller.Ra
 
 # Ramsete Controller
 
-The Ramsete Controller is a trajectory tracker that is built in to FTCLib. This tracker can be used to accurately track trajectories with correction for minor disturbances.
+The Ramsete Controller is a trajectory tracker that is built in to SolversLib. This tracker can be used to accurately track trajectories with correction for minor disturbances.
 
 Ramsete is a nonlinear time-varying feedback controller for unicycle models that drives the model to a desired pose along a two-dimensional trajectory. Why would we need a nonlinear control law in addition to the linear ones we have used so far like PID? If we use the original approach with PID controllers for left and right position and velocity states, the controllers only deal with the local pose. If the robot deviates from the path, there is no way for the controllers to correct and the robot may not reach the desired global pose. This is due to multiple endpoints existing for the robot which have the same encoder path arc lengths.
 

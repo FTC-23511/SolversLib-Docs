@@ -56,5 +56,5 @@
 
 ***
 
-* [Support FTCLib](support-ftclib.md)
+* [Support FTCLib](support-solverslib)
 * [Additional Reading](additional-reading.md)
