@@ -2,6 +2,7 @@
 
 * [Welcome](README.md)
 * [Installation](installation.md)
+* [Javadocs](javadocs.md)
 
 ## Features
 
