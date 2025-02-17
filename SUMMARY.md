@@ -14,6 +14,10 @@
 * [Controllers](features/controllers.md)
 * [Utility Functions](features/util.md)
 
+## Pedro Pathing
+
+* [EasyOpenCV](pedro-pathing/easyopencv.md)
+
 ## Vision
 
 * [EasyOpenCV](vision/easyopencv.md)
