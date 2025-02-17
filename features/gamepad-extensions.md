@@ -8,7 +8,7 @@ The FTCLib provides enhanced Gamepad features. These classes are essentially ext
 
 ## GamepadKeys
 
-Provides enum representations of the buttons, D-Pad, bumpers, and triggers. Buttons, D-Pad, and bumpers are stored in `GamepadKeys.Button` and triggers are stored in `GamepadKeys.Trigger`.
+Provides enum representations of the buttons, D-Pad, bumpers, and triggers. Buttons, D-Pad, and bumpers are stored in `GamepadKeys.Button` and triggers are stored in `GamepadKeys.Trigger`. SolversLib has updated support for PS4 / PS5 controllers as well.
 
 | Buttons              |
 | -------------------- |

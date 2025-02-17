@@ -39,8 +39,13 @@ Also as before, advanced users seeking more flexibility are free to simply creat
 
 To schedule a command to the scheduler, you will need to call the `schedule()` method of the command instance.
 
+<pre class="language-java"><code class="lang-java"><strong>m_command.schedule();
+</strong></code></pre>
+
+To schedule a command as uninterruptible, you can simply schedule it as `false`. The default schedule is `true` (interruptible).
+
 ```java
-m_command.schedule();
+m_command.schedule(false);
 ```
 
 ## The Structure of a Command

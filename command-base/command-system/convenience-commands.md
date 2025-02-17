@@ -8,7 +8,7 @@ FTCLib offers convenience features to make your paradigm program more compact. T
 
 ## Framework Commands
 
-Framework commands exist to decrease the amount of program needed for simplistic tasks, like updating a number. Rather than having the user create an entire command for one simplistic task \(which when done for multiple menial tasks builds up and makes the structure fairly disheveled\), the user can utilize framework commands.
+Framework commands exist to decrease the amount of program needed for simplistic tasks, like updating a number. Rather than having the user create an entire command for one simplistic task (which when done for multiple menial tasks builds up and makes the structure fairly disheveled), the user can utilize framework commands.
 
 ### InstantCommand
 
@@ -179,9 +179,29 @@ pressBeacon.schedule();    // schedule the command
 
 As you can see, conditional commands are very useful for switching between states with a certain state. We will see later that we would want to use a `SelectCommand` when working with several states and not a simple command that switches between two.
 
+### UninterruptibleCommand
+
+Schedules a given command as uninterruptible. This command's paramater is single command, so multiple commands need to be put in a  CommandGroup first. See [#schedulecommand](convenience-commands.md#schedulecommand "mention")for scheduling commands as interruptible.
+
+```java
+// With one command:
+UninterruptibleCommand uninterruptibleCommand = new UninterruptibleCommand(
+    // Command
+);
+
+
+// With multiple commands:
+UninterruptibleCommand uninterruptibleCommand = new UninterruptibleCommand(
+    new SequentialCommandGroup(
+        // Command, 
+        // Command
+    )
+);
+```
+
 ### ScheduleCommand
 
-Does exactly as the name suggests: schedules commands. You can input a variable number of command arguments to schedule, and the command will schedule them on initialization. After this, the command will finish. This is useful for forking off of command groups.
+Does exactly as the name suggests: schedules commands (all as interruptible). You can input a variable number of command arguments to schedule, and the command will schedule them on initialization. After this, the command will finish. This is useful for forking off of command groups. See [#uninterruptiblecommand](convenience-commands.md#uninterruptiblecommand "mention") for scheduling commands as interruptible.
 
 So far we've been using the convenience commands we've learned in tandem and how they can be used together to produce more efficient paradigm utility. This is no exception for the `ScheduleCommand`. We can use a conditional command to schedule a desired command.
 
@@ -266,7 +286,7 @@ SelectCommand wobbleCommand = new SelectCommand(
 
 As opposed to an instant command, a perpetual command swallows a command and runs it perpetually i.e. it will continue to execute the command passed in as an as argument in the constructor and ignore that command's `isFinished` condition. It can only end if it is interrupted. This makes them useful for default commands, which are interrupted when another command requiring that subsystem is currently being run and is not scheduled again until that command ends.
 
-Let's take a look back at the command bindings for when we learned `InstantCommand`, Instead of doing `whileHeld` and `whenReleased` binding, a more idiomatic method is to use a default command to stop the intake when the button is released instead \(which cancels the command once the trigger/button is inactive, allowing the default command to be scheduled\).
+Let's take a look back at the command bindings for when we learned `InstantCommand`, Instead of doing `whileHeld` and `whenReleased` binding, a more idiomatic method is to use a default command to stop the intake when the button is released instead (which cancels the command once the trigger/button is inactive, allowing the default command to be scheduled).
 
 ```java
 /* in your opmode */
@@ -392,6 +412,18 @@ schedule(
 );
 ```
 
+### beforeStarting (overloaded)
+
+An overloaded method of [beforeStarting](convenience-commands.md#beforestarting) that takes a Command as a parameter instead of a Runnable
+
+```java
+schedule(
+    fooCommand.beforeStarting(() -> {
+        /* COMMAND */
+    })
+);
+```
+
 ### andThen
 
 Returns a `SequentialCommandGroup` that runs all the given commands in sequence after the calling command finishes.
@@ -459,4 +491,3 @@ Swallows the command into a `ProxyScheduleCommand` and returns it. This is simil
 // reurns a proxy schedule command
 ProxyScheduleCommand proxySchedule = fooCommand.asProxy();
 ```
-
