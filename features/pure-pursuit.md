@@ -4,7 +4,7 @@ description: package com.seattlesolvers.solverslib.purepursuit
 
 # Pure Pursuit
 
-The pure pursuit algorithm in SolversLib is developed so that the user only needs to add the desired waypoints and call the `followPath()` method in the [Path](https://github.com/FTCLib/FTCLib/blob/master/FtcLib/src/main/java/com/arcrobotics/ftclib/purepursuit/Path.java) class. To use this, you need to pass the [mecanum](https://docs.ftclib.org/ftclib/features/drivebases#mecanum) drivetrain as well as the odometry for the robot. Once the method is finished, it will return true or false depending on if it was successful or not.
+The pure pursuit algorithm in SolversLib is developed so that the user only needs to add the desired waypoints and call the `followPath()` method in the [Path](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/purepursuit/Path.java) class. To use this, you need to pass the [mecanum](https://docs.seattlesolvers.com/features/drivebases#mecanum) drivetrain as well as the odometry for the robot. Once the method is finished, it will return true or false depending on if it was successful or not.
 
 As an alternative, you can call the `loop()` method and directly input your odometry positions there. Make sure you update the odometry positions with each iteration of the loop.
 
@@ -106,7 +106,7 @@ waypoint_3 = new PointTurnWaypoint(
 
 **InterruptWaypoint**
 
-The `action` here is an [InterruptAction](https://github.com/FTCLib/FTCLib/blob/master/FtcLib/src/main/java/com/arcrobotics/ftclib/purepursuit/actions/InterruptAction.java), which is an interface that the user can implement to create a custom action to occur at this point. A recommendation is to pair this with the [command paradigm](../command-base/command-system/) that FTCLib provides.
+The `action` here is an [InterruptAction](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/purepursuit/actions/InterruptAction.java), which is an interface that the user can implement to create a custom action to occur at this point. A recommendation is to pair this with the [command paradigm](../command-base/command-system/) that SolversLib provides.
 
 ```java
 // empty constructor
@@ -173,5 +173,5 @@ An intersection is the point where the follow distance represented by a circle a
 
 ## Using `followPath()`
 
-An important note for the pure pursuit algorithm is that it only works well with odometry. You can use the various odometry systems provided by FTCLib. An important thing to note is that `followPath()` makes use of the [Odometry](https://github.com/FTCLib/FTCLib/blob/master/FtcLib/src/main/java/com/arcrobotics/ftclib/kinematics/Odometry.java) abstract class and the [mecanum drivebase](https://docs.ftclib.org/ftclib/features/drivebases#mecanum). Then, the method will call the loop method and do everything for you.
+An important note for the pure pursuit algorithm is that it only works well with odometry. You can use the various odometry systems provided by SolversLib. An important thing to note is that `followPath()` makes use of the [Odometry](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/kinematics/Odometry.java) abstract class and the [mecanum drivebase](https://docs.seattlesolvers.com/features/drivebases#mecanum). Then, the method will call the loop method and do everything for you.
 

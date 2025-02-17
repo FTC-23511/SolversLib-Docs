@@ -8,7 +8,7 @@ description: package com.seattlesolvers.solverslib.purepursuit
 
 ## Pure Pursuit
 
-The pure pursuit algorithm in SolversLib is developed so that the user only needs to add the desired waypoints and call the `followPath()` method in the [Path](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/purepursuit/Path.java) class. To use this, you need to pass the [mecanum](https://docs.ftclib.org/ftclib/features/drivebases#mecanum) drivetrain as well as the odometry for the robot. Once the method is finished, it will return true or false depending on if it was successful or not.
+The pure pursuit algorithm in SolversLib is developed so that the user only needs to add the desired waypoints and call the `followPath()` method in the [Path](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/purepursuit/Path.java) class. To use this, you need to pass the [mecanum](https://docs.SolversLib.org/SolversLib/features/drivebases#mecanum) drivetrain as well as the odometry for the robot. Once the method is finished, it will return true or false depending on if it was successful or not.
 
 As an alternative, you can call the `loop()` method and directly input your odometry positions there. Make sure you update the odometry positions with each iteration of the loop.
 
@@ -129,7 +129,7 @@ Waypoint p3 = new PointTurnWaypoint(
 
 **InterruptWaypoint**
 
-The `action` here is an [InterruptAction](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/purepursuit/actions/InterruptAction.java), which is an interface that the user can implement to create a custom action to occur at this point. A recommendation is to pair this with the [command paradigm](../command-base/command-system/) that FTCLib provides.
+The `action` here is an [InterruptAction](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/purepursuit/actions/InterruptAction.java), which is an interface that the user can implement to create a custom action to occur at this point. A recommendation is to pair this with the [command paradigm](../command-base/command-system/) that SolversLib provides.
 
 ```java
 // Empty constructor. Note: Only use this constructor
@@ -223,7 +223,7 @@ If the path is not legal, an exception will be thrown.
 
 #### Intersections
 
-An intersection is the point where the follow distance represented by a circle around the robot meets the drawn path derived from the waypoints. The "best intersection" is determined by either waypoint order or heading. This intersection point where the circle meets the path is where the robot will move to. The pure pursuit algorithm determines the best intersection and calculates the motor powers needed to reach said position. This updates with each loop, so the intersection point can change with each step due to the movement of the robot. While the conventional pure pursuit algorithm used heading controlled waypoints, FTCLib features a custom type of intersection control we call "order controlled". This type of control is more powerful and less prone to errors then heading controlled and is enabled by default. If you wish to use heading controlled instead, use this (not recommended):
+An intersection is the point where the follow distance represented by a circle around the robot meets the drawn path derived from the waypoints. The "best intersection" is determined by either waypoint order or heading. This intersection point where the circle meets the path is where the robot will move to. The pure pursuit algorithm determines the best intersection and calculates the motor powers needed to reach said position. This updates with each loop, so the intersection point can change with each step due to the movement of the robot. While the conventional pure pursuit algorithm used heading controlled waypoints, SolversLib features a custom type of intersection control we call "order controlled". This type of control is more powerful and less prone to errors then heading controlled and is enabled by default. If you wish to use heading controlled instead, use this (not recommended):
 
 ```java
 m_path.setPathType(PathType.HEADING_CONTROLLED);
@@ -231,7 +231,7 @@ m_path.setPathType(PathType.HEADING_CONTROLLED);
 
 #### Retrace
 
-FTCLib's pure pursuit implementation includes a unique feature we call retrace. One common issue with pure pursuit is that the robot can lose it's path. Retrace solves this issue. If enabled (retrace is enabled by default) and the robot loses it's path, the software will automatically plot a temporary path back to it's last known path position. Once the robot finds the path again it will continue on as normal. If you wish to disable retrace (not recommended), do this:
+SolversLib's pure pursuit implementation includes a unique feature we call retrace. One common issue with pure pursuit is that the robot can lose it's path. Retrace solves this issue. If enabled (retrace is enabled by default) and the robot loses it's path, the software will automatically plot a temporary path back to it's last known path position. Once the robot finds the path again it will continue on as normal. If you wish to disable retrace (not recommended), do this:
 
 ```java
 m_path.disableRetrace();
@@ -262,9 +262,9 @@ m_path.reset();
 
 ### Using `followPath()`
 
-The `followPath()` method is the automatic implementation of pure pursuit for FTCLib. For teams that want to use all of FTCLib's features to the fullest, this is the recommended process.
+The `followPath()` method is the automatic implementation of pure pursuit for SolversLib. For teams that want to use all of SolversLib's features to the fullest, this is the recommended process.
 
-An important note for the pure pursuit algorithm is that it only works well with odometry. You can use the various odometry systems provided by FTCLib. An important thing to note is that `followPath()` makes use of the [Odometry](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/kinematics/Odometry.java) abstract class and the [mecanum drivebase](https://docs.ftclib.org/ftclib/features/drivebases#mecanum). Then, the method will call the loop method and do everything for you.
+An important note for the pure pursuit algorithm is that it only works well with odometry. You can use the various odometry systems provided by SolversLib. An important thing to note is that `followPath()` makes use of the [Odometry](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/kinematics/Odometry.java) abstract class and the [mecanum drivebase](https://docs.SolversLib.org/SolversLib/features/drivebases#mecanum). Then, the method will call the loop method and do everything for you.
 
 ```java
 // follow path
@@ -275,7 +275,7 @@ An issue this method has is that we cannot directly access the hardware of the r
 
 #### Creating Your Odometry
 
-As a way of working around this issue, the odometry needs to be setup in a particular way with [Suppliers](https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html). A supplier is a functional interface that uses lambdas to reference a certain value. Let's work with the [HolonomicOdometry](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/kinematics/HolonomicOdometry.java) class for these examples.
+As a way of working around this issue, the odometry needs to be setup in a particular way with [Suppliers](https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html). A supplier is a functional interface that uses lambdas to reference a certain value. Let's work with the [HolonomicOdometry](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/kinematics/HolonomicOdometry.java) class for these examples.
 
 You're going to want to instantiate your odometry using this constructor:
 
@@ -300,7 +300,7 @@ horizontalValue = () -> ticksToInches(m_hOdom.getCurrentPosition());
 
 ### Using `loop()`
 
-The alternative to the `followPath()` method is the `loop()` method. For teams that want to use solely the FTCLib implementation of pure pursuit and perform the rest of the actions themselves, then this is the more appealing method.
+The alternative to the `followPath()` method is the `loop()` method. For teams that want to use solely the SolversLib implementation of pure pursuit and perform the rest of the actions themselves, then this is the more appealing method.
 
 The use of suppliers can be avoided using this method since it can be called in your own class with access to the hardware directly.
 
@@ -333,11 +333,11 @@ m_robot.stop();
 
 ### Using the Pure Pursuit Command
 
-If you're using your odometry for multiple subsystems, you're likely going to want to make use of the [PurePursuitCommand](https://github.com/FTCLib/FTCLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/ftclib/command/PurePursuitCommand.java) due to the shared odometry (as we only want to update it once per cycle). This is actually the recommended method of using pure pursuit, especially if you want to use it with the command-based paradigm that FTCLib has to offer.
+If you're using your odometry for multiple subsystems, you're likely going to want to make use of the [PurePursuitCommand](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/command/PurePursuitCommand.java) due to the shared odometry (as we only want to update it once per cycle). This is actually the recommended method of using pure pursuit, especially if you want to use it with the command-based paradigm that SolversLib has to offer.
 
 #### Creating an Odometry Subsystem
 
-The pre-built PurePursuitCommand requires the use of FTCLib's [OdometrySubsystem](https://docs.ftclib.org/ftclib/kinematics/odometry#using-the-odometry-subsystem). It is fairly easy to set up. All that is needed is for the user to pass in their odometry class into the constructor of the subsystem.
+The pre-built PurePursuitCommand requires the use of SolversLib's [OdometrySubsystem](https://docs.SolversLib.org/SolversLib/kinematics/odometry#using-the-odometry-subsystem). It is fairly easy to set up. All that is needed is for the user to pass in their odometry class into the constructor of the subsystem.
 
 ```java
 // create the odometry object
@@ -395,4 +395,4 @@ The rest of the class does everything for you through the command-based paradigm
 
 #### Running the Command
 
-It is run the exact same way everything else is run in the paradigm: by running the scheduler. Take a look at [this sample](https://github.com/FTCLib/FTCLib/blob/v2.1.1/examples/src/main/java/com/example/ftclibexamples/PurePursuitSample.java) to see how everything works together.
+It is run the exact same way everything else is run in the paradigm: by running the scheduler. Take a look at [this sample](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/PurePursuitSample.java) to see how everything works together.
