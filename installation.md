@@ -88,10 +88,6 @@ dependencies {
 ```
 {% endcode %}
 
-
-
-Or, if you are using pedroPathing, change to this dependency block
-
 {% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
 dependencies {
@@ -101,9 +97,32 @@ dependencies {
 ```
 {% endcode %}
 
+The latest version numbers (as well as a list of all version numbers) are available at:
+
+* Latest `core` version: [https://re1po.dairy.foundation/#/releases/org/solverslib/core](https://repo.dairy.foundation/#/releases/org/solverslib/core)
+* Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
+
 {% hint style="warning" %}
 **Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedo Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
 {% endhint %}
+
+### Snapshot Versions:
+
+SolversLib is graciously hosted on the Dairy Foundation (thanks to Oscar!), and has release versions and snapshots versions.
+
+* Release versions:
+  * Are official, verified versions of SolversLibs
+  * Less likelier to have problems/bugs
+  * Are in the form: `implementation "org.solverslib:core:x.y.z"` (where x, y, and z are version numbers).
+* Snapshots versions:
+  * Are unofficial, and effectively beta versions with newere features and additions
+  * More likelier to have problems/bugs
+  * Are in the form: `implementation "org.solverslib:pedroPathing:SNAPSHOT-abc1234"` (7 random letters & numbers).
+
+For most people, it is HIGHLY recommended to use the releases versions. Should you still want to use the snapshots versions instead of releases, you can use the dependencies instead:
+
+* Latest `core` snapshot version: [https://repo.dairy.foundation/#/snapshots/org/solverslib/core](https://repo.dairy.foundation/#/snapshots/org/solverslib/core)
+* Latest `pedroPathing` snapshot version: [https://repo.dairy.foundation/#/snapshots/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/snapshots/org/solverslib/pedroPathing)
 
 ## Changing Imports:
 
