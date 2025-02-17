@@ -17,7 +17,8 @@
 
 ## Pedro Pathing
 
-* [EasyOpenCV](pedro-pathing/easyopencv.md)
+* [Pedro Commands](pedro-pathing/pedro-commands/README.md)
+  * [HoldPointCommand](pedro-pathing/pedro-commands/hold-point-command.md)
 
 ## Vision
 
