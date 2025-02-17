@@ -11,7 +11,7 @@ description: How to import SolversLib into your Android Studio FTC Project
 The only thing you need to change from FTCLib is the dependency in `build.gradle`
 
 {% code title="build.gradle (Module: TeamCode)" %}
-```gradle
+```groovy
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
@@ -24,17 +24,26 @@ dependencies {
 Or, if you are using pedroPathing, change to this dependency block
 
 {% code title="build.gradle (Module: TeamCode)" %}
-```gradle
+```groovy
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
     implementation "org.solverslib:core:0.2.3" // core
-    implementation "org.pedroPathing:core:0.2.3" // pedroPathing
+    implementation "org.solverslib:pedroPathing:0.2.3" // pedroPathing
 }
 ```
 {% endcode %}
 
-Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time
+The latest version numbers (as well as a list of all version numbers) are available at:
+
+* Latest `core` version: [https://repo.dairy.foundation/#/releases/org/solverslib/core](https://repo.dairy.foundation/#/releases/org/solverslib/core)
+* Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
+
+{% hint style="warning" %}
+**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedo Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
+{% endhint %}
+
+Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time.
 
 #### Changing Imports:
 
@@ -47,7 +56,7 @@ Lastly, follow the steps in the [Changing Imports](installation.md#changing-impo
 First, you need to add the `mavenCentral` library repository to your `build.gradle` file at the project root:
 
 {% code title="build.gradle" %}
-```gradle
+```groovy
     repositories {
         mavenCentral()
     }
@@ -57,7 +66,7 @@ First, you need to add the `mavenCentral` library repository to your `build.grad
 Next, `minSdkVersion` to `24` and `multiDexEnabled` to `true`:
 
 {% code title="build.common.gradle" %}
-```gradle
+```groovy
 defaultConfig {
     applicationId 'com.qualcomm.ftcrobotcontroller'
     minSdkVersion 24
@@ -69,7 +78,7 @@ defaultConfig {
 Next, change `JavaVersion` to `8` :
 
 {% code title="build.common.gradle" %}
-```gradle
+```groovy
 compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
@@ -82,17 +91,17 @@ compileOptions {
 Add this dependency block for the base library:
 
 {% code title="build.gradle (Module: TeamCode)" %}
-```gradle
+```groovy
 dependencies {
     implementation "org.solverslib:core:0.2.3" // core
 ```
 {% endcode %}
 
 {% code title="build.gradle (Module: TeamCode)" %}
-```gradle
+```groovy
 dependencies {
     implementation "org.solverslib:core:0.2.3" // core
-    implementation "org.pedroPathing:core:0.2.3" // pedroPathing
+    implementation "org.solverslib:pedroPathing:0.2.3" // pedroPathing
 }
 ```
 {% endcode %}
