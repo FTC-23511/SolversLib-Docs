@@ -1,5 +1,6 @@
 ---
 description: Page in progress
+hidden: true
 ---
 
 # High Goal Detection
@@ -73,6 +74,3 @@ while (!angleController.atSetPoint()) {
 }
 turn(0);
 ```
-
-
-

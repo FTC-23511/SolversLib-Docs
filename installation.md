@@ -1,8 +1,46 @@
 ---
-description: How to import FTCLib into your Android Studio FTC Project
+description: How to import SolversLib into your Android Studio FTC Project
 ---
 
 # Installation
+
+## 1. Installing from FTCLib
+
+## build.gradle
+
+The only thing you need to change from FTCLib is the dependency in `build.gradle`
+
+{% code title="build.gradle (Module: TeamCode)" %}
+```groovy
+dependencies {
+    // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
+    // FTCLib's vision is no longer supported in SolversLib
+    implementation "org.solverslib:core:0.2.3" // add SolversLib core
+```
+{% endcode %}
+
+## OR
+
+Change to this dependency block if you are using pedroPathing
+
+{% code title="build.gradle (Module: TeamCode)" %}
+```groovy
+dependencies {
+    // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
+    // FTCLib's vision is no longer supported in SolversLib
+    implementation "org.solverslib:core:0.2.3" // core
+    implementation "org.pedroPathing:core:0.2.3" // pedroPathing
+}
+```
+{% endcode %}
+
+Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time
+
+#### Changing Imports:
+
+Lastly, follow the steps in the [Changing Imports](installation.md#changing-imports-1) section and then Gradle Sync
+
+## 2. Installing from Scratch
 
 ## build.common.gradle
 
@@ -39,51 +77,42 @@ compileOptions {
 ```
 {% endcode %}
 
-## Only If Using CV:
-
-Remove all instances of `"arm64-v8a"`
-
-{% code title="build.common.gradle" %}
-```groovy
-ndk {
-    abiFilters "armeabi-v7a"
-}
-
-ndk {
-    abiFilters "armeabi-v7a"
-}
-```
-{% endcode %}
-
-## build.gradle \(TeamCode\)
+## build.gradle (TeamCode)
 
 Add this dependency block for the base library:
 
-{% code title="build.gradle \(Module: TeamCode\)" %}
+{% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
 dependencies {
-    implementation 'org.ftclib.ftclib:core:2.1.1' // core
+    implementation "org.solverslib:core:0.2.3" // core
 ```
 {% endcode %}
 
 ## OR
 
-Add this dependency block for the vision library:
+Add this dependency block if you are using pedroPathing
 
-{% code title="build.gradle \(Module: TeamCode\)" %}
+{% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
 dependencies {
-    implementation 'org.ftclib.ftclib:vision:2.1.0' // vision
-    implementation 'org.ftclib.ftclib:core:2.1.1' // core
+    implementation "org.solverslib:core:0.2.3" // core
+    implementation "org.pedroPathing:core:0.2.3" // pedroPathing
 }
 ```
 {% endcode %}
 
-## Install EasyOpenCV Dependency
+{% hint style="warning" %}
+**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedo Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
+{% endhint %}
 
-Since FTCLib depends on EasyOpenCV for vision, and because EasyOpenCV depends on [OpenCV-Repackaged](https://github.com/OpenFTC/OpenCV-Repackaged), you will need to copy [libOpenCvAndroid453.so](https://github.com/OpenFTC/OpenCV-Repackaged/tree/9a4d3d4bc001feffb3767842fa2de0c38a98883a/doc/native_libs/armeabi-v7a) into the `FIRST` folder of the Robot Controller (i.e. connect the Robot Controller to your computer with a USB cable, put it into MTP mode, and drag 'n drop the file).
+## Changing Imports:
+
+Because the package names will be different, you can either manually replace all instances of `com.arcrobotics.ftclib` with `com.seattlesolvers.solverslib` , or use a command in a terminal to replace them all at once for you. Please make sure you either open a terminal into your Android Studio project or use the built-in Android Studio terminal to run the commands below.
+
+<table><thead><tr><th width="203">Import Replacement Type</th><th>MacOS/Linux</th></tr></thead><tbody><tr><td>FTCLib -> SolversLib</td><td><code>find . -type f -name "*.java" -exec sed -i '' 's/com.arcrobotics.ftclib/com.seattlesolvers.solverslib/g' {} +</code></td></tr><tr><td>SolversLib -> FTCLib</td><td><code>find . -type f -name "*.java" -exec sed -i '' 's/com.seattlesolvers.solverslib/com.arcrobotics.ftclib/g' {} +</code></td></tr></tbody></table>
+
+<table><thead><tr><th width="203">Import Replacement Type</th><th>Windows</th></tr></thead><tbody><tr><td>FTCLib -> SolversLib</td><td><code>Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $</code><em><code>.FullName) -replace 'com.arcrobotics.ftclib', 'com.seattlesolvers.solverslib' | Set-Content $</code></em><code>.FullName }</code></td></tr><tr><td>SolversLib -> FTCLib</td><td><code>Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $</code><em><code>.FullName) -replace 'com.seattlesolvers.solverslib', 'com.arcrobotics.ftclib' | Set-Content $</code></em><code>.FullName }</code></td></tr></tbody></table>
 
 ### Sync Gradle and Finished!
 
 ![Click that button and if successful, you can now use FTCLib](.gitbook/assets/gradle-sync.png)
-

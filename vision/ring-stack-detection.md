@@ -1,8 +1,12 @@
+---
+hidden: true
+---
+
 # Ring Stack Detection
 
 ## `UGRectRingPipeline`
 
-The heart of the Ultimate Goal detector is the pipeline. A pipeline is just a fancy way describing the sequence of instructions given to continuously manipulate the image\(in this case, what the camera sees\). Ignoring the fancy code, the pipeline boils down to these following instructions:
+The heart of the Ultimate Goal detector is the pipeline. A pipeline is just a fancy way describing the sequence of instructions given to continuously manipulate the image(in this case, what the camera sees). Ignoring the fancy code, the pipeline boils down to these following instructions:
 
 ### Receiving the Input
 
@@ -36,7 +40,7 @@ drawRectOnToMat(input, topRect, new Scalar(255, 0, 0));
 drawRectOnToMat(input, bottomRect, new Scalar(0, 255, 0));
 ```
 
-The first line will convert the input matrix color space from RGB to YCrCb. Because the way YCrCb represents color by luminance\(Y\), chroma of red\(CR\), chroma of blue\(Cb\), it keeps values consistent under different lighting. Next we draw 2 rectangles on screen with predetermined position. The top rectangle should be where the 4th ring will be, and the bottom one should be where the first one will be. Then we extract the Cb value of each predetermined area of the ring to compare.
+The first line will convert the input matrix color space from RGB to YCrCb. Because the way YCrCb represents color by luminance(Y), chroma of red(CR), chroma of blue(Cb), it keeps values consistent under different lighting. Next we draw 2 rectangles on screen with predetermined position. The top rectangle should be where the 4th ring will be, and the bottom one should be where the first one will be. Then we extract the Cb value of each predetermined area of the ring to compare.
 
 ### Finding CB Values
 
@@ -75,7 +79,7 @@ If you use the first constructor, the detector will set the camera to the phone'
 
 ### Manipulating Detector Settings
 
-You can change the orientation, width, and height of the camera for all instances \(since the camera doesn't change between runs\). You can update the settings by manipulating the static variables.
+You can change the orientation, width, and height of the camera for all instances (since the camera doesn't change between runs). You can update the settings by manipulating the static variables.
 
 ```java
 // change the height and width of the camera
@@ -92,14 +96,14 @@ UGRectDetector.ORIENTATION = OpenCvCameraRotation.UPRIGHT;
 public void setTopRectangle(double topRectHeightPercentage, double topRectWidthPercentage)
 ```
 
-* `topRectHeightPercentage`: the percentage of the height of the user's input and should be a decimal under 1. It is used to calculate the first y value for the top rectangle. 
+* `topRectHeightPercentage`: the percentage of the height of the user's input and should be a decimal under 1. It is used to calculate the first y value for the top rectangle.
 * `topRectWidthPercentage`: the percentage of the width of the user's input and should be a decimal under 1. It is used to calculate the first x value for the top rectangle.
 
 ```java
 public void setBottomRectangle(double bottomRectHeightPercentage, double bottomRectWidthPercentage)
 ```
 
-* `bottomRectHeightPercentage`: the percentage of the height of the user's input and should be a decimal under 1. It is used to calculate the first y value for the bottom rectangle. 
+* `bottomRectHeightPercentage`: the percentage of the height of the user's input and should be a decimal under 1. It is used to calculate the first y value for the bottom rectangle.
 * `bottomRectWidthPercentage`: the percentage of the width of the user's input and should be a decimal under 1. It is used to calculate the first x value for the bottom rectangle.
 
 ```java
@@ -183,7 +187,7 @@ This initializes the pipeline with your configured settings. To retrieve the hei
 
 There are many values that the pipeline uses that can be changed/tuned to increase or decrease accuracy.
 
-All configuration values are stored in a `companion object` called Config \(see [here](https://github.com/FTCLib/FTCLib/blob/master/core/vision/src/main/java/com/arcrobotics/ftclib/vision/UGContourRingPipeline.kt#L90-L110)\). In this, `companion object` there are six variables, two of which are constants and cannot be changed.
+All configuration values are stored in a `companion object` called Config (see [here](https://github.com/FTCLib/FTCLib/blob/master/core/vision/src/main/java/com/arcrobotics/ftclib/vision/UGContourRingPipeline.kt#L90-L110)). In this, `companion object` there are six variables, two of which are constants and cannot be changed.
 
 * `lowerOrange`: the value of the lower orange used in finding the mask
 * `upperOrange`: the value of the upper orange used in finding the mask
@@ -224,7 +228,7 @@ override fun processFrame(input: Mat?): Mat
 {% endtab %}
 {% endtabs %}
 
-What the camera sees is being passed into the pipeline stored as an OpenCV `Mat` type \(short for matrix\).
+What the camera sees is being passed into the pipeline stored as an OpenCV `Mat` type (short for matrix).
 
 ### Manipulating the Input
 
@@ -292,7 +296,7 @@ example of blurring in order to smooth images with Gaussian Blur: [here](https:/
 After the GaussianBlur, this noise is eliminated as the picture becomes "blurrier". We then find all contours on the image.
 
 {% hint style="info" %}
-What is a Contour? Contours can be explained simply as a curve joining all the continuous points \(along the boundary\), having the same color or intensity. The contours are a useful tool for shape analysis and object detection and recognition.
+What is a Contour? Contours can be explained simply as a curve joining all the continuous points (along the boundary), having the same color or intensity. The contours are a useful tool for shape analysis and object detection and recognition.
 
 example of contours: [here](https://docs.opencv.org/3.4/df/d0d/tutorial_find_contours.html)
 {% endhint %}
@@ -315,7 +319,7 @@ Imgproc.findContours(mask, contours, hierarchy, Imgproc.RETR_TREE, Imgproc.CHAIN
 {% endtab %}
 {% endtabs %}
 
-After finding the contours on the black and white mask, we then perform a linear search algorithm on the resulting list of contours \(stored in as MatOfPoint\). We first find the bounding rectangle of each contour and use this bounding rectangle \(not rotated\) to find the rectangle with the biggest width. We do this in order to not confuse the ring stack with other objects that may have been thought to be orange by the mask. Since the ring stack will most likely be the largest blob of orange in the view of the camera. When then do a check on the width of the widest contour. To see if it is actually a ring stack since zero is a valid option we must account for it. This check also makes sure that we don't mistake other smaller objects on the field as the ring stack, even if they are rings.
+After finding the contours on the black and white mask, we then perform a linear search algorithm on the resulting list of contours (stored in as MatOfPoint). We first find the bounding rectangle of each contour and use this bounding rectangle (not rotated) to find the rectangle with the biggest width. We do this in order to not confuse the ring stack with other objects that may have been thought to be orange by the mask. Since the ring stack will most likely be the largest blob of orange in the view of the camera. When then do a check on the width of the widest contour. To see if it is actually a ring stack since zero is a valid option we must account for it. This check also makes sure that we don't mistake other smaller objects on the field as the ring stack, even if they are rings.
 
 {% tabs %}
 {% tab title="Java" %}
@@ -407,9 +411,8 @@ After finding the widest contour, which is to be assumed the stack of rings, we 
 {% hint style="info" %}
 Possible Questions:
 
-* Why not just count how tall the largest bounding rectangle is? 
-  * It is because of camera resolution. Since depending on the resolution of the camera, the height of the stack in pixels would be different despite them both being 4 \(let's say for example\).
-* Didn't you just say that you used a width check on the contour though? Isn't that also pixels? 
+* Why not just count how tall the largest bounding rectangle is?
+  * It is because of camera resolution. Since depending on the resolution of the camera, the height of the stack in pixels would be different despite them both being 4 (let's say for example).
+* Didn't you just say that you used a width check on the contour though? Isn't that also pixels?
   * Yes. we did, however, unlike the height of the stack, the width of the stack is consistent. It is always one ring wide, this way we are able to algorithmically generate a minimum bounding width.
 {% endhint %}
-

@@ -7,6 +7,7 @@
 
 * [Hardware](features/hardware/README.md)
   * [Motors](features/hardware/motors.md)
+  * [SolversHardware](features/hardware/motors-1.md)
 * [Gamepad](features/gamepad-extensions.md)
 * [Drivebases](features/drivebases.md)
 * [Geometry](features/geometry.md)
@@ -15,6 +16,7 @@
 
 ## Vision
 
+* [EasyOpenCV](vision/easyopencv.md)
 * [Setting Up Vision](vision/computer-vision.md)
 * [Ring Stack Detection](vision/ring-stack-detection.md)
 * [High Goal Detection](vision/high-goal-detection.md)
@@ -52,8 +54,7 @@
   * [Convenience Features](command-base/command-system/convenience-commands.md)
 * [Old Commands](command-base/old-commands.md)
 
----
+***
 
 * [Support FTCLib](support-ftclib.md)
 * [Additional Reading](additional-reading.md)
-
