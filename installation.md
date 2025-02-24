@@ -129,7 +129,7 @@ The latest version numbers (as well as a list of all version numbers) are availa
 **Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedo Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
 {% endhint %}
 
-## Snapshot Versions:
+## Snapshot Versions
 
 SolversLib is graciously hosted on the Dairy Foundation (thanks to Oscar!), and has release versions and snapshots versions.
 
@@ -164,7 +164,7 @@ repositories {
 ```
 {% endcode %}
 
-## Changing Imports:
+## Changing Imports
 
 Because the package names will be different, you can either manually replace all instances of `com.arcrobotics.ftclib` with `com.seattlesolvers.solverslib` , or use a command in a terminal to replace them all at once for you. Please make sure you either open a terminal into your Android Studio project or use the built-in Android Studio terminal to run the commands below.
 

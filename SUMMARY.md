@@ -18,9 +18,10 @@
 ## Pedro Pathing
 
 * [Pedro Commands](pedro-pathing/pedro-commands/README.md)
-  * [FollowPathChainCommand](pedro-pathing/pedro-commands/followpathchaincommand.md)
   * [FollowPathCommand](pedro-pathing/pedro-commands/followpathcommand.md)
   * [HoldPointCommand](pedro-pathing/pedro-commands/hold-point-command.md)
+* [Old Commands](pedro-pathing/pedro-commands-1/README.md)
+  * [FollowPathChainCommand](pedro-pathing/pedro-commands-1/followpathchaincommand.md)
 
 ## Vision
 
