@@ -8,7 +8,7 @@ description: How to import SolversLib into your Android Studio FTC Project
 
 ## build.gradle
 
-The only thing you need to change from FTCLib is the dependency in `build.gradle`
+The first thing you need to change from FTCLib is the dependency in `build.gradle`
 
 {% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
@@ -47,17 +47,7 @@ Please note that you should not and cannot have both FTCLib and SolversLib insta
 
 **Repositories:**
 
-In your repositories block, add the following code. You may have other content here, especially if you have the Pedro Pathing library installed. If you do not have a repositories block, you can add it above your dependencies block.
-
-{% code title="build.gradle (Module: TeamCode)" %}
-```groovy
-repositories {
-    maven {
-        url "https://repo.dairy.foundation/releases"
-    }
-}
-```
-{% endcode %}
+Then, follow the steps in the [Repositories](installation.md#repositories) section. Then follow the final step below (changing imports).
 
 #### Changing Imports:
 
@@ -148,6 +138,37 @@ For most people, it is HIGHLY recommended to use the releases versions. Should y
 * Latest `pedroPathing` snapshot version: [https://repo.dairy.foundation/#/snapshots/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/snapshots/org/solverslib/pedroPathing)
 
 **Repositories:**
+
+You also need to add the maven for snapshots in your repositories block in addition to the releases one. Again, if you do not have a repositories block, you can add it above your dependencies block.
+
+{% code title="build.gradle (Module: TeamCode)" %}
+```groovy
+repositories {
+    maven {
+        url "https://repo.dairy.foundation/releases"
+    }
+    maven {
+        url "https://repo.dairy.foundation/snapshots"
+    }
+}
+```
+{% endcode %}
+
+## Repositories
+
+In your repositories block, add the following code. You may have other content here, especially if you have the Pedro Pathing library installed. If you do not have a repositories block, you can add it above your dependencies block.
+
+{% code title="build.gradle (Module: TeamCode)" %}
+```groovy
+repositories {
+    maven {
+        url "https://repo.dairy.foundation/releases"
+    }
+}
+```
+{% endcode %}
+
+#### Only for Snapshot Versions
 
 You also need to add the maven for snapshots in your repositories block in addition to the releases one. Again, if you do not have a repositories block, you can add it above your dependencies block.
 
