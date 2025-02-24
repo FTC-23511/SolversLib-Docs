@@ -188,7 +188,7 @@ find . -type f -name "*.java" -exec sed -i '' 's/com.arcrobotics.ftclib/com.seat
 find . -type f -name "*.java" -exec sed -i '' 's/com.seattlesolvers.solverslib/com.arcrobotics.ftclib/g' {} +
 ```
 
-FTCLib Imports to SolversLib Imports  (Windows):
+**FTCLib Imports to SolversLib Imports  (Windows):**
 
 ```powershell
 Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $.FullName) -replace 'com.arcrobotics.ftclib', 'com.seattlesolvers.solverslib' | Set-Content $.FullName }
