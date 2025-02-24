@@ -45,6 +45,20 @@ The latest version numbers (as well as a list of all version numbers) are availa
 
 Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time.
 
+**Repositories:**
+
+In your repositories block, add the following code. You may have other content here, especially if you have the Pedro Pathing library installed. If you do not have a repositories block, you can add it above your dependencies block.
+
+{% code title="build.gradle (Module: TeamCode)" %}
+```groovy
+repositories {
+    maven {
+        url "https://repo.dairy.foundation/releases"
+    }
+}
+```
+{% endcode %}
+
 #### Changing Imports:
 
 Lastly, follow the steps in the [Changing Imports](installation.md#changing-imports-1) section and then Gradle Sync
@@ -115,7 +129,7 @@ The latest version numbers (as well as a list of all version numbers) are availa
 **Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedo Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
 {% endhint %}
 
-### Snapshot Versions:
+## Snapshot Versions:
 
 SolversLib is graciously hosted on the Dairy Foundation (thanks to Oscar!), and has release versions and snapshots versions.
 
@@ -132,6 +146,23 @@ For most people, it is HIGHLY recommended to use the releases versions. Should y
 
 * Latest `core` snapshot version: [https://repo.dairy.foundation/#/snapshots/org/solverslib/core](https://repo.dairy.foundation/#/snapshots/org/solverslib/core)
 * Latest `pedroPathing` snapshot version: [https://repo.dairy.foundation/#/snapshots/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/snapshots/org/solverslib/pedroPathing)
+
+**Repositories:**
+
+You also need to add the maven for snapshots in your repositories block in addition to the releases one. Again, if you do not have a repositories block, you can add it above your dependencies block.
+
+{% code title="build.gradle (Module: TeamCode)" %}
+```groovy
+repositories {
+    maven {
+        url "https://repo.dairy.foundation/releases"
+    }
+    maven {
+        url "https://repo.dairy.foundation/snapshots"
+    }
+}
+```
+{% endcode %}
 
 ## Changing Imports:
 
