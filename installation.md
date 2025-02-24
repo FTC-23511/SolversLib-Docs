@@ -29,7 +29,7 @@ dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
     implementation "org.solverslib:core:0.2.3" // core
-    implementation "org.solverslib:pedroPathing:0.2.3" // pedroPathing
+    implementation "org.solverslib:pedroPathing:0.2.4" // pedroPathing
 }
 ```
 {% endcode %}
@@ -105,7 +105,7 @@ dependencies {
 ```groovy
 dependencies {
     implementation "org.solverslib:core:0.2.3" // core
-    implementation "org.solverslib:pedroPathing:0.2.3" // pedroPathing
+    implementation "org.solverslib:pedroPathing:0.2.4" // pedroPathing
 }
 ```
 {% endcode %}
