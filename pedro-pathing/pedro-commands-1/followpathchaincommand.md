@@ -23,5 +23,3 @@ If you are using an ArrayList of PathChains, you can simply get the desired Path
 ```java
 new FollowPathChainCommand(follower, paths.get(0))
 ```
-
-To see how you can use both this command and [FollowPathCommand](../pedro-commands/followpathcommand.md) in a full Autonomous Program, look at this [example](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/FollowPedroSample.java).
