@@ -139,20 +139,7 @@ For most people, it is HIGHLY recommended to use the releases versions. Should y
 
 **Repositories:**
 
-You also need to add the maven for snapshots in your repositories block in addition to the releases one. Again, if you do not have a repositories block, you can add it above your dependencies block.
-
-{% code title="build.gradle (Module: TeamCode)" %}
-```groovy
-repositories {
-    maven {
-        url "https://repo.dairy.foundation/releases"
-    }
-    maven {
-        url "https://repo.dairy.foundation/snapshots"
-    }
-}
-```
-{% endcode %}
+Look at the section below. Make sure to follow the snapshot versions part.
 
 ## Repositories
 
