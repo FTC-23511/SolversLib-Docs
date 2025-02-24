@@ -15,7 +15,7 @@ The first thing you need to change from FTCLib is the dependency in `build.gradl
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:0.2.3" // add SolversLib core
+    implementation "org.solverslib:core:0.2.5" // add SolversLib core
 ```
 {% endcode %}
 
@@ -28,8 +28,8 @@ Or, if you are using pedroPathing, change to this dependency block
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:0.2.3" // core
-    implementation "org.solverslib:pedroPathing:0.2.4" // pedroPathing
+    implementation "org.solverslib:core:0.2.5" // core
+    implementation "org.solverslib:pedroPathing:0.2.5" // pedroPathing
 }
 ```
 {% endcode %}
@@ -97,15 +97,15 @@ Add this dependency block for the base library:
 {% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
 dependencies {
-    implementation "org.solverslib:core:0.2.3" // core
+    implementation "org.solverslib:core:0.2.5" // core
 ```
 {% endcode %}
 
 {% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
 dependencies {
-    implementation "org.solverslib:core:0.2.3" // core
-    implementation "org.solverslib:pedroPathing:0.2.4" // pedroPathing
+    implementation "org.solverslib:core:0.2.5" // core
+    implementation "org.solverslib:pedroPathing:0.2.5" // pedroPathing
 }
 ```
 {% endcode %}
