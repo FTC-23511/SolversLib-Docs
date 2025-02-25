@@ -51,9 +51,15 @@ Then, follow the steps in the [Repositories](installation.md#repositories) secti
 
 #### Changing Imports:
 
-Lastly, follow the steps in the [Changing Imports](installation.md#changing-imports-1) section and then Gradle Sync
+Lastly, follow the steps in the [Changing Imports](installation.md#changing-imports-1) section and then Gradle Sync!
 
-## 2. Installing from Scratch
+## 2. Installing from SolversLib Quickstart
+
+Similar to the FTCLib Quickstart, SolversLib has a Quickstart with this library set up. You can view it at [https://github.com/FTC-23511/SolversLib-Quickstart](https://github.com/FTC-23511/SolversLib-Quickstart). You can either fork or clone this repository as needed to use it.&#x20;
+
+In addition, the Quickstart also has the Pedro Pathing library installed and added along with the SolversLib pedroPathing dependency, meaning that it is hassle-free. If you don't want the Pedro Pathing part, you can simply delete the relevant files.
+
+## 3. Installing from Scratch
 
 ## build.common.gradle
 
