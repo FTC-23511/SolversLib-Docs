@@ -1,6 +1,6 @@
 # Javadocs
 
-Javadocs are automatically created documentation for Java classes. It gives a basic decription on how to use those methods and classes, although a more in-depth explanation can be found within this docs page itself.
+Javadocs are automatically created documentation for Java classes. It gives a basic decription on how to use those methods and classes, although a more in-depth explanation can be found within this documentation GitBook itself.
 
 Below are the Javadocs for each module:
 
