@@ -40,7 +40,7 @@ The latest version numbers (as well as a list of all version numbers) are availa
 * Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
 
 {% hint style="warning" %}
-**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedo Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
+**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
 {% endhint %}
 
 Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time.
@@ -122,7 +122,7 @@ The latest version numbers (as well as a list of all version numbers) are availa
 * Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
 
 {% hint style="warning" %}
-**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedo Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
+**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
 {% endhint %}
 
 ## Snapshot Versions
