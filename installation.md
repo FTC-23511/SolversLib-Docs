@@ -197,13 +197,19 @@ find . -type f -name "*.java" -exec sed -i '' 's/com.seattlesolvers.solverslib/c
 **FTCLib Imports to SolversLib Imports  (Windows):**
 
 ```powershell
-Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $.FullName) -replace 'com.arcrobotics.ftclib', 'com.seattlesolvers.solverslib' | Set-Content $.FullName }
+Get-ChildItem -Recurse -Filter *.java | ForEach-Object { 
+    (Get-Content $_.FullName) -replace 'com.arcrobotics.ftclib', 'com.seattlesolvers.solverslib' | 
+    Set-Content $_.FullName 
+}
 ```
 
 **SolversLib Imports to FTCLib Imports (Windows):**
 
 ```powershell
-Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $.FullName) -replace 'com.seattlesolvers.solverslib', 'com.arcrobotics.ftclib' | Set-Content $.FullName }
+Get-ChildItem -Recurse -Filter *.java | ForEach-Object { 
+    (Get-Content $_.FullName) -replace 'com.seattlesolvers.solverslib', 'com.arcrobotics.ftclib' | 
+    Set-Content $_.FullName 
+}
 ```
 
 ### Sync Gradle and Finished!
