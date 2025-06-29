@@ -103,15 +103,15 @@ Add this dependency block for the base library:
 {% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
 dependencies {
-    implementation "org.solverslib:core:0.2.5" // core
+    implementation "org.solverslib:core:0.3.1" // core
 ```
 {% endcode %}
 
 {% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
 dependencies {
-    implementation "org.solverslib:core:0.2.5" // core
-    implementation "org.solverslib:pedroPathing:0.2.5" // pedroPathing
+    implementation "org.solverslib:core:0.3.1" // core
+    implementation "org.solverslib:pedroPathing:0.3.1" // pedroPathing
 }
 ```
 {% endcode %}
