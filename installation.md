@@ -15,11 +15,9 @@ The first thing you need to change from FTCLib is the dependency in `build.gradl
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:0.3.1" // add SolversLib core
+    implementation "org.solverslib:core:0.2.5" // add SolversLib core
 ```
 {% endcode %}
-
-
 
 Or, if you are using pedroPathing, change to this dependency block
 
@@ -28,8 +26,8 @@ Or, if you are using pedroPathing, change to this dependency block
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:0.3.1" // core
-    implementation "org.solverslib:pedroPathing:0.3.1" // pedroPathing
+    implementation "org.solverslib:core:0.2.5" // core
+    implementation "org.solverslib:pedroPathing:0.2.5" // pedroPathing
 }
 ```
 {% endcode %}
@@ -40,7 +38,7 @@ The latest version numbers (as well as a list of all version numbers) are availa
 * Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
 
 {% hint style="warning" %}
-**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
+**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing](https://pedropathing.com/) in order to use it.
 {% endhint %}
 
 Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time.
@@ -96,22 +94,28 @@ compileOptions {
 ```
 {% endcode %}
 
-## build.gradle (TeamCode)
+## build.gradle
 
-Add this dependency block for the base library:
+The first thing you need to change from FTCLib is the dependency in `build.gradle`
 
 {% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
 dependencies {
-    implementation "org.solverslib:core:0.3.1" // core
+    // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
+    // FTCLib's vision is no longer supported in SolversLib
+    implementation "org.solverslib:core:0.2.5" // add SolversLib core
 ```
 {% endcode %}
 
+Or, if you are using pedroPathing, change to this dependency block
+
 {% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
 dependencies {
-    implementation "org.solverslib:core:0.3.1" // core
-    implementation "org.solverslib:pedroPathing:0.3.1" // pedroPathing
+    // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
+    // FTCLib's vision is no longer supported in SolversLib
+    implementation "org.solverslib:core:0.2.5" // core
+    implementation "org.solverslib:pedroPathing:0.2.5" // pedroPathing
 }
 ```
 {% endcode %}
@@ -122,7 +126,7 @@ The latest version numbers (as well as a list of all version numbers) are availa
 * Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
 
 {% hint style="warning" %}
-**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing](https://pedropathing.com/prerequisites.html#project-setup) in order to use it.
+**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing](https://pedropathing.com/) in order to use it.
 {% endhint %}
 
 ## Snapshot Versions
