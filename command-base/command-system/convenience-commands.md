@@ -305,40 +305,6 @@ intake.setDefaultCommand(new RunCommand(intake::stop, intake));
 
 Note that a perpetual command adds all the requirements of the swallowed command.
 
-### RepeatCommand
-
-`RepeatCommand` composes (wraps) another `Command` and repeatedly restarts it each time it finishes, until one of the configured termination conditions occurs.
-
-Compared to `PerpetualCommand` (which simply keeps executing the wrapped command while suppressing its natural completion), `RepeatCommand` lets the wrapped command complete, explicitly ends it, and immediately initializes it again for a fresh cycle. This is ideal for discrete, restartable “unit” actions that you want to chain, such as for autonomous TeleOp cycling. Although it does not extend `CommandGroupBase`, `RepeatCommand` is treated as a command group.
-
-RepeatCommand has 3 different constructors as follows:
-
-#### 1. Repeat until interrupted:
-
-```java
-new RepeatCommand(command);
-```
-
-Runs `command` forever (until another command preempts it or it is canceled).
-
-#### 2. Repeat until condition:
-
-```java
-new RepeatCommand(command, () -> someCondition);
-```
-
-Effectively a repeat until loop, with the second parameter being a `BooleanSupplier` condition. In other words, it repeats `command` until `someCondition` is true.
-
-
-
-3. Repeat an integer amount of times
-
-```java
-new RepeatCommand(command, repeatTimes);
-```
-
-Repeats the wrapped command for the number given in the second parameter. As such, `repeatTimes` must be >= 0.
-
 ### WaitUntilCommand
 
 A `WaitUntilCommand` is run until the boolean supplied returns true. This is useful for when you have forked off from a command group. Let's expand upon the example from the [`ScheduleCommand`](convenience-commands.md#schedulecommand) but with a single schedule command.

@@ -2,7 +2,7 @@
 description: import com.seattlesolvers.solverslib.pedroCommand.FollowPathCommand;
 ---
 
-# FollowPathCommand
+# FollowPathChainCommand
 
 This command allows you to easily follow a Path or PathChain [Follower.followPath(PathChain pathChain)](https://github.com/Pedro-Pathing/PedroPathing/blob/main/src/main/java/com/pedropathing/follower/Follower.java#L519).&#x20;
 

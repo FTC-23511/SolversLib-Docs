@@ -81,13 +81,13 @@ m_robot.reset();    // resets the scheduler instance
 
 ## CommandOpMode
 
-The [CommandOpMode](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/command/CommandOpMode.java) is the center of the FTC-centric command-based paradigm. It makes everything simpler for the user and greatly decreases the amount of code needed to run everything. Unlike the Robot class, it is opmode-specific, so it does not store a common reference to subsystems. If desired, the user can create a map that houses all of the referenced hardware, but this is currently not a feature offered \(but totally supported\) by SolversLib.
+The [CommandOpMode](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/command/CommandOpMode.java) is the center of the FTC-centric command-based paradigm. It makes everything simpler for the user and greatly decreases the amount of code needed to run everything. Unlike the Robot class, it is opmode-specific, so it does not store a common reference to subsystems. If desired, the user can create a map that houses all of the referenced hardware, but this is currently not a feature offered (but totally supported) by SolversLib.
 
-If desired, the user can override the methods from the CommandOpMode. Similarly to the Robot class, you can disable the CommandOpMode with static methods \(which actually disable the Robot class, which is what is referenced in the CommandScheduler for `runsWhenDisabled()` commands.
+If desired, the user can override the methods from the CommandOpMode. Similarly to the Robot class, you can disable the CommandOpMode with static methods (which actually disable the Robot class, which is what is referenced in the CommandScheduler for `runsWhenDisabled()` commands.
 
 ### Initializing your Hardware
 
-CommandOpMode is an abstract class, which means the user must create their own implementation of it. The only method that needs to be implemented is the `initialize()` method, which instantiates all of the hardware and commands to be run by the scheduler. The CommandOpMode class already implements the `runOpMode()` method and runs the scheduler. After the opmode is no longer active or a stop is requested, it resets the instance of the scheduler so a new opmode can be run with a fresh instance. This is very nonintuitive, but it works as designed \(setting the singleton instance to null, where a new instance is then created upon calling `getInstance()`.
+CommandOpMode is an abstract class, which means the user must create their own implementation of it. The only method that needs to be implemented is the `initialize()` method, which instantiates all of the hardware and commands to be run by the scheduler. The CommandOpMode class already implements the `runOpMode()` method and runs the scheduler. After the opmode is no longer active or a stop is requested, it resets the instance of the scheduler so a new opmode can be run with a fresh instance. This is very nonintuitive, but it works as designed (setting the singleton instance to null, where a new instance is then created upon calling `getInstance()`.
 
 ```java
 // in your implementation of CommandOpMode
@@ -104,4 +104,3 @@ public void initialize() {
 ```
 
 That is functionally all that needs to be done, everything else is done for the user internally. You can find a sample project utilizing CommandOpMode [here](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/PurePursuitSample.java).
-

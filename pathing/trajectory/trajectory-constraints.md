@@ -41,4 +41,3 @@ public MinMax getMinMaxAccelerationMetersPerSecondSq(
 ```
 
 The `MaxVelocity` method should return the maximum allowed velocity for the given pose, curvature, and original velocity of the trajectory without any constraints. The `MinMaxAcceleration` method should return the minimum and maximum allowed acceleration for the given pose, curvature, and constrained velocity.
-

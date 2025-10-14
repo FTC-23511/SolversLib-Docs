@@ -15,7 +15,7 @@ The first thing you need to change from FTCLib is the dependency in `build.gradl
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:0.2.5" // add SolversLib core
+    implementation "org.solverslib:core:0.2.3" // add SolversLib core
 ```
 {% endcode %}
 
@@ -26,8 +26,8 @@ Or, if you are using pedroPathing, change to this dependency block
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:0.2.5" // core
-    implementation "org.solverslib:pedroPathing:0.2.5" // pedroPathing
+    implementation "org.solverslib:core:0.2.3" // core
+    implementation "org.solverslib:pedroPathing:0.2.3" // pedroPathing
 }
 ```
 {% endcode %}
@@ -103,7 +103,7 @@ The first thing you need to change from FTCLib is the dependency in `build.gradl
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:0.2.5" // add SolversLib core
+    implementation "org.solverslib:core:0.2.3" // add SolversLib core
 ```
 {% endcode %}
 
@@ -114,8 +114,8 @@ Or, if you are using pedroPathing, change to this dependency block
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:0.2.5" // core
-    implementation "org.solverslib:pedroPathing:0.2.5" // pedroPathing
+    implementation "org.solverslib:core:0.2.3" // core
+    implementation "org.solverslib:pedroPathing:0.2.3" // pedroPathing
 }
 ```
 {% endcode %}
@@ -201,19 +201,13 @@ find . -type f -name "*.java" -exec sed -i '' 's/com.seattlesolvers.solverslib/c
 **FTCLib Imports to SolversLib Imports  (Windows):**
 
 ```powershell
-Get-ChildItem -Recurse -Filter *.java | ForEach-Object { 
-    (Get-Content $_.FullName) -replace 'com.arcrobotics.ftclib', 'com.seattlesolvers.solverslib' | 
-    Set-Content $_.FullName 
-}
+Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $.FullName) -replace 'com.arcrobotics.ftclib', 'com.seattlesolvers.solverslib' | Set-Content $.FullName }
 ```
 
 **SolversLib Imports to FTCLib Imports (Windows):**
 
 ```powershell
-Get-ChildItem -Recurse -Filter *.java | ForEach-Object { 
-    (Get-Content $_.FullName) -replace 'com.seattlesolvers.solverslib', 'com.arcrobotics.ftclib' | 
-    Set-Content $_.FullName 
-}
+Get-ChildItem -Recurse -Filter *.java | ForEach-Object { (Get-Content $.FullName) -replace 'com.seattlesolvers.solverslib', 'com.arcrobotics.ftclib' | Set-Content $.FullName }
 ```
 
 ### Sync Gradle and Finished!

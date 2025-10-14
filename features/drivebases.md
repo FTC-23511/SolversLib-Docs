@@ -57,7 +57,7 @@ In SolversLib, we shortened holonomic drive to the generic term H-Drive. A holon
 
 A three wheel holonomic drivebase, otherwise known as a "Kiwi" or "Killough," is a drivetrain with omnidirectional motion while utilizing three omniwheels.
 
-![Rendered by Pranay from FTC 16236, CAD made by Eric from FTC 18246](../.gitbook/assets/solverslib_kiwi_v4.png)
+![Rendered by Pranay from FTC 16236, CAD made by Eric from FTC 18246](../.gitbook/assets/ftclib_kiwi_v4.png)
 
 You can create the kiwi drive as such:
 

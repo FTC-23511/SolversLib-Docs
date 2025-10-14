@@ -13,7 +13,7 @@ double duration = trajectory.getTotalTimeSeconds();
 
 ## Sampling the Trajectory
 
-The trajectory can be sampled at various timesteps to get the pose, velocity, and acceleration at that point. The `sample(double timeSeconds)` method can be used to sample the trajectory at any timestep. The parameter refers to the amount of time passed since 0 seconds \(the starting point of the trajectory\).
+The trajectory can be sampled at various timesteps to get the pose, velocity, and acceleration at that point. The `sample(double timeSeconds)` method can be used to sample the trajectory at any timestep. The parameter refers to the amount of time passed since 0 seconds (the starting point of the trajectory).
 
 ```java
 // Sample the trajectory at 1.2 seconds. This represents where the robot
@@ -26,8 +26,7 @@ The sample has several pieces of information about the sample point:
 * `t`: The time elapsed from the beginning of the trajectory up to the sample point.
 * `velocity`: The velocity at the sample point.
 * `acceleration`: The acceleration at the sample point.
-* `pose`: The pose \(x, y, heading\) at the sample point.
-* `curvature`: The curvature \(rate of change of heading with respect to distance along the trajectory\) at the sample point.
+* `pose`: The pose (x, y, heading) at the sample point.
+* `curvature`: The curvature (rate of change of heading with respect to distance along the trajectory) at the sample point.
 
 Note: The angular velocity at the sample point can be calculated by multiplying the velocity by the curvature.
-
