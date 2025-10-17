@@ -181,7 +181,7 @@ As you can see, conditional commands are very useful for switching between state
 
 ### UninterruptibleCommand
 
-Schedules a given command as uninterruptible. This command's paramater is single command, so multiple commands need to be put in a  CommandGroup first. See [#schedulecommand](convenience-commands.md#schedulecommand "mention")for scheduling commands as interruptible.
+Schedules a given command as uninterruptible. This command's paramater is single command, so multiple commands need to be put in a CommandGroup first. See [#schedulecommand](convenience-commands.md#schedulecommand "mention")for scheduling commands as interruptible.
 
 ```java
 // With one command:
@@ -329,8 +329,6 @@ new RepeatCommand(command, () -> someCondition);
 
 Effectively a repeat until loop, with the second parameter being a `BooleanSupplier` condition. In other words, it repeats `command` until `someCondition` is true.
 
-
-
 3. Repeat an integer amount of times
 
 ```java
@@ -366,8 +364,9 @@ The `StartEndCommand` is essentially an `InstantCommand` with a custom end funct
 Usually, when you schedule a command (like `new IntakeCommand(intake)`), all of its dependencies, parameters, and logic is fixed at construction time (when the command is instantiated, not run).
 
 Sometimes, you don't know what command you need until later. For example:
-- You want to choose the command based on **sensor data**
-- You want to choose the command based on the **most recent state of a variable**
+
+* You want to choose the command based on **sensor data**
+* You want to choose the command based on the **most recent state of a variable**
 
 The `DeferredCommand` waits until the command is executed to decide which command to run. It takes a `command` and a `list` of required `subsystems` as input.
 
@@ -376,7 +375,7 @@ The `DeferredCommand` waits until the command is executed to decide which comman
 class Door extends SubsystemBase {
 	private boolean isOpen = false;
 	public static int DOOR_DELAY = 500;
-	...
+	...,
 	
 	public Command setOpen(boolean newState){
 		if(isOpen == newState) return new InstantCommand();
@@ -393,7 +392,6 @@ schedule(
 In this example, since the initial value of `isOpen` is `false`, without the use of `DeferredCommand`, no matter what the current state of the door is, `door.setOpen(false)` would return an `InstantCommand`. By using `DeferredCommand`, you can make the command use the current state instead of the state when the command was instantiated.
 
 Note that the example above is simple and can be handled by a [#conditionalcommand](convenience-commands.md#conditionalcommand "mention") more conveniently.
-
 
 ### FunctionalCommand
 
