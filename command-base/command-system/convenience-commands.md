@@ -361,6 +361,40 @@ The following commands in the auto command group are only run after that forked 
 
 The `StartEndCommand` is essentially an `InstantCommand` with a custom end function. It takes two `Runnable` parameters an optional varargs of subsystems to require. The first parameter is run on initialize and the second is run on end.
 
+### DeferredCommand
+
+Usually, when you schedule a command (like `new IntakeCommand(intake)`), all of its dependencies, parameters, and logic is fixed at construction time (when the command is instantiated, not run).
+
+Sometimes, you don't know what command you need until later. For example:
+- You want to choose the command based on **sensor data**
+- You want to choose the command based on the **most recent state of a variable**
+
+The `DeferredCommand` waits until the command is executed to decide which command to run. It takes a `command` and a `list` of required `subsystems` as input.
+
+```java
+
+class Door extends SubsystemBase {
+	private boolean isOpen = false;
+	public static int DOOR_DELAY = 500;
+	...
+	
+	public Command setOpen(boolean newState){
+		if(isOpen == newState) return new InstantCommand();
+		isOpen = newState;
+		return new WaitCommand(DOOR_DELAY);
+	}
+}
+
+schedule(
+	new DeferredCommand(door.setOpen(false), door);
+)
+```
+
+In this example, since the initial value of `isOpen` is `false`, without the use of `DeferredCommand`, no matter what the current state of the door is, `door.setOpen(false)` would return an `InstantCommand`. By using `DeferredCommand`, you can make the command use the current state instead of the state when the command was instantiated.
+
+Note that the example above is simple and can be handled by a [#conditionalcommand](convenience-commands.md#conditionalcommand "mention") more conveniently.
+
+
 ### FunctionalCommand
 
 The last framework command we will discuss is the `FunctionalCommand`. It is useful for doing an inline definition of a complex command instead of creating a new command subclass. Generally, it is better to write a class for anything past a certain complexity.
