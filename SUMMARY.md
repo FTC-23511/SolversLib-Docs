@@ -29,8 +29,6 @@
   * [TurnCommand](pedro-pathing/pedro-commands/hold-point-command-1.md)
   * [TurnToCommand](pedro-pathing/pedro-commands/hold-point-command-2.md)
 
-## Vision
-
 ## Kinematics
 
 * [Odometry](kinematics/odometry.md)
@@ -68,7 +66,7 @@
 
 ## VISION
 
-* [EasyOpenCV](vision-1/easyopencv.md)
+* [EasyOpenCV](vision/easyopencv.md)
 
 ***
 
