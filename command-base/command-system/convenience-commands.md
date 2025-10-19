@@ -4,7 +4,7 @@ description: Using SolversLib-provided Commands to Enhance Your Program
 
 # Convenience Features
 
-SolversLib offers convenience features to make your paradigm program more compact. The idea is that it improves the overall structure of your program. Some of these convenience commands are just that: for convenience. This does not mean they are exceptional. Plenty are simplified for minimal competitive use, such as the [`PurePursuitCommand`](../../pathing/pure-pursuit.md#using-the-pure-pursuit-command).
+SolversLib offers convenience features to make your paradigm program more compact. The idea is that it improves the overall structure of your program. Some of these convenience commands are just that: for convenience. This does not mean they are exceptional. Plenty are simplified for minimal competitive use, such as the [`PurePursuitCommand`](../../pathing/pure-pursuit/#using-the-pure-pursuit-command).
 
 ## Framework Commands
 

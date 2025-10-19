@@ -4,9 +4,7 @@ description: package com.seattlesolvers.solverslib.purepursuit
 
 # Pure Pursuit
 
-## This is buggy and may be replaced in future version of SolversLib. Its use is currently not recommend.&#x20;
-
-## Please use [Pedro Pathing](https://pedropathing.com) instead.
+## SolversLib Pure Pursuit is buggy, and has been replaced with [Point-to-Point](../point-to-point.md). Its use is currently not recommend.
 
 ## Pure Pursuit
 
@@ -18,7 +16,7 @@ As an alternative, you can call the `loop()` method and directly input your odom
 
 Pure pursuit, otherwise designated as "PP," is a path tracking algorithm that calculates the robot velocity in order to reach a designated look-ahead point from the current position. It loosely follows a path determined by a set of waypoints, which are coordinates on the field. What the pure pursuit controller does is create a circle of determined radius and follow the path by "looking ahead" with the circle and seeing where it intersects with the path. The robot's heading orientation is then compared to the radius that connects the center of the robot to that intersection. It then moves in correspondence. The radius size can be updated for each waypoint you enter into the path for specificity.
 
-![A visual representation of look-ahead](../.gitbook/assets/look-ahead.png)
+![A visual representation of look-ahead](../../.gitbook/assets/look-ahead.png)
 
 The robot continues to follow this intersection at real-time. This is how the robot "follows" the designated path. It is essentially a p controller for the heading that has the robot move at the fastest possible speed around some path.
 
@@ -131,7 +129,7 @@ Waypoint p3 = new PointTurnWaypoint(
 
 **InterruptWaypoint**
 
-The `action` here is an [InterruptAction](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/purepursuit/actions/InterruptAction.java), which is an interface that the user can implement to create a custom action to occur at this point. A recommendation is to pair this with the [command paradigm](../command-base/command-system/) that SolversLib provides.
+The `action` here is an [InterruptAction](https://github.com/SolversLib/SolversLib/blob/v2.1.1/core/src/main/java/com/arcrobotics/SolversLib/purepursuit/actions/InterruptAction.java), which is an interface that the user can implement to create a custom action to occur at this point. A recommendation is to pair this with the [command paradigm](../../command-base/command-system/) that SolversLib provides.
 
 ```java
 // Empty constructor. Note: Only use this constructor

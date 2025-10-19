@@ -17,7 +17,7 @@ Pose2d bOrigin = new Pose2d(2, 2, Rotation2d.fromDegrees(30));
 Trajectory bTrajectory = aTrajectory.relativeTo(bOrigin);
 ```
 
-![](../../.gitbook/assets/relative-to.png)
+![](../../../.gitbook/assets/relative-to.png)
 
 In the diagram above, the original trajectory (`aTrajectory` in the code above) has been defined in coordinate system A, represented by the black axes. The red axes, located at (2, 2) and 30° with respect to the original coordinate system, represent coordinate system B. Calling `relativeTo` on `aTrajectory` will redefine all poses in the trajectory to be relative to coordinate system B (red axes).
 
@@ -32,6 +32,6 @@ Transform2d transform = new Pose2d(4, 4, Rotation2d.fromDegrees(50)).minus(traje
 Trajectory newTrajectory = trajectory.transformBy(transform);
 ```
 
-![](../../.gitbook/assets/transform-by.png)
+![](../../../.gitbook/assets/transform-by.png)
 
 In the diagram above, the original trajectory, which starts at (2, 2) and at 30° is visible in blue. After applying the transform above, the resultant trajectory’s starting location is changed to (4, 4) at 50°. The resultant trajectory is visible in orange.

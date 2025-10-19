@@ -6,7 +6,7 @@ description: >-
 
 # Swerve Drive Odometry
 
-A user can use the swerve drive kinematics classes in order to perform [odometry](./#what-is-odometry). WPILib/SolversLib contains a `SwerveDriveOdometry` class that can be used to track the position of a swerve drive robot on the field.
+A user can use the swerve drive kinematics classes in order to perform [odometry](../#what-is-odometry). WPILib/SolversLib contains a `SwerveDriveOdometry` class that can be used to track the position of a swerve drive robot on the field.
 
 **Note**:\
 Because this method only uses encoders and a gyro, the estimate of the robot’s position on the field will drift over time, especially as your robot comes into contact with other robots during gameplay. However, odometry is usually very accurate during the autonomous period.
@@ -51,7 +51,7 @@ SwerveDriveOdometry m_odometry = new SwerveDriveOdometry
 
 The `update` method of the odometry class updates the robot position on the field. The update method takes in the gyro angle of the robot, along with a series of module states (speeds and angles) in the form of a `SwerveModuleState` each. It is important that the order in which you pass the `SwerveModuleState` objects is the same as the order in which you created the kinematics object.
 
-This `update` method must be called periodically, preferably in the `periodic()` method of a [Subsystem](../../command-base/command-system/subsystems.md). The `update` method returns the new updated pose of the robot.
+This `update` method must be called periodically, preferably in the `periodic()` method of a [Subsystem](../../../command-base/command-system/subsystems.md). The `update` method returns the new updated pose of the robot.
 
 ```java
 @Override

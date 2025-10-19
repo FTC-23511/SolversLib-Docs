@@ -35,7 +35,7 @@ These calculations should be performed at every loop iteration, with an updated 
 
 The adjusted velocities are of type `ChassisSpeeds`, which contains a `vx` (linear velocity in the forward direction), a `vy` (linear velocity in the sideways direction), and an `omega` (angular velocity around the center of the robot frame). Because the Ramsete controller is a controller for non-holonomic robots (robots which cannot move sideways), the adjusted speeds object has a `vy` of zero.
 
-The returned adjusted speeds can be converted to usable speeds using the kinematics classes for your [drivetrain](../../features/drivebases.md) type. For example, the adjusted velocities can be converted to left and right velocities for a differential drive using a `DifferentialDriveKinematics` object.
+The returned adjusted speeds can be converted to usable speeds using the kinematics classes for your [drivetrain](../../../features/drivebases.md) type. For example, the adjusted velocities can be converted to left and right velocities for a differential drive using a `DifferentialDriveKinematics` object.
 
 ```java
 ChassisSpeeds adjustedSpeeds = controller.calculate(currentRobotPose, goal);

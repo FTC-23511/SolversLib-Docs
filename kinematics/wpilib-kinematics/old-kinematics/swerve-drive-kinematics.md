@@ -71,7 +71,7 @@ SwerveModuleState backRight = moduleStates[3];
 
 ### Field-Oriented Drive
 
-[Recall](./) that a `ChassisSpeeds` object can be created from a set of desired field-oriented speeds. This feature can be used to get module states from a set of desired field-oriented speeds.
+[Recall](../) that a `ChassisSpeeds` object can be created from a set of desired field-oriented speeds. This feature can be used to get module states from a set of desired field-oriented speeds.
 
 ```java
 // The desired field relative speed here is 2 meters per second
