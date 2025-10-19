@@ -359,6 +359,7 @@ The Constructors are as follows:
 #### 1. Basic RetryCommand (Same Command on Repeat)
 
 ```java
+RetryCommand(Command command, BooleanSupplier successCondition, int maxRetries)
 
 // Example
 new RetryCommand(
@@ -371,6 +372,7 @@ new RetryCommand(
 #### 2. Advanced RetryCommand (Different Command on Repeat)
 
 ```java
+RetryCommand(Command command, Command retryCommand, BooleanSupplier successCondition, int maxRetries)
 
 // Example
 new RetryCommand(

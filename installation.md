@@ -35,7 +35,7 @@ dependencies {
 {% hint style="warning" %}
 **Important:** Different versions of SolversLib correlate with different versions of Pedro Pathing.
 
-[SolversLib 0.3.3](installation.md) is for Pedro Pathing 2.0.0\
+[SolversLib 0.3.3](installation.md) is for Pedro Pathing 2.0.0 and higher\
 [SolversLib 0.3.2](https://app.gitbook.com/s/qHp1wuxUd3u5XDcqQNPs/installation) is for Pedro Pathing 1.0.9\
 [SolversLib 0.3.1](https://app.gitbook.com/s/4WjwIOqhnAnCe7dwK3v4/installation) is for Pedro Pathing 1.0.8
 {% endhint %}
@@ -131,7 +131,7 @@ dependencies {
 {% hint style="warning" %}
 **Important:** Different versions of SolversLib correlate with different versions of Pedro Pathing.
 
-[SolversLib 0.3.3](installation.md) is for Pedro Pathing 2.0.0\
+[SolversLib 0.3.3](installation.md) is for Pedro Pathing 2.0.0 and higher\
 [SolversLib 0.3.2](https://app.gitbook.com/s/qHp1wuxUd3u5XDcqQNPs/installation) is for Pedro Pathing 1.0.9\
 [SolversLib 0.3.1](https://app.gitbook.com/s/4WjwIOqhnAnCe7dwK3v4/installation) is for Pedro Pathing 1.0.8
 {% endhint %}

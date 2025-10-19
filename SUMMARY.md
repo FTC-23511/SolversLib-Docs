@@ -23,6 +23,8 @@
 * [Pedro Commands](pedro-pathing/pedro-commands/README.md)
   * [FollowPathCommand](pedro-pathing/pedro-commands/followpathcommand.md)
   * [HoldPointCommand](pedro-pathing/pedro-commands/hold-point-command.md)
+  * [TurnCommand](pedro-pathing/pedro-commands/hold-point-command-1.md)
+  * [TurnToCommand](pedro-pathing/pedro-commands/hold-point-command-2.md)
 
 ## Vision
 

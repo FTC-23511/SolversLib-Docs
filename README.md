@@ -8,21 +8,25 @@ We support the transition of teams from programming systems like Blocks and OnBo
 
 Please read the [installation](installation.md) instructions before getting started with anything!
 
-
-
 ### SolversLib Leads:
 
-* [Arush Y](https://arush.dev/) (Owner) - [FTC 23511](https://www.seattlesolvers.com/)
+* Arush Y (Owner) - [FTC 23511](https://www.seattlesolvers.com/)
 * Saket T - [FTC 23511](https://www.seattlesolvers.com/)
 
 ### SolversLib Contributors:
 
-* Noam - FTC 23644&#x20;
+* Oscar C - [Dairy Foundation](https://github.com/Dairy-Foundation)
+  * Special thanks to Oscar for hosting SolversLib on the Dairy Foundation!
+* Noam - [FTC 23644](https://www.youtube.com/@SkeletonArmy23644)
+* Nv7 - [FTC 21229](https://www.stem-bridge.org/home)
+* Lucas B - FTC 15215, 22407, and 24736
+* Suchir R - FTC [19448](https://www.instagram.com/xbots_ftc/)2
 
 ### Docs Contributors:
 
-* [Arush Y](https://arush.dev/) (Owner) - [FTC 23511](https://www.seattlesolvers.com/)
+* Arush Y (Owner) - [FTC 23511](https://www.seattlesolvers.com/)
 * Dohun - [FTC 22489](https://www.youtube.com/@GNCEDiamond22489)
+* Rowan M - [FTC 3805](https://atomic.ehrobotics.org/pages/team/)
 
 ### Contact:
 
