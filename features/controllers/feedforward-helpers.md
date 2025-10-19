@@ -1,3 +1,7 @@
+---
+description: package com.seattlesolvers.solverslib.controller
+---
+
 # Feedforward Helpers
 
 ## Feedforward Control
