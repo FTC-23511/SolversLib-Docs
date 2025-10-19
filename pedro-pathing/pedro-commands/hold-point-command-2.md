@@ -27,3 +27,4 @@ TurnToCommand(Follower follower, double angle, AngleUnit angleUnit)
 new TurnToCommand(follower, 90.0, AngleUnit.DEGREES)
 ```
 
+To see how you can use this command in a [`CommandOpMode`](../../command-base/command-system/robot-and-commandopmode.md#commandopmode), you can look at this [example](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/PedroCommandSample/PedroCommands.java).
