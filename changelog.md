@@ -34,5 +34,9 @@ This is the Changelog for SolversLib versions for 0.3.x and higher. It includes 
 * Added new Pedro Command: [`FollowPathCommand`](pedro-pathing/pedro-commands/followpathcommand.md)
 * Added support for Pedro Pathing 1.0.8
 * Add SolversHardware caching wrappers
-* Fixed known FTCLib bugs:
-  *
+* Fixed known FTCLib bugs/issues:
+  * [Double ending issue in ParallelRaceGroup](https://github.com/FTCLib/FTCLib/pull/261)
+  * [SequentialCommandGroup is incompatible with other command groups](https://github.com/FTCLib/FTCLib/issues/253)
+  * [ConcurrentModificationException in cancelAll()](https://github.com/FTCLib/FTCLib/pull/260)
+  * [IllegalAccessError when trying to build clean dev branch on Windows](https://github.com/FTCLib/FTCLib/issues/255)
+  * [Missing Aliases for PS4 and PS5 buttons](https://github.com/FTCLib/FTCLib/issues/250)
