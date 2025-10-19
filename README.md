@@ -10,17 +10,18 @@ Please read the [installation](installation.md) instructions before getting star
 
 
 
-### SolversLib Lead Dev:
+### SolversLib Leads:
 
-* [Arush Y](https://arush.dev/) - [FTC 23511](https://www.seattlesolvers.com/)
+* [Arush Y](https://arush.dev/) (Owner) - [FTC 23511](https://www.seattlesolvers.com/)
+* Saket T - [FTC 23511](https://www.seattlesolvers.com/)
 
 ### SolversLib Contributors:
 
-* Saket T - [FTC 23511](https://www.seattlesolvers.com/)
+* Noam - FTC 23644&#x20;
 
 ### Docs Contributors:
 
-* [Arush Y](https://arush.dev/) - [FTC 23511](https://www.seattlesolvers.com/)
+* [Arush Y](https://arush.dev/) (Owner) - [FTC 23511](https://www.seattlesolvers.com/)
 * Dohun - [FTC 22489](https://www.youtube.com/@GNCEDiamond22489)
 
 ### Contact:
