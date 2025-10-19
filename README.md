@@ -20,7 +20,7 @@ Please read the [installation](installation.md) instructions before getting star
 * Noam - [FTC 23644](https://www.youtube.com/@SkeletonArmy23644)
 * Nv7 - [FTC 21229](https://www.stem-bridge.org/home)
 * Lucas B - FTC 15215, 22407, and 24736
-* Suchir R - FTC [19448](https://www.instagram.com/xbots_ftc/)2
+* Suchir R - FTC [19448](https://www.instagram.com/xbots_ftc/)
 
 ### Docs Contributors:
 
