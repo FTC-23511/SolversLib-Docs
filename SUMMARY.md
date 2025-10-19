@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Welcome](README.md)
+* [Changelog](changelog.md)
 * [Installation](installation.md)
 * [Javadocs](javadocs.md)
 

@@ -7,3 +7,24 @@ FTCLib was initially meant to be a port of WPILib, which is the standard program
 We support the transition of teams from programming systems like Blocks and OnBot Java to Android Studio. One of our goals is to make this transition easier for you if you have not already.
 
 Please read the [installation](installation.md) instructions before getting started with anything!
+
+
+
+### SolversLib Lead Dev:
+
+* [Arush Y](https://arush.dev/) - [FTC 23511](https://www.seattlesolvers.com/)
+
+### SolversLib Contributors:
+
+* Saket T - [FTC 23511](https://www.seattlesolvers.com/)
+
+### Docs Contributors:
+
+* [Arush Y](https://arush.dev/) - [FTC 23511](https://www.seattlesolvers.com/)
+* Dohun - [FTC 22489](https://www.youtube.com/@GNCEDiamond22489)
+
+### Contact:
+
+* [SolversLib Discord](https://discord.com/invite/dJbSWcXsUp)
+* [Email](mailto:software@seattlesolvers.com)
+* [GitHub](https://github.com/FTC-23511/SolversLib)
