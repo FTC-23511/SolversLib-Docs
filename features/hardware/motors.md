@@ -225,3 +225,7 @@ MotorGroup myMotors = new MotorGroup(leader, follower1, follower2, ...);
 ```
 
 The number of followers is variable. The other methods of the `MotorGroup` are the same as the ones found in `Motor`. You can very simply treat a `MotorGroup` object like a single `Motor` object. The [flywheel sample](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/FlywheelSample.java) in the examples folder shows a few other methods you can utilize with the `MotorGroup`.
+
+{% hint style="danger" %}
+**Warning:** CRServo/CRServoEx should use a CRServoGroup instead of a [MotorGroup](motors.md#motorgroup)
+{% endhint %}

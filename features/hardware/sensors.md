@@ -8,13 +8,13 @@ description: package com.seattlesolvers.solverslib.hardware
 
 There are a few sensors that are offered in SolversLib:
 
-* [SensorColor](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/SensorColor.java)
+* [SensorColor](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/SensorColor.java) & [SensorRevColorV3](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/SensorRevColorV3.java)
 * [SensorDistance](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/SensorDistance.java) & [SensorDistanceEx](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/SensorDistanceEx.java)
 * [SensorRevTOFDistance](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/SensorRevTOFDistance.java)
 
-The `SensorColor` class is just an extension for the `ColorSensor` class that is in the SDK.
+The `SensorColor` class is just an extension for the `ColorSensor` class that is in the SDK, and the `SensorRevColorV3` is the same but for the [REV Color Sensor V3](https://www.revrobotics.com/rev-31-1557/).
 
-`SensorDistance` and `SensorDistanceEx` are interfaces for creating custom distance sensors if desired. An implementation of the `SensorDistanceEx` interface is `SensorRevTOFDistance` which utilizes the time-of-flight mechanic to track distance.
+`SensorDistance` and `SensorDistanceEx` are interfaces for creating custom distance sensors if desired. An implementation of the `SensorDistanceEx` interface is `SensorRevTOFDistance` which utilizes the time-of-flight mechanic to track distance. It has a minimum and maximum tolerance, that can be used via `DistanceTarget`.
 
 ## Gyro Extensions
 
