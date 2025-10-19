@@ -19,14 +19,20 @@ This is the Changelog for SolversLib versions for 0.3.x and higher. It includes 
   * Created [`SolversLib Visualizer`](https://visualizer.seattlesolvers.com/) (forked from Pedro Pathing Visualizer)
 * Implemented abstract [`Controller`](features/controllers/#using-the-controller-class) class and added [`SquIDF`](features/controllers/squidf.md) controller
 * Added native [`RetryCommand`](command-base/command-system/convenience-commands.md#retrycommand) from Marrow
-* Fixed `CommandScheduler`'s `cancelAll()` from throwing an error
 
 ### [0.3.2](https://app.gitbook.com/o/Vbh44pUmrudj7jrlevBI/s/qHp1wuxUd3u5XDcqQNPs/)
 
 * Added new Pedro Command: [`HoldPointCommand`](pedro-pathing/pedro-commands/hold-point-command.md)
 * Added support for Pedro Pathing 1.0.9
+* Added beta SquID support and early Swerve Kinematics
+* Fixed `CommandScheduler`'s `cancelAll()` from throwing an error
+* Added additional constructors to [`RepeatCommand`](command-base/command-system/convenience-commands.md#repeatcommand)
+* Rewrote SolversHardware wrappers into hardware
 
 ### [0.3.1](https://app.gitbook.com/s/4WjwIOqhnAnCe7dwK3v4/)
 
 * Added new Pedro Command: [`FollowPathCommand`](pedro-pathing/pedro-commands/followpathcommand.md)
 * Added support for Pedro Pathing 1.0.8
+* Add SolversHardware caching wrappers
+* Fixed known FTCLib bugs:
+  *
