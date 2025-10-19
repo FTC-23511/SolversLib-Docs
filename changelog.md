@@ -2,10 +2,10 @@
 
 This is the Changelog for SolversLib versions for 0.3.x and higher. It includes the changes made from the previous iteration, and important notes for it as well. You can change SolversLib documentation versions by using the selector in the top left corner.
 
-### [0.3.3](./)
+## [0.3.3](./)
 
-* Added two new Pedro Commands: [`TurnToCommand`](pedro-pathing/pedro-commands/hold-point-command-2.md) and [`TurnCommand`](pedro-pathing/pedro-commands/hold-point-command-1.md)&#x20;
-* Added support for Pedro Pathing versions 2.0.0 and higher
+#### Core:
+
 * Rewrote Hardware classes:
   * Deprecated [`ServoEx` interface](features/hardware/motors-1.md#servoex-interface-and-simpleservo-class) and [`SimpleServo` class](features/hardware/motors-1.md#servoex-interface-and-simpleservo-class)
     * The new [`ServoEx` class](features/hardware/servos.md#servoex) serves as a replacement to both of the classes above.
@@ -20,19 +20,29 @@ This is the Changelog for SolversLib versions for 0.3.x and higher. It includes 
 * Implemented abstract [`Controller`](features/controllers/#using-the-controller-class) class and added [`SquIDF`](features/controllers/squidf.md) controller
 * Added native [`RetryCommand`](command-base/command-system/convenience-commands.md#retrycommand) from Marrow
 
-### [0.3.2](https://app.gitbook.com/o/Vbh44pUmrudj7jrlevBI/s/qHp1wuxUd3u5XDcqQNPs/)
+#### PedroPathing:
 
-* Added new Pedro Command: [`HoldPointCommand`](pedro-pathing/pedro-commands/hold-point-command.md)
-* Added support for Pedro Pathing 1.0.9
+* Added two new Pedro Commands: [`TurnToCommand`](pedro-pathing/pedro-commands/hold-point-command-2.md) and [`TurnCommand`](pedro-pathing/pedro-commands/hold-point-command-1.md)&#x20;
+* Added support for Pedro Pathing versions 2.0.0 and higher
+
+## [0.3.2](https://app.gitbook.com/s/qHp1wuxUd3u5XDcqQNPs/)
+
+#### Core:
+
 * Added beta SquID support and early Swerve Kinematics
 * Fixed `CommandScheduler`'s `cancelAll()` from throwing an error
 * Added additional constructors to [`RepeatCommand`](command-base/command-system/convenience-commands.md#repeatcommand)
 * Rewrote SolversHardware wrappers into hardware
 
-### [0.3.1](https://app.gitbook.com/s/4WjwIOqhnAnCe7dwK3v4/)
+#### PedroPathing:
 
-* Added new Pedro Command: [`FollowPathCommand`](pedro-pathing/pedro-commands/followpathcommand.md)
-* Added support for Pedro Pathing 1.0.8
+* Added new Pedro Command: [`HoldPointCommand`](pedro-pathing/pedro-commands/hold-point-command.md)
+* Added support for Pedro Pathing 1.0.9
+
+## [0.3.1](https://app.gitbook.com/s/4WjwIOqhnAnCe7dwK3v4/)
+
+#### Core:
+
 * Add SolversHardware caching wrappers
 * Fixed known FTCLib bugs/issues:
   * [Double ending issue in ParallelRaceGroup](https://github.com/FTCLib/FTCLib/pull/261)
@@ -40,3 +50,8 @@ This is the Changelog for SolversLib versions for 0.3.x and higher. It includes 
   * [ConcurrentModificationException in cancelAll()](https://github.com/FTCLib/FTCLib/pull/260)
   * [IllegalAccessError when trying to build clean dev branch on Windows](https://github.com/FTCLib/FTCLib/issues/255)
   * [Missing Aliases for PS4 and PS5 buttons](https://github.com/FTCLib/FTCLib/issues/250)
+
+#### Pedro Pathing:
+
+* Added new Pedro Command: [`FollowPathCommand`](pedro-pathing/pedro-commands/followpathcommand.md)
+* Added support for Pedro Pathing 1.0.8
