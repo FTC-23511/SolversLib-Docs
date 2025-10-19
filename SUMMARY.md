@@ -15,7 +15,10 @@
 * [Gamepad](features/gamepad-extensions.md)
 * [Drivebases](features/drivebases.md)
 * [Geometry](features/geometry.md)
-* [Controllers](features/controllers.md)
+* [Controllers](features/controllers/README.md)
+  * [PID and PIDF](features/controllers/pid-and-pidf.md)
+  * [Feedforward Helpers](features/controllers/feedforward-helpers.md)
+  * [SquIDF](features/controllers/squidf.md)
 * [Utility Functions](features/util.md)
 
 ## Pedro Pathing

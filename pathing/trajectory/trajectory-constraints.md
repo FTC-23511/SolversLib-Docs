@@ -16,7 +16,7 @@ SolversLib includes a set of predefined constraints that users can utilize when 
 
 ### Note
 
-The `DifferentialDriveVoltageConstraint` only ensures that theoretical voltage commands do not go over the specified maximum using a [feedforward model](../../features/controllers.md#feedforward-control). If the robot were to deviate from the reference while tracking, the commanded voltage may be higher than the specified maximum.
+The `DifferentialDriveVoltageConstraint` only ensures that theoretical voltage commands do not go over the specified maximum using a [feedforward model](../../features/controllers/#feedforward-control). If the robot were to deviate from the reference while tracking, the commanded voltage may be higher than the specified maximum.
 
 ## Creating a Custom Constraint
 
