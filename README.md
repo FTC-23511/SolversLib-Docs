@@ -21,6 +21,7 @@ Please read the [installation](installation.md) instructions before getting star
 * Nv7 - [FTC 21229](https://www.stem-bridge.org/home)
 * Lucas B - FTC 15215, 22407, and 24736
 * Suchir R - FTC [19448](https://www.instagram.com/xbots_ftc/)
+* Kully - [KoalaLog](https://github.com/ori-coval)
 
 ### Docs Contributors:
 
