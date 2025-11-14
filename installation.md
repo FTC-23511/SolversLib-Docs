@@ -87,7 +87,7 @@ Get-ChildItem -Recurse -Filter *.java | ForEach-Object {
 }
 ```
 
-### **Repositories:**
+### **Repositories (required)**
 
 Finally, follow the steps in the [Repositories](installation.md#repositories) section.
 
@@ -177,7 +177,7 @@ The latest version numbers (as well as a list of all version numbers) are availa
 
 Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time.
 
-### **Repositories:**
+### **Repositories (required)**
 
 Finally, follow the steps in the [Repositories](installation.md#repositories) section.
 
