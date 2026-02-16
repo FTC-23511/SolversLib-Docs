@@ -20,7 +20,7 @@ dependencies {
 ```
 {% endcode %}
 
-Or, if you are using pedroPathing, change to this dependency block
+Or, if you are using [Pedro Pathing](/broken/pages/r7t7Ipj9bB5rG4YSi6pu), change to this dependency block
 
 {% code title="build.gradle (Module: TeamCode)" %}
 ```groovy
@@ -32,7 +32,20 @@ dependencies {
 ```
 {% endcode %}
 
-{% hint style="warning" %}
+And if you are using [Photon](/broken/pages/p4vt3VlMfnz4BWiYKZVT), change to this dependency block
+
+{% code title="build.gradle (Module: TeamCode)" %}
+```groovy
+dependencies {
+    // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
+    implementation "org.solverslib:core:0.3.4" // core
+    implementation "org.solverslib:pedroPathing:0.3.4" // pedroPathing
+    implementation "org.solverslib:photon:0.0.1" // photon
+}
+```
+{% endcode %}
+
+{% hint style="danger" %}
 **Important:** Different versions of SolversLib correlate with different versions of Pedro Pathing.
 
 [SolversLib 0.3.3](installation.md)+ is for Pedro Pathing 2.0.0 and higher\
