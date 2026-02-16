@@ -4,9 +4,9 @@ description: How to import SolversLib into your Android Studio FTC Project
 
 # Installation
 
-## Option 1: Installing from FTCLib
+## Option 1: Manually Install
 
-This requires you to have some version of [FTCLib](https://ftclib.org/) already installed. SolversLib allows you to easily migrate from FTCLib to SolversLib while keeping all of your code.
+This works with or without having [FTCLib](https://ftclib.org/) already installed. SolversLib allows you to easily migrate from FTCLib to SolversLib while keeping all of your code, or install normally.
 
 ### build.gradle
 
@@ -16,8 +16,7 @@ The first thing you need to change from FTCLib is the dependency in `build.gradl
 ```groovy
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
-    // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:SNAPSHOT-5a81a6b" // core
+    implementation "org.solverslib:core:0.3.4" // core
 ```
 {% endcode %}
 
@@ -27,9 +26,8 @@ Or, if you are using pedroPathing, change to this dependency block
 ```groovy
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
-    // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:SNAPSHOT-5a81a6b" // core
-    implementation "org.solverslib:pedroPathing:SNAPSHOT-5a81a6b" // pedroPathing
+    implementation "org.solverslib:core:0.3.4" // core
+    implementation "org.solverslib:pedroPathing:0.3.4" // pedroPathing
 }
 ```
 {% endcode %}
@@ -46,6 +44,7 @@ The latest version numbers (as well as a list of all version numbers) are availa
 
 * Latest `core` version: [https://repo.dairy.foundation/#/releases/org/solverslib/core](https://repo.dairy.foundation/#/releases/org/solverslib/core)
 * Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
+* Latest `vision` version: [https://repo.dairy.foundation/#/releases/org/solverslib/vision](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
 
 {% hint style="danger" %}
 **Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing 2.0.0](https://pedropathing.com/)+ in order to use it.
@@ -97,85 +96,7 @@ An alternative option is to simply use the SolversLib Quickstart. Similar to the
 
 In addition, the Quickstart also has the Pedro Pathing library installed and added along with the SolversLib pedroPathing dependency, meaning that it is hassle-free. If you don't want the Pedro Pathing part, you can simply delete the relevant files and dependencies.
 
-## Option 3: Installing from Scratch
-
-### build.common.gradle
-
-First, you need to add the `mavenCentral` library repository to your `build.gradle` file at the project root:
-
-{% code title="build.gradle" %}
-```groovy
-    repositories {
-        mavenCentral()
-    }
-```
-{% endcode %}
-
-Next, `minSdkVersion` to `24` and `multiDexEnabled` to `true`:
-
-{% code title="build.common.gradle" %}
-```groovy
-defaultConfig {
-    applicationId 'com.qualcomm.ftcrobotcontroller'
-    minSdkVersion 24
-    targetSdkVersion 28
-    multiDexEnabled true
-```
-{% endcode %}
-
-Next, change `JavaVersion` to `8` :
-
-{% code title="build.common.gradle" %}
-```groovy
-compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-}
-```
-{% endcode %}
-
-### build.gradle
-
-Finally, you need to add the SolversLib dependencies  in `build.gradle`
-
-{% code title="build.gradle (Module: TeamCode)" %}
-```groovy
-dependencies {
-    // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:SNAPSHOT-7962e3e" // core
-```
-{% endcode %}
-
-Or, if you are using pedroPathing, change to this dependency block
-
-{% code title="build.gradle (Module: TeamCode)" %}
-```groovy
-dependencies {
-    // FTCLib's vision is no longer supported in SolversLib
-    implementation "org.solverslib:core:SNAPSHOT-7962e3e" // core
-    implementation "org.solverslib:pedroPathing:SNAPSHOT-7962e3e" // pedroPathing
-}
-```
-{% endcode %}
-
-{% hint style="warning" %}
-**Important:** Different versions of SolversLib correlate with different versions of Pedro Pathing.
-
-[SolversLib 0.3.3](installation.md)+ is for Pedro Pathing 2.0.0 and higher\
-[SolversLib 0.3.2](https://app.gitbook.com/s/qHp1wuxUd3u5XDcqQNPs/installation) is for Pedro Pathing 1.0.9\
-[SolversLib 0.3.1](https://app.gitbook.com/s/4WjwIOqhnAnCe7dwK3v4/installation) is for Pedro Pathing 1.0.8
-{% endhint %}
-
-The latest version numbers (as well as a list of all version numbers) are available at:
-
-* Latest `core` version: [https://repo.dairy.foundation/#/releases/org/solverslib/core](https://repo.dairy.foundation/#/releases/org/solverslib/core)
-* Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
-
-{% hint style="danger" %}
-**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing 2.0.0](https://pedropathing.com/)+ in order to use it.
-{% endhint %}
-
-Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time.
+##
 
 ### **Repositories (required)**
 

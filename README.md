@@ -1,6 +1,6 @@
 # Welcome
 
-SolversLib an updated and maintained fork of the older FTCLib. PRs made to both SolversLib & FTCLib are regularly merged into SolversLib. The changes made to SolversLib were designed to not break existing FTCLib code (with the exception of FTCLib's [vision](broken-reference) module), allowing you to build upon preexisting FTCLib codebases.
+SolversLib an updated and maintained fork of the older FTCLib. PRs made to both SolversLib & FTCLib are regularly merged into SolversLib. The changes made to SolversLib were designed to not break existing FTCLib code (with the exception of FTCLib's [vision](/broken/pages/rZtsaB1AYEc7Mzde5fFA) module), allowing you to build upon preexisting FTCLib codebases.
 
 FTCLib was initially meant to be a port of WPILib, which is the standard programming library for FRC that almost all teams use. However, with FTC, there are a ton of libraries that not many people have heard about, especially rookie teams who are just starting. The goal of FTCLib is to improve the initial programming experience for new members as well as greatly enhance the efficiency of code for veterans.
 

@@ -29,6 +29,11 @@
   * [TurnCommand](pedro-pathing/pedro-commands/hold-point-command-1.md)
   * [TurnToCommand](pedro-pathing/pedro-commands/hold-point-command-2.md)
 
+## Photon
+
+* [What is Photon?](photon/what-is-photon.md)
+* [Usage](photon/usage.md)
+
 ## Kinematics
 
 * [Odometry](kinematics/odometry.md)

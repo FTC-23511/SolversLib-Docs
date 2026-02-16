@@ -1,6 +1,39 @@
 # Changelog
 
-This is the Changelog for SolversLib versions for 0.3.x and higher. It includes the changes made from the previous iteration, and important notes for it as well. You can change SolversLib documentation versions by using the selector in the top left corner.
+This is the Changelog for SolversLib versions for 0.3.1 and higher. It includes the changes made from the previous iteration, and important notes for it as well. You can change SolversLib documentation versions by using the selector in the top left corner.
+
+## [0.3.4](./)
+
+#### Core:
+
+* Fixed bug with RunMode in MotorEx using distance instead of position
+* Added raw power and accessor to head CRServo in CRServoGroup
+* Added ServoExGroup
+* Added LambdaCommand
+* Added optional `GamepadEx` Slew Rate Limiters (mostly for swerve, but can be used for mecanum chassis as well)
+* Added optional `P2PController` Slew Rate Limiters (for swerve)
+* Added `mirror()` method to Pose2d for alliance swapping
+* Updated swerve kinematics with maxSpeed
+* Refactored Timing capabilitites
+* Added raw power tracking and access in hardware classes
+* Bug fixed `MotorEx` 's PositionControl using `encoder.getPosition()` instead of `encoder.getDistance()`&#x20;
+
+Command base changes:
+
+* Added LambdaCommand
+* Added subsystem isAvailable() method
+* Added CommandScheduler getScheduledCommands() method
+* Added `Commands` utility class for pre-defined actions (not to be confused with the Command interface)
+* Added `CallbackCommand`
+* Bug fixed deadline end() command in ParallelDeadlineGroup
+
+#### PedroPathing:
+
+* Fixed maxPower not saving for multiple paths
+
+#### Photon (NEW):
+
+* Added stable PhotonCore for FTC
 
 ## [0.3.3](./)
 
