@@ -113,19 +113,11 @@ Get-ChildItem -Recurse -Filter *.java | ForEach-Object {
 }
 ```
 
-### **Repositories (required)**
-
-Finally, follow the steps in the [Repositories](installation.md#repositories) section.
-
 ## Option 2: Installing from SolversLib Quickstart
 
 An alternative option is to simply use the SolversLib Quickstart. Similar to the FTCLib Quickstart, SolversLib has a Quickstart with this library fully set up. You can view it at [https://github.com/FTC-23511/SolversLib-Quickstart](https://github.com/FTC-23511/SolversLib-Quickstart). You can either fork or clone this repository as needed to use it.&#x20;
 
 In addition, the Quickstart also has the Pedro Pathing library installed and added along with the SolversLib `pedroPathing`\` dependency, meaning that it is hassle-free. If you don't want the Pedro Pathing part, you can simply delete the relevant files and dependencies.
-
-
-
-
 
 ### Sync Gradle and Finished!
 
