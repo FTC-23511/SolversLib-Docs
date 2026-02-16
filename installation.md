@@ -44,13 +44,27 @@ The latest version numbers (as well as a list of all version numbers) are availa
 
 * Latest `core` version: [https://repo.dairy.foundation/#/releases/org/solverslib/core](https://repo.dairy.foundation/#/releases/org/solverslib/core)
 * Latest `pedroPathing` version: [https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
-* Latest `vision` version: [https://repo.dairy.foundation/#/releases/org/solverslib/vision](https://repo.dairy.foundation/#/releases/org/solverslib/pedroPathing)
+* Latest `photon` version: [https://repo.dairy.foundation/#/releases/org/solverslib/photon](https://repo.dairy.foundation/#/releases/org/solverslib/photon)
 
 {% hint style="danger" %}
 **Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing 2.0.0](https://pedropathing.com/)+ in order to use it.
 {% endhint %}
 
 Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time.
+
+### Repositories (required)
+
+Finally in your repositories block, add the following code. You may have other content here, especially if you have the Pedro Pathing library installed. If you do not have a repositories block, you can add it above your dependencies block.
+
+{% code title="build.gradle (Module: TeamCode)" %}
+```groovy
+repositories {
+    maven {
+        url "https://repo.dairy.foundation/releases"
+    }
+}
+```
+{% endcode %}
 
 ### Changing Imports (Only if Migrating from FTCLib)
 
@@ -94,68 +108,9 @@ Finally, follow the steps in the [Repositories](installation.md#repositories) se
 
 An alternative option is to simply use the SolversLib Quickstart. Similar to the FTCLib Quickstart, SolversLib has a Quickstart with this library fully set up. You can view it at [https://github.com/FTC-23511/SolversLib-Quickstart](https://github.com/FTC-23511/SolversLib-Quickstart). You can either fork or clone this repository as needed to use it.&#x20;
 
-In addition, the Quickstart also has the Pedro Pathing library installed and added along with the SolversLib pedroPathing dependency, meaning that it is hassle-free. If you don't want the Pedro Pathing part, you can simply delete the relevant files and dependencies.
+In addition, the Quickstart also has the Pedro Pathing library installed and added along with the SolversLib `pedroPathing`\` dependency, meaning that it is hassle-free. If you don't want the Pedro Pathing part, you can simply delete the relevant files and dependencies.
 
-##
 
-### **Repositories (required)**
-
-Finally, follow the steps in the [Repositories](installation.md#repositories) section.
-
-## Snapshot Versions
-
-SolversLib is graciously hosted on the Dairy Foundation (thanks to Oscar!), and has release versions and snapshots versions.
-
-* Release versions:
-  * Are official, verified versions of SolversLibs
-  * Less likelier to have problems/bugs
-  * Are in the form: `implementation "org.solverslib:core:x.y.z"` (where x, y, and z are version numbers).
-* Snapshots versions:
-  * Are unofficial, and effectively beta versions with newere features and additions
-  * More likelier to have problems/bugs
-  * Are in the form: `implementation "org.solverslib:pedroPathing:SNAPSHOT-abc1234"` (7 random letters & numbers).
-
-The latest versions of both can be found below:
-
-* Latest `core` snapshot version: [https://repo.dairy.foundation/#/snapshots/org/solverslib/core](https://repo.dairy.foundation/#/snapshots/org/solverslib/core)
-* Latest `pedroPathing` snapshot version: [https://repo.dairy.foundation/#/snapshots/org/solverslib/pedroPathing](https://repo.dairy.foundation/#/snapshots/org/solverslib/pedroPathing)
-
-**Repositories:**
-
-Look at the section below. Make sure to follow the snapshot versions part.
-
-## Repositories (required)
-
-In your repositories block, add the following code. You may have other content here, especially if you have the Pedro Pathing library installed. If you do not have a repositories block, you can add it above your dependencies block.
-
-{% code title="build.gradle (Module: TeamCode)" %}
-```groovy
-repositories {
-    maven {
-        url "https://repo.dairy.foundation/releases"
-    }
-}
-```
-{% endcode %}
-
-#### Only for Snapshot/Beta Versions (e.g., 0.3.4 Beta)
-
-You also need to add the maven for snapshots in your repositories block in addition to the releases one. Again, if you do not have a repositories block, you can add it above your dependencies block.
-
-A Snapshot version (e.g., `SNAPSHOT-7cdcc66`) is a beta version.
-
-{% code title="build.gradle (Module: TeamCode)" %}
-```groovy
-repositories {
-    maven {
-        url "https://repo.dairy.foundation/releases"
-    }
-    maven {
-        url "https://repo.dairy.foundation/snapshots"
-    }
-}
-```
-{% endcode %}
 
 
 
