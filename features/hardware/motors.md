@@ -177,7 +177,7 @@ m_motor.stopAndResetEncoder();
 
 You can also set the velocity directly using `setVelocity()`. You can pass the angular rate and the angle unit (optional). Passing just the angular rate will set the velocity in ticks per second. Passing an angle unit will set the velocity to units per second, depending on the unit that is passed into the method.
 
-Additionally, `MotorEx` supports power caching. If the power set to that hardware is less than an adjustable threshold, it will not send a write to it to help with loop speeds. The default threshold, which is called `cachingTolerance` , is 0.0001.
+Additionally, `MotorEx` supports power caching. If the power set to that hardware is less than an adjustable threshold, it will not send a write to it to help with loop speeds. The default threshold, which is called `cachingTolerance` , is 0.0001. This default value effectively disables the feature. To enable power caching, increase it to 0.01 or higher depending on the precision required.
 
 You can use `.setCachingTolerance` to adjust `cachingTolerance` it as needed.
 
