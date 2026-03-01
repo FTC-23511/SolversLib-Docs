@@ -90,7 +90,7 @@ gamepadEx.getLeftX();
 
 * `getRightX()`: Returns the value of the x-axis of the right joystick
 
-```
+```java
 gamepadEx.getRightX();
 ```
 
