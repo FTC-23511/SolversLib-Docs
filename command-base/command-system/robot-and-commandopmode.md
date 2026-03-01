@@ -104,3 +104,27 @@ public void initialize() {
 ```
 
 That is functionally all that needs to be done, everything else is done for the user internally. You can find a sample project utilizing CommandOpMode [here](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/PurePursuitSample.java).
+
+## Running Commands in Init And Run
+
+If you would like to run different commands in init compared to run then you can override the `preRun()` method like so. This is commonly used to home motors.
+
+```java
+// in your implementation of CommandOpMode
+@Override
+public void initialize() {
+
+
+    // Commands to run during init, commonly homing motors
+    schedule(new HomeCommand());
+}
+
+@Override
+public void preRun() {
+    // Cancel any commands left over from init stage
+    super.reset();
+
+    // Schedule commands to execute during run
+    schedule(new DriveCommand());
+}
+```
