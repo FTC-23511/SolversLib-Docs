@@ -81,6 +81,10 @@ ServoEx servoEx = new ServoEx(hardwareMap, "servoEx");
 servoEx.setCachingTolerance(0.0001);
 ```
 
+{% hint style="warning" %}
+This default value of `0.0001`  effectively disables the feature. To actually see results with power caching, increase it to `0.01` or higher depending on the precision required.
+{% endhint %}
+
 ## CRServo
 
 The [CRServo](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/motors/CRServo.java) class is just a motor object intended to be used for a continuous rotation servo. Its general purpose is to be used in SolversLib classes that require a `Motor` input. It works just like a regular motor, without any of the encoder stuff. As such, it extends the `Motor` class, and can be used in a [CRServoGroup](servos.md#crservogroup).
