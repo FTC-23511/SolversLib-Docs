@@ -108,9 +108,9 @@ m_motor.setFeedforwardCoefficients(0.92, 0.47, 0.3);
 ffCoeffs = m_motor.getFeedforwardCoefficients();
 kA = ffCoeffs[2];
 
-// set the output of the motor
+// set the velocity of the motor
 // this must be called in a control loop
-m_motor.set(-0.54);
+m_motor.set(-0.54); // 54% of maximum velocity, backwords
 ```
 
 ### Setting Behaviors
