@@ -4,11 +4,12 @@ Javadocs are automatically created documentation for Java classes. It gives a ba
 
 Below are the Javadocs for each module:
 
-* core: [https://repo.dairy.foundation/javadoc/releases/org/solverslib/core/latest](https://repo.dairy.foundation/javadoc/releases/org/solverslib/core/latest)&#x20;
-* pedroPathing: [https://repo.dairy.foundation/javadoc/releases/org/solverslib/pedroPathing/latest](https://repo.dairy.foundation/javadoc/releases/org/solverslib/pedroPathing/latest)
+* `core`: [https://repo.dairy.foundation/javadoc/releases/org/solverslib/core/latest](https://repo.dairy.foundation/javadoc/releases/org/solverslib/core/latest)&#x20;
+* `pedroPathing`: [https://repo.dairy.foundation/javadoc/releases/org/solverslib/pedroPathing/latest](https://repo.dairy.foundation/javadoc/releases/org/solverslib/pedroPathing/latest)
+* `photon`: [https://repo.dairy.foundation/javadoc/releases/org/solverslib/pedroPathing/latest](https://repo.dairy.foundation/javadoc/releases/org/solverslib/pedroPathing/latest)
 
 You can replace `latest` with your desired version number to get Javadocs for that version.
 
 {% hint style="info" %}
-There are only auto Javadocs for stable releases, and not beta versions/snapshots
+There are also auto Javadocs for beta versions/snapshots in addition to&#x20;
 {% endhint %}
