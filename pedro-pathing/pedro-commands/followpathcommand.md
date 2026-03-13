@@ -35,6 +35,6 @@ You can use a decorater to set the globalMaxPower for the follower as follows:
 new FollowPathCommand(follower, pathChain).setGlobalMaxPower(0.5)
 ```
 
-Setting the Global Maximum Power sets the maximum power `globalMaxPower` for all future paths (unless rewritten again). However, setting the `maxPower` as a parameter in `FollowPathCommand` overwrites `globaMaxPower` for that path only.   &#x20;
+Setting the Global Maximum Power sets the maximum power `globalMaxPower` for all future paths (unless rewritten again). However, setting the `maxPower` as a parameter in `FollowPathCommand` overwrites `globaMaxPower` for that path only.
 
 To see how you can use this command in a [`CommandOpMode`](../../command-base/command-system/robot-and-commandopmode.md#commandopmode), you can look at this [example](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/PedroCommandSample/PedroCommands.java). For usage in a full Autonomous Program, look at this [example](https://github.com/FTC-23511/SolversLib/blob/public-beta/examples/src/main/java/org/firstinspires/ftc/teamcode/PedroCommandSample/PedroAutoSample.java), and for a full TeleOp Program, at this [example](https://github.com/FTC-23511/SolversLib/blob/public-beta/examples/src/main/java/org/firstinspires/ftc/teamcode/PedroCommandSample/PedroTeleOpSample.java).
