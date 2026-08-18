@@ -19,6 +19,7 @@
   * [PID and PIDF](features/controllers/pid-and-pidf.md)
   * [Feedforward Helpers](features/controllers/feedforward-helpers.md)
   * [SquIDF](features/controllers/squidf.md)
+  * [Cascade Control](features/controllers/cascade-control.md)
 * [Utility Functions](features/util.md)
 
 ## Pedro Pathing
