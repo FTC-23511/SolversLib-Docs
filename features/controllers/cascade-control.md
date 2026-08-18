@@ -8,21 +8,15 @@ A `CascadeController` chains two controllers together into a single closed-loop 
 
 This nested structure is called cascade control. The inner velocity loop reacts quickly to disturbances (battery sag, friction, gravity, a game element landing in your intake) before they ever show up as position error, while the outer position loop only has to steer a well-behaved velocity loop. The result is generally smoother, more consistent motion than a single position PID - especially on heavy arms and high-speed slides.
 
-You can find the source code for the `CascadeController` class [here](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/controller/CascadeController.java), and the theory behind closed-loop control on CtrlAltFtc [here](https://www.ctrlaltftc.com/).
-
-{% hint style="info" %}
-`CascadeController` was stabilized in SolversLib 0.3.5: velocity is now measured correctly between calls, the first loop iteration no longer produces `NaN` or a velocity spike when the mechanism starts away from zero, and `reset()` now fully clears the cascade (including both sub-controllers).
-{% endhint %}
+You can find the source code for the `CascadeController` class [here](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/controller/CascadeController.java), and the theory behind closed-loop control on CtrlAltFtc [here](https://www.ctrlaltftc.com/).,&#x20;
 
 ### When would an FTC team want this?
 
-* **Heavy arms and lifts** - the inner velocity loop fights gravity and load changes immediately, instead of waiting for position error to build up
-* **Fast slides** - commanding velocity rather than raw power gives controlled acceleration and less slamming at the ends of travel
-* **Consistency across battery voltage** - a velocity loop compensates for voltage drop automatically, so the same setpoint behaves the same at 14V and at 12V
+* **Heavy arms and lifts:** the inner velocity loop fights gravity and load changes immediately, instead of waiting for position error to build up
+* **Fast slides:** commanding velocity rather than raw power gives controlled acceleration and less slamming at the ends of travel
+* **Consistency across battery voltage:** a velocity loop compensates for voltage drop automatically, so the same setpoint behaves the same at 14V and at 12V
 
-If a single well-tuned PIDF already does the job for your mechanism, you don't need a cascade. Reach for it when one loop can't be tuned both stiff enough and smooth enough at the same time.
-
-### Using the CascadeController Class
+If a single well-tuned PIDF already does the job for your mechanism, you probably don't need a cascade. Consider using a dual PIDF controller (one for large error, one for small error) before this.
 
 #### Constructing a CascadeController
 
@@ -39,18 +33,6 @@ CascadeController cascade = new CascadeController(positionController, velocityCo
 ```
 
 Because the two gain sets multiply through the cascade, the outer controller's output is in _velocity units_, and the inner controller's gains convert velocity error into power. Expect the outer `kP` to be much larger than a standalone position PID's, and the inner gains to be small.
-
-#### How calculate() works
-
-Call `calculate(pv)` once per loop with the measured position (e.g. an encoder reading), exactly like any other SolversLib controller. Internally, each call:
-
-1. Measures velocity as the **derivative of the measured position between calls** - `(current position - previous position) / elapsed time`, in position units per second. No separate velocity sensor is needed.
-2. Runs the primary controller on the measured position against the position setpoint, producing a velocity command.
-3. Runs the secondary controller on the measured velocity against that velocity command (plus the velocity setpoint, see below), producing the final output.
-
-{% hint style="info" %}
-Because velocity is derived from your position readings, feed `calculate()` the same encoder every loop and call it at a reasonably steady rate. On the very first call there is no previous reading yet, so measured velocity is simply 0 - starting the OpMode with the mechanism away from position 0 will not cause a velocity spike.
-{% endhint %}
 
 #### Setting Setpoints
 
@@ -78,15 +60,14 @@ PIDFController velocityController = new PIDFController(0.0004, 0.00004, 0, 0.000
 
 CascadeController cascade = new CascadeController(positionController, velocityController);
 
-cascade.setMaxOutput(1.0); // clamp the final output to valid motor power
-cascade.setTolerance(15);  // within 15 ticks counts as at the setpoint
+cascade.setMaxOutput(1.0);
+cascade.setTolerance(15);
 
 waitForStart();
 
-cascade.setSetPoint(1200); // target lift position in encoder ticks
+cascade.setSetPoint(1200);
 
 while (opModeIsActive()) {
-    // one call per loop with the encoder reading
     double power = cascade.calculate(lift.getCurrentPosition());
     lift.setPower(power);
 
@@ -95,8 +76,6 @@ while (opModeIsActive()) {
     telemetry.update();
 }
 ```
-
-Since `CascadeController` extends the base `Controller` class, everything you already know carries over: `calculate(pv, sp)`, `atSetPoint()`, `setTolerance()`, `setMinOutput()`, `setMaxOutput()`, `getPeriod()`, `getPositionError()`, and `getVelocityError()` all work as usual. For the cascade, `getPositionError()` is the outer-loop (position) error, and `getVelocityError()` is the error between your velocity setpoint and the measured velocity.
 
 #### Measuring Velocity
 
@@ -108,14 +87,8 @@ double ticksPerSecond = cascade.getMeasuredVel();
 
 #### Resetting the Controller
 
-`reset()` clears the cascade's internal state - the measured velocity and timestamps - **and also resets both the primary and secondary controllers**, so any wound-up integral term in either loop is discarded. Call it when re-enabling the mechanism or switching between control tasks, just like you would for a standalone `PIDFController`.
+`reset()` clears the measured velocity and timestamps, and also resets both the primary and secondary controllers, so any wound-up integral term in either loop is discarded. This is useful for when you need to re-enable the mechanism or switching between control tasks.
 
 ```java
 cascade.reset();
 ```
-
-#### Tuning Notes
-
-* Tune the **inner velocity loop first** with the outer gains effectively disabled: command velocities via `setSetPoints(currentPosition, targetVelocity)` and adjust the inner gains (and `kF`) until measured velocity tracks the command
-* Then tune the **outer position loop**: raise the outer `kP` until the mechanism reaches position quickly without oscillating
-* As always with cascaded loops, the inner loop should be tuned faster (more responsive) than the outer loop, or the cascade will fight itself
