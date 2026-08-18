@@ -78,21 +78,94 @@ shooter.set(lut.get(distance));
 
 ## Timing Functions
 
-SolversLib Comes with multiple timers and Timing Functions. They let you set the length, unit, can act as a stopwatch or even return the loop time.
+SolversLib provides its timing utilities through the nested classes of the [Timing](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/util/Timing.java) class: a `Stopwatch` for measuring elapsed and loop times, a `Timer` for counting down a fixed duration, and a `Rate` for limiting how often fast code paths run. They are lightweight alternatives to the SDK's `ElapsedTime` for quick uses.
+
+{% hint style="warning" %}
+A new `Stopwatch` or `Timer` is created **paused** at 0 — call `.start()` to begin timing.
+{% endhint %}
+
+### Stopwatch
+
+A `Stopwatch` measures elapsed time. It can be created with a `TimeUnit`, or defaults to seconds:
+
+```java
+import com.seattlesolvers.solverslib.util.Timing;
+import java.util.concurrent.TimeUnit;
+
+Timing.Stopwatch stopwatch = new Timing.Stopwatch();                          // seconds
+Timing.Stopwatch preciseStopwatch = new Timing.Stopwatch(TimeUnit.MILLISECONDS);
+```
+
+| Function                  | Return Type | Description                                                          |
+| ------------------------- | ----------- | -------------------------------------------------------------------- |
+| `stopwatch.start()`       | void        | Starts (or restarts) the stopwatch                                   |
+| `stopwatch.start(paused)` | void        | Restarts the stopwatch, optionally leaving it paused                 |
+| `stopwatch.pause()`       | void        | Pauses the stopwatch, freezing `elapsedTime()`                       |
+| `stopwatch.resume()`      | void        | Resumes a paused stopwatch                                           |
+| `stopwatch.elapsedTime()` | long        | Returns the elapsed (unpaused) time, in the constructor's `TimeUnit` |
+| `stopwatch.deltaTime()`   | long        | Returns the time since `start()` or the last `deltaTime()` call      |
+| `stopwatch.isTimerOn()`   | boolean     | Returns whether the stopwatch is running (started and not paused)    |
+
+`deltaTime()` makes measuring loop times easy:
+
+```java
+Timing.Stopwatch loopTimer = new Timing.Stopwatch(TimeUnit.MILLISECONDS);
+loopTimer.start();
+
+while (opModeIsActive()) {
+    // robot code...
+
+    telemetry.addData("loop time (ms)", loopTimer.deltaTime());
+    telemetry.update();
+}
+```
 
 ### Timer
 
-A timer can be created with a length or length and Time Unit. The various functions nested within the Timer object are:
+A `Timer` extends `Stopwatch` to count down a fixed length, so every `Stopwatch` method above works on a `Timer` too. It is created with a length, or a length and a `TimeUnit` (defaulting to seconds):
 
-| Function                | Return Type | Description                       |
-| ----------------------- | ----------- | --------------------------------- |
-| `timer.start()`         | Void        | Starts the Timer                  |
-| `timer.pause()`         | Void        | Pauses the Timer                  |
-| `timer.resume()`        | Void        | Resumes the Timer                 |
-| `timer.elapsedTime()`   | long        | Returns the Passed Time           |
-| `timer.remainingTime()` | long        | Returns Time Left                 |
-| `timer.done()`          | Boolean     | Returns if the Timer is Completed |
-| `timer.isTimerOn()`     | Boolean     | Returns if the Timer is Active    |
+```java
+Timing.Timer timer = new Timing.Timer(30);                              // 30 seconds
+Timing.Timer preciseTimer = new Timing.Timer(500, TimeUnit.MILLISECONDS);
+```
+
+On top of the `Stopwatch` methods, it adds:
+
+| Function                | Return Type | Description                                                                |
+| ----------------------- | ----------- | -------------------------------------------------------------------------- |
+| `timer.remainingTime()` | long        | Returns the time left until the timer is done                              |
+| `timer.done()`          | boolean     | Returns whether at least the timer's length of (unpaused) time has elapsed |
+
+```java
+Timing.Timer timer = new Timing.Timer(500, TimeUnit.MILLISECONDS);
+timer.start();
+
+while (!timer.done()) {
+    // e.g. wait for a servo to physically reach its position
+}
+```
+
+### Rate (Refresh Rate Timer)
+
+A `Rate` limits how often something runs — for example, capping hardware reads/writes or telemetry updates. It only works in milliseconds and starts counting when created.
+
+`Rate` is a non-static inner class of `Timing`, so it is constructed through a `Timing` instance:
+
+```java
+Timing.Rate rate = new Timing().new Rate(100); // 100 ms interval
+
+// in your loop
+if (rate.atTime()) {
+    // runs only when at least 100 ms have passed since the last check
+}
+```
+
+* `atTime()`: returns whether at least the rate's interval has passed since the last `atTime()` (or `reset()`) call, and restarts the clock either way.
+* `reset()`: restarts the interval.
+
+{% hint style="warning" %}
+`atTime()` restarts its clock on **every** call, even when it returns `false`. If you poll it much faster than its interval, it will never return `true` — call it only once per loop, and keep the interval close to (or below) your loop time.
+{% endhint %}
 
 ## Math Utilities
 
@@ -170,7 +243,7 @@ double shaped = MathUtils.sqrtWithSig(-0.25); // -0.5
 
 ## Directional Enums
 
-SolversLib comes with multiple directional enums for all your directional needs! You can use these for any autonomous or TeleOp States or anything you want!
+SolversLib comes with multiple directional enums for all your directional needs! You can use these for any autonomous or TeleOP States or anything you want!
 
 | Direction | Index |
 | --------- | ----- |
