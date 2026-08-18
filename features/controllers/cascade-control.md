@@ -10,10 +10,10 @@ This nested structure is called cascade control. The inner velocity loop reacts 
 
 You can find the source code for the `CascadeController` class [here](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/controller/CascadeController.java), and the theory behind closed-loop control on CtrlAltFtc [here](https://www.ctrlaltftc.com/).,&#x20;
 
-### When would an FTC team want this?
+### When to use this over a standard PIDF?
 
 * **Heavy arms and lifts:** the inner velocity loop fights gravity and load changes immediately, instead of waiting for position error to build up
-* **Fast slides:** commanding velocity rather than raw power gives controlled acceleration and less slamming at the ends of travel
+* **Fast(er) slides:** commanding velocity rather than raw power gives controlled acceleration and less slamming at the ends of travel
 * **Consistency across battery voltage:** a velocity loop compensates for voltage drop automatically, so the same setpoint behaves the same at 14V and at 12V
 
 If a single well-tuned PIDF already does the job for your mechanism, you probably don't need a cascade. Consider using a dual PIDF controller (one for large error, one for small error) before this.

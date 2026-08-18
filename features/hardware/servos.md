@@ -78,37 +78,21 @@ The [ServoExGroup](https://github.com/FTC-23511/SolversLib/blob/master/core/src/
 ServoExGroup myServos = new ServoExGroup(leader, follower1, follower2, ...);
 ```
 
-The number of followers is variable. When you call `set()`, the leader is set first and every follower is then set to the leader's position, so you can very simply treat a `ServoExGroup` object like a single `ServoEx` object.
-
-### Methods
-
-* `set(double position)`: sets the position of the leader, then sets every follower to the leader's position
-* `get()`: returns the last position of the leader
-* `getPositions()`: returns a `List<Double>` of the target positions of every servo in the group
-* `setInverted(boolean isInverted)`: inverts every servo in the group (returns the group for chaining)
-* `getInverted()`: returns whether the group (based on the leader) is inverted
-* `disable()`: disables every servo in the group
-* `getDeviceType()`: returns "ServoEx Group"
-
-The group is also `Iterable`, so you can loop over each `ServoEx` in the group with a for-each loop if needed.
+The number of followers is variable. When you call `set()`, the leader is set first and every follower is then set to the leader's position, so you can very simply treat a `ServoExGroup` object like a single `ServoEx` object. The same is effectively true for other methods
 
 {% hint style="info" %}
-`setInverted()` on the group inverts _every_ servo in it. If two servos are mounted mirrored to each other (very common for a two-servo wrist or claw), invert one of them individually _before_ constructing the group.
+`setInverted()` on the group inverts _every_ servo in it. If two servos are mounted mirrored, invert one of them individually before or inside the group.
 {% endhint %}
 
-### Example: Two-Servo Wrist
-
 ```java
-ServoEx leftWrist = new ServoEx(hardwareMap, "leftWrist");
-ServoEx rightWrist = new ServoEx(hardwareMap, "rightWrist");
+ServoEx left = new ServoEx(hardwareMap, "left");
+ServoEx right = new ServoEx(hardwareMap, "right");
 
-// the servos are mounted mirrored, so invert one of them
-rightWrist.setInverted(true);
+right.setInverted(true);
 
-ServoExGroup wrist = new ServoExGroup(leftWrist, rightWrist);
+ServoExGroup servos = new ServoExGroup(left, right);
 
-// drive both servos together like a single ServoEx
-wrist.set(0.6);
+servos.set(0.6);
 ```
 
 ## CRServo
@@ -314,3 +298,4 @@ The number of followers is variable. The other methods of the `CRServoGroup` are
 {% hint style="danger" %}
 **Warning:** CRServo/CRServoEx should use a CRServoGroup (this) instead of a [MotorGroup](motors.md#motorgroup)
 {% endhint %}
+

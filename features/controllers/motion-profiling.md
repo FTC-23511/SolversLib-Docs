@@ -2,6 +2,7 @@
 description: >-
   packages com.seattlesolvers.solverslib.trajectory,
   .controller.wpilibcontroller, and .command
+hidden: true
 ---
 
 # Motion Profiling

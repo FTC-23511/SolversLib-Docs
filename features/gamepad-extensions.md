@@ -261,7 +261,6 @@ GamepadEx driverOp = new GamepadEx(gamepad1)
 waitForStart();
 
 while (opModeIsActive()) {
-    // already rate-limited
     double strafe = driverOp.getLeftX();
     double forward = driverOp.getLeftY();
     double turn = driverOp.getRightX();

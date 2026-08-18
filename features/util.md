@@ -170,7 +170,7 @@ double shaped = MathUtils.sqrtWithSig(-0.25); // -0.5
 
 ## Directional Enums
 
-SolversLib comes with multiple directional enums for all your directional needs! You can use these for any autonomous or TeleOP States or anything you want!
+SolversLib comes with multiple directional enums for all your directional needs! You can use these for any autonomous or TeleOp States or anything you want!
 
 | Direction | Index |
 | --------- | ----- |
