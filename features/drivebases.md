@@ -4,7 +4,7 @@ description: package com.seattlesolvers.solverslib.drivebase
 
 # Drivebases
 
-All of the [SolversLib drivebase classes](https://github.com/FTC-23511/SolversLib/tree/dev/core/src/main/java/com/arcrobotics/ftclib/drivebase) are based on the `RobotBase` abstract class. This is functionally similar to the [RobotDriveBase ](https://github.com/wpilibsuite/allwpilib/blob/50db653f8d864c594c6a9ab7dd5a0f45b4483a03/wpilibj/src/main/java/edu/wpi/first/wpilibj/drive/RobotDriveBase.java)class in WPILib. It contains:
+All of the [SolversLib drivebase classes](https://github.com/FTC-23511/SolversLib/tree/master/core/src/main/java/com/seattlesolvers/solverslib/drivebase) are based on the `RobotDrive` abstract class. This is functionally similar to the [RobotDriveBase ](https://github.com/wpilibsuite/allwpilib/blob/50db653f8d864c594c6a9ab7dd5a0f45b4483a03/wpilibj/src/main/java/edu/wpi/first/wpilibj/drive/RobotDriveBase.java)class in WPILib. It contains:
 
 * An enumerator for the different motor types (i.e. the indices of the motors in the array)
 * Maximum possible speed for the drivebase to approach
@@ -19,7 +19,7 @@ All of the following drive types are available for use in SolversLib. All that's
 
 A differential drive is one that has two motors or motor groups on either side of the robot. Each side acts as a connected set or motor group. There are two types of drive systems here. You can use the tank and arcade control schemes with a differential drive.
 
-![CAD by Hrithik and Sanjay from FTC Team 16439](../.gitbook/assets/tank.jpg)
+![CAD by Hrithik and Sanjay from FTC Team 16439](https://content.gitbook.com/content/53OMM4PwbbzcZqInoTsn/blobs/FJEfDjhv70gqd0XmYqdK/tank.jpg)
 
 Creating the drivetrain object is simple:
 
@@ -31,7 +31,7 @@ The constructor has two parameters: left and right. For a differential drive, it
 
 ### Arcade
 
-Arcade drive use a y-value input from the controller and a value from the turn stick. We know that when the turn stick is pushed left, the right side should move forward and the left side should move backwards. Therefore, since pushing the turn stick to the left returns a negative value, it should be added to the left speed and subtracted from the right speed.
+Arcade drive uses a y-value input from the controller and a value from the turn stick. We know that when the turn stick is pushed left, the right side should move forward and the left side should move backwards. Therefore, since pushing the turn stick to the left returns a negative value, it should be added to the left speed and subtracted from the right speed.
 
 Here is how to call the method for arcade drive. An additional boolean parameter is optional, which is `squareInputs`. By default, this value is false.
 
@@ -57,7 +57,7 @@ In SolversLib, we shortened holonomic drive to the generic term H-Drive. A holon
 
 A three wheel holonomic drivebase, otherwise known as a "Kiwi" or "Killough," is a drivetrain with omnidirectional motion while utilizing three omniwheels.
 
-![Rendered by Pranay from FTC 16236, CAD made by Eric from FTC 18246](../.gitbook/assets/ftclib_kiwi_v4.png)
+![Rendered by Pranay from FTC 16236, CAD made by Eric from FTC 18246](https://content.gitbook.com/content/53OMM4PwbbzcZqInoTsn/blobs/zxfaBl7r4kYWPASY00gq/ftclib_kiwi_v4.png)
 
 You can create the kiwi drive as such:
 
@@ -77,7 +77,7 @@ Your slide motor is generally the back of the kiwi drive and the others are self
 
 An X-drive is a holonomic base that has four omniwheels positioned into an "X" shape as seen below.
 
-![An X-Drive concept from VEX](../.gitbook/assets/x-drive.jpg)
+![An X-Drive concept from VEX](https://content.gitbook.com/content/53OMM4PwbbzcZqInoTsn/blobs/ClqJdep5y8LkejWEiTKt/x-drive.jpg)
 
 You can create the x-drive drive as such:
 
@@ -91,7 +91,7 @@ HDrive xDrive = new HDrive(frontLeft, frontRight,
 
 A mecanum drivebase is a type of holonomic drive that utilizes [mecanum wheels](https://en.wikipedia.org/wiki/Mecanum_wheel) for movement.
 
-![A custom parallel plate mecanum drivetrain](../.gitbook/assets/final-drivebase-render-light.png)
+![A custom parallel plate mecanum drivetrain](https://content.gitbook.com/content/53OMM4PwbbzcZqInoTsn/blobs/F8FVS1hCEBOprOQZUbMc/final-drivebase-render-light.png)
 
 For more information on mecanum drives, please watch this video:
 
@@ -116,7 +116,7 @@ Robot-centric assumes that each push of the joystick is in relation to the local
 For all types of holonomic drive you do this by calling the .`driveRobotCentric()` method that takes the gamepad inputs and converts them into directional values.
 
 ```java
-m_drive.driveRobotCentric(strafeSpeed, forwardSpeed, turnSpeed)
+m_drive.driveRobotCentric(strafeSpeed, forwardSpeed, turnSpeed);
 ```
 
 #### Field-Centric
@@ -129,7 +129,7 @@ For all types of holonomic drive you do this by calling the .`driveFieldCentric(
 m_drive.driveFieldCentric(strafeSpeed, forwardSpeed, turn, heading);
 ```
 
-The `heading` argument is the current heading of the robot, usually from the IMU. Note that it is in _degress_ here, not radians.
+The `heading` argument is the current heading of the robot, usually from the IMU. Note that it is in _degrees_ here, not radians.
 
 ### Sample
 
@@ -155,7 +155,7 @@ public class BasicDriveOpMode extends OpMode {
         drive.driveRobotCentric(
             driverOp.getLeftX(),
             driverOp.getLeftY(),
-            driverOp.getRightY()
+            driverOp.getRightX()
         );
     }
 

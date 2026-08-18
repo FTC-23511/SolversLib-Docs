@@ -20,6 +20,7 @@
   * [Feedforward Helpers](features/controllers/feedforward-helpers.md)
   * [SquIDF](features/controllers/squidf.md)
   * [Cascade Control](features/controllers/cascade-control.md)
+  * [Motion Profiling](features/controllers/motion-profiling.md)
 * [Utility Functions](features/util.md)
 
 ## Pedro Pathing

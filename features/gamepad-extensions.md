@@ -34,7 +34,7 @@ Provides enum representations of the buttons, D-Pad, bumpers, and triggers. Butt
 | SHARE                |
 | TOUCHPAD             |
 | TOUCHPAD\_FINGER\_1  |
-| TOUCHPAD\_FINGER\_1  |
+| TOUCHPAD\_FINGER\_2  |
 
 | Trigger        |
 | -------------- |
@@ -151,7 +151,7 @@ The `GamepadEx` objects actually contain `ButtonReader`s. For every `GamepadKeys
 
 ```java
 // create the gamepad
-GamepadEx myGamepad = new Gamepad(gamepad1);
+GamepadEx myGamepad = new GamepadEx(gamepad1);
 
 /** The methods for using the ButtonReaders **/
 myGamepad.wasJustPressed(GamepadKeys.Button.A);
@@ -201,5 +201,71 @@ while (...) {
     // if toggle state false
   }
   aReader.readValue();
+}
+```
+
+## Slew Rate Limiters
+
+The [SlewRateLimiter](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/gamepad/SlewRateLimiter.java) class caps how fast a joystick value is allowed to change. Instead of the output jumping instantly from 0 to 1 when you slam the stick, it ramps toward the target at a maximum rate you choose, smoothing out acceleration. This reduces wheel slip and tipping on drivetrains, and is especially popular for swerve drives, where sudden input changes can fight against module rotation.
+
+Credit to FTC 16379 Kookybotz for this code.
+
+### SlewRateLimiter API
+
+Rate limits are in units per second. A joystick axis ranges from -1 to 1, so a rate limit of `2.0` lets the output go from 0 to full deflection in half a second.
+
+* `SlewRateLimiter(double positiveRateLimit, double negativeRateLimit, double initialValue)`: Constructs a limiter with separate limits for increasing and decreasing output (the negative rate limit should be a negative number) and a starting output value.
+* `SlewRateLimiter(double rateLimit, double initialValue)`: Constructs a limiter with a symmetric limit of ±`rateLimit` and a starting output value.
+* `SlewRateLimiter(double rateLimit)`: Constructs a limiter with a symmetric limit of ±`rateLimit` and a starting output value of 0.
+* `calculate(double input)`: Returns the input, limited so it changes no faster than the rate limits allow since the previous call. Call this once per loop with the raw value.
+* `updateRateLimit(double rateLimit)`: Changes the rate limit on the fly, setting the positive limit to `rateLimit` and the negative limit to `-rateLimit`.
+
+```java
+SlewRateLimiter limiter = new SlewRateLimiter(4.0);
+
+// in your loop
+double smoothed = limiter.calculate(gamepad1.left_stick_x);
+```
+
+{% hint style="warning" %}
+A `SlewRateLimiter` is stateful — it remembers its previous output and an internal timer. Construct it once (e.g. in `init`) and reuse it every loop. Creating a new limiter each loop resets that state, so the output stays pinned near the initial value and the stick will barely respond.
+{% endhint %}
+
+### Enabling through GamepadEx
+
+`GamepadEx` can apply slew rate limiting for you. Attach a limiter to each joystick axis with `setJoystickSlewRateLimiters(SlewRateLimiter LX, SlewRateLimiter LY, SlewRateLimiter RX, SlewRateLimiter RY)`, where L/R is the left/right joystick and X/Y is the axis. Pass `null` for any axis you do not want limited. The method returns the `GamepadEx` object for chaining.
+
+Once set, `getLeftX()`, `getLeftY()`, `getRightX()`, and `getRightY()` automatically return the rate-limited values — no extra calls needed in your loop. Note that limiting only applies through these `GamepadEx` getters, not when reading the stock `gamepad` fields directly.
+
+```java
+GamepadEx driverOp = new GamepadEx(gamepad1)
+    .setJoystickSlewRateLimiters(
+        new SlewRateLimiter(4.0), // left stick x
+        new SlewRateLimiter(4.0), // left stick y
+        new SlewRateLimiter(6.0), // right stick x (turning can respond faster)
+        null                      // right stick y (not limited)
+    );
+```
+
+### Usage
+
+```java
+GamepadEx driverOp = new GamepadEx(gamepad1)
+    .setJoystickSlewRateLimiters(
+        new SlewRateLimiter(4.0),
+        new SlewRateLimiter(4.0),
+        new SlewRateLimiter(6.0),
+        null
+    );
+
+waitForStart();
+
+while (opModeIsActive()) {
+    // already rate-limited
+    double strafe = driverOp.getLeftX();
+    double forward = driverOp.getLeftY();
+    double turn = driverOp.getRightX();
+
+    drive.driveRobotCentric(strafe, forward, turn);
 }
 ```

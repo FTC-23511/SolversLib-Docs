@@ -1,12 +1,12 @@
 ---
-description: package com.seattlesolvers.solverslib.hardware
+description: packages com.seattlesolvers.solverslib.hardware.servos and .motors
 ---
 
 # Servos
 
 ## ServoEx
 
-The [ServoEx](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/ServoEx.java) class allows for more methods and actions than the normal servo class in the SDK. You can change the position of the servo relative to the last position or set it to an absolute position. You can either specify a position within the range of the servo's motion or have it rotate a certain number of specified angle units.
+The [ServoEx](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/servos/ServoEx.java) class allows for more methods and actions than the normal servo class in the SDK. You can change the position of the servo relative to the last position or set it to an absolute position. You can either specify a position within the range of the servo's motion or have it rotate a certain number of specified angle units.
 
 It serves as a successor to the [ServoEx](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/ServoEx.java) interface and [SimpleServo](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/SimpleServo.java) class, which have now been Deprecated. A copy of the original ServoEx interface documentation can be viewed [here](motors-1.md#servoex-interface-and-simpleservo-class).
 
@@ -26,29 +26,15 @@ ServoEx servoEx = new ServoEx(hardwareMap, "servoEx");
 ServoEx(HardwareMap hwMap, String id, double min, double max)
 ```
 
-`MIN_ANGLE` and `MAX_ANGLE` are the minimum and maximum angle positions in degrees you would like to set the servo. This functionally serves as the servo's effective range. If you want to change the effective range at any point, you can do the following:
+`MIN_ANGLE` and `MAX_ANGLE` are the minimum and maximum angle positions (in whatever angle unit you use consistently) you would like to set the servo. This functionally serves as the servo's effective range. The effective range is fixed at construction; to use a different range, construct a new `ServoEx` with the desired min and max.
+
+#### 3. Angle Control (with Range)
 
 ```java
-// change the effective range to a min and max in DEGREES
-servo.setRange(MIN_ANGLE, MAX_ANGLE);
-
-// change the range to a min and max in RADIANS
-servo.setRange(MIN_ANGLE, MAX_ANGLE, AngleUnit.RADIANS);
-
-// return the effective range
-double degreeRange = servo.getAngleRange();
-
-// return the effective range in RADIANS
-degreeRange = servo.getAngleRange(AngleUnit.RADIANS);
+ServoEx(HardwareMap hwMap, String id, double range)
 ```
 
-#### 3. Angle Control (with Range and AngleUnit)
-
-```java
-ServoEx(HardwareMap hwMap, String id, double range, AngleUnit angleUnit)
-```
-
-This is similar to the 2nd constructor, except that you specify the angular range (from when the servo is set to 0 to 1). As such, you also need to define the AngleUnit (Degrees or Radians) for that range.
+This is similar to the 2nd constructor, except that you specify only the angular range (from when the servo is set to 0 to 1); the minimum is assumed to be 0. The range is in whatever angle unit you choose to use consistently.
 
 ### Utility Methods:
 
@@ -64,10 +50,9 @@ boolean isInverted = servo.getInverted();
 
 To turn to positions and angles, utilize the following methods:
 
-* `rotateByAngle`: turns the servo a number of angle units relative to the current angle
-* `turnToAngle`: sets the absolute angle of the servo
-* `rotateBy`: turns the servo a relative positional distance from the current position
-* `setPosition`: set the absolute position of the servo (from 0 to 1)
+* `set`: sets the position (or angle, if a range or min + max were defined in the constructor) of the servo
+* `get`: returns the position/angle of the servo based on the last write
+* `getRawPosition`: returns the raw servo position from 0 to 1
 
 ### Power Caching
 
@@ -82,15 +67,56 @@ servoEx.setCachingTolerance(0.0001);
 ```
 
 {% hint style="warning" %}
-This default value of `0.0001`  effectively disables the feature. To actually see results with power caching, increase it to `0.01` or higher depending on the precision required.
+This default value of `0.0001` effectively disables the feature. To actually see results with power caching, increase it to `0.01` or higher depending on the precision required.
 {% endhint %}
+
+## ServoExGroup
+
+The [ServoExGroup](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/servos/ServoExGroup.java) is like a CRServoGroup, but for `ServoEx`. A ServoExGroup object takes several ServoEx's and runs them in parallel like a single ServoEx. ServoEx groups have one leader and a set of followers. For any group, there _must_ be a leader, but the number of followers can be zero. The constructor for a `ServoExGroup` is as follows:
+
+```java
+ServoExGroup myServos = new ServoExGroup(leader, follower1, follower2, ...);
+```
+
+The number of followers is variable. When you call `set()`, the leader is set first and every follower is then set to the leader's position, so you can very simply treat a `ServoExGroup` object like a single `ServoEx` object.
+
+### Methods
+
+* `set(double position)`: sets the position of the leader, then sets every follower to the leader's position
+* `get()`: returns the last position of the leader
+* `getPositions()`: returns a `List<Double>` of the target positions of every servo in the group
+* `setInverted(boolean isInverted)`: inverts every servo in the group (returns the group for chaining)
+* `getInverted()`: returns whether the group (based on the leader) is inverted
+* `disable()`: disables every servo in the group
+* `getDeviceType()`: returns "ServoEx Group"
+
+The group is also `Iterable`, so you can loop over each `ServoEx` in the group with a for-each loop if needed.
+
+{% hint style="info" %}
+`setInverted()` on the group inverts _every_ servo in it. If two servos are mounted mirrored to each other (very common for a two-servo wrist or claw), invert one of them individually _before_ constructing the group.
+{% endhint %}
+
+### Example: Two-Servo Wrist
+
+```java
+ServoEx leftWrist = new ServoEx(hardwareMap, "leftWrist");
+ServoEx rightWrist = new ServoEx(hardwareMap, "rightWrist");
+
+// the servos are mounted mirrored, so invert one of them
+rightWrist.setInverted(true);
+
+ServoExGroup wrist = new ServoExGroup(leftWrist, rightWrist);
+
+// drive both servos together like a single ServoEx
+wrist.set(0.6);
+```
 
 ## CRServo
 
 The [CRServo](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/hardware/motors/CRServo.java) class is just a motor object intended to be used for a continuous rotation servo. Its general purpose is to be used in SolversLib classes that require a `Motor` input. It works just like a regular motor, without any of the encoder stuff. As such, it extends the `Motor` class, and can be used in a [CRServoGroup](servos.md#crservogroup).
 
 ```java
-CRServo crServo = CRServo(hardwareMap, "CRServo");
+CRServo crServo = new CRServo(hardwareMap, "CRServo");
 
 crServo.set(0.5);
 ```
@@ -104,11 +130,9 @@ The `CRServoEx` class is an advanced wrapper for continuous rotation servos (CRS
 * **Power caching for improved loop performance**
 * **Custom PWM range support**
 
-It it extends `CRServo`, which in turn extends the `Motor` class, and can also be used in a [CRServoGroup](servos.md#crservogroup).
+It extends `CRServo`, which in turn extends the `Motor` class, and can also be used in a [CRServoGroup](servos.md#crservogroup).
 
-
-
-The `AbsoluteAnalogEncoder` class is an advanced wrapper for Analog input AnalogInput absolute encoders, which are most commonly seen on servos with a 4th wire (like Axon Servos). It is best used in conjuction with `CRServoEx` .
+The `AbsoluteAnalogEncoder` class is an advanced wrapper for Analog input AnalogInput absolute encoders, which are most commonly seen on servos with a 4th wire (like Axon Servos). It is best used in conjunction with `CRServoEx` .
 
 ### Constructors (AbsoluteAnalogEncoder)
 
@@ -123,7 +147,7 @@ AbsoluteAnalogEncoder encoder = new AbsoluteAnalogEncoder(hardwareMap, "absolute
 
 This defaults to a range of 3.3, and an `AngleUnit` of Radians. If you do not know what you need, this is most likely it (and is functional for Axon servos).
 
-#### 2. Advanced CRServo
+#### 2. Advanced AbsoluteAnalogEncoder
 
 ```java
 AbsoluteAnalogEncoder(HardwareMap hwMap, String id, double range, AngleUnit angleUnit)
@@ -132,7 +156,7 @@ AbsoluteAnalogEncoder(HardwareMap hwMap, String id, double range, AngleUnit angl
 AbsoluteAnalogEncoder absoluteEncoder = new AbsoluteAnalogEncoder(hwMap, "encoder", 3.3, AngleUnit.RADIANS)
 ```
 
-This allows you to set your own range and An`gleUnit` if necessary. These constructors are used automatically in the designated CRServoEx constructors below as well.
+This allows you to set your own range and `AngleUnit` if necessary. These constructors are used automatically in the designated CRServoEx constructors below as well.
 
 * `angleUnit`: Angle unit for moving servo to position (`AngleUnit.DEGREES` or `AngleUnit.RADIANS`)
 * `analogRange`: Voltage range for the encoder (e.g., 3.3V or 5V, depending on hardware)
@@ -165,7 +189,7 @@ CRServoEx crServoEx = new CRServoEx(hardwareMap, "crServoEx", encoder, CRServoEx
 * `runmode`: Mode to run (see below)
 
 {% hint style="danger" %}
-**Warning:** If you have set the runmode to `OptimizedPositionalControl`, regardless if you want angle-based control, you must use a valid `AbsoluteAnalogEncoder` and also set the `PIDF` (see below for more information). Failing to do will result in an error being thrown.
+**Warning:** If you have set the runmode to `OptimizedPositionalControl`, regardless if you want angle-based control, you must use a valid `AbsoluteAnalogEncoder` and also set the `PIDF` (see below for more information). Failing to do so will result in an error being thrown.
 {% endhint %}
 
 #### 3. Advanced Encoder Configuration
@@ -186,7 +210,7 @@ Instead of passing an `AbsoluteAnalogEncoder` in, this overloaded constructor ha
 
 ### Using a CRServoEx RunMode
 
-Like the `Motor`'s  RunMode, the CRServoEx RunMode is a method of running the CRServoEx when power is supplied. However, there are only two modes: `OptimizedPositionalControl`, and `RawPower`.
+Like the `Motor`'s RunMode, the CRServoEx RunMode is a method of running the CRServoEx when power is supplied. However, there are only two modes: `OptimizedPositionalControl`, and `RawPower`.
 
 ```java
 // in CRServoEx.java
@@ -223,7 +247,7 @@ public enum RunMode {
       ```
   * If PIDF not set, positional control will throw an error.
 
-#### `RawPowerMode`
+#### `RawPower`
 
 * Acts like a normal CRServo's `RawPower`.
 
@@ -273,7 +297,7 @@ crServoEx.set(Math.toRadians(135));
 * `.getController()`: Get extended controller instance.
 * `.getServo()`: Get underlying SDK CRServo object.
 * `.getDeviceType()`: Returns device type (string).
-* `.setPwm`: Sets the PWM range for the servo using
+* `.setPwm(PwmControl.PwmRange pwmRange)`: Sets the PWM range for the servo using the SDK's `PwmControl.PwmRange`
 
 For more details, refer to the Javadocs within `CRServoEx.java`. The class supports method chaining for convenient setup and configuration.
 
@@ -282,7 +306,7 @@ For more details, refer to the Javadocs within `CRServoEx.java`. The class suppo
 The CRServoGroup is like a MotorGroup, but for CRServo/CRServoEx. A CRServo group object takes several CRServos and runs them in parallel like a single CRServo. CRServo groups have one leader and a set of followers. For any group, there _must_ be a leader, but the number of followers can be zero. This makes creating different drive profiles simpler. The constructor for a `CRServoGroup` is as follows:
 
 ```java
-CRServoEx myCRServos = new CRServoGroup(leader, follower1, follower2, ...);
+CRServoGroup myCRServos = new CRServoGroup(leader, follower1, follower2, ...);
 ```
 
 The number of followers is variable. The other methods of the `CRServoGroup` are the same as the ones found in `CRServo`. You can very simply treat a `CRServoGroup` object like a single `CRServo` object. The [flywheel sample](https://github.com/FTC-23511/SolversLib/blob/master/examples/src/main/java/org/firstinspires/ftc/teamcode/FlywheelSample.java) in the examples folder shows a few other methods you can utilize with the `MotorGroup`.

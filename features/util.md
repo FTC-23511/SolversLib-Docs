@@ -1,5 +1,5 @@
 ---
-description: package com.seattlesolvers.solverslib.solverslib.util;
+description: package com.seattlesolvers.solverslib.util;
 ---
 
 # Utility Functions
@@ -96,20 +96,28 @@ A timer can be created with a length or length and Time Unit. The various functi
 
 ## Math Utilities
 
-SolversLib currently adds 1 math utility, clamp. It lets you restrict a value to a certain max and min and is usable in double and int.
+SolversLib provides its math utilities through the [MathUtils](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/util/MathUtils.java) class. Every method is `static`, so you never create a `MathUtils` object — just import the class and call the methods on it directly:
+
+```java
+import com.seattlesolvers.solverslib.util.MathUtils;
+```
+
+### Clamp
+
+`clamp` lets you restrict a value to a certain max and min and is usable in double and int.
 
 **Example Usage:**
 
 Double Method:
 
 ```java
-import com.seattlesolvers.solverslib.util;
+import com.seattlesolvers.solverslib.util.MathUtils;
 
 double ValueToClamp;
 double LowestPossibleValue;
 double HighestPossibleValue;
 
-double OutputVal = clamp(ValueToClamp,
+double OutputVal = MathUtils.clamp(ValueToClamp,
                          LowestPossibleValue,
                          HighestPossibleValue);
 ```
@@ -117,15 +125,47 @@ double OutputVal = clamp(ValueToClamp,
 Int Method:
 
 ```java
-import com.seattlesolvers.solverslib.util;
+import com.seattlesolvers.solverslib.util.MathUtils;
 
 int ValueToClamp;
 int LowestPossibleValue;
 int HighestPossibleValue;
 
-int OutputVal = clamp(ValueToClamp,
+int OutputVal = MathUtils.clamp(ValueToClamp,
                          LowestPossibleValue,
                          HighestPossibleValue);
+```
+
+### Round
+
+`round(double number, int places)` rounds a number to the given amount of decimal places (rounding half up), which is handy for cleaning up telemetry values.
+
+```java
+double rounded = MathUtils.round(3.14159, 2); // 3.14
+```
+
+### Angle Normalization
+
+These methods wrap an angle back into a standard range, which is useful for heading math — for example, making sure your turn-to-angle code always takes the shortest way around. The boolean parameter picks the output range: `true` gives 0 to 360° (or 0 to 2π), while `false` gives -180° to 180° (or -π to π).
+
+| Method                                                                 | Description                                                                                 |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `normalizeAngle(double angle, boolean zeroToMax, AngleUnit angleUnit)` | Normalizes an angle in the unit given by the FTC SDK's `AngleUnit` (`DEGREES` or `RADIANS`) |
+| `normalizeDegrees(double angle, boolean zeroToFull)`                   | Shortcut for `normalizeAngle` with `AngleUnit.DEGREES`                                      |
+| `normalizeRadians(double angle, boolean zeroToFull)`                   | Shortcut for `normalizeAngle` with `AngleUnit.RADIANS`                                      |
+| `returnMaxForAngleUnit(AngleUnit angleUnit)`                           | Returns the full-circle value for the unit (360 for degrees, 2π for radians)                |
+
+```java
+double heading = MathUtils.normalizeDegrees(450, true);  // 90.0
+double error = MathUtils.normalizeDegrees(190, false);   // -170.0
+```
+
+### Signed Square Root
+
+`sqrtWithSig(double val)` returns the square root of the absolute value while keeping the original sign — useful for shaping joystick inputs without losing direction.
+
+```java
+double shaped = MathUtils.sqrtWithSig(-0.25); // -0.5
 ```
 
 ## Directional Enums

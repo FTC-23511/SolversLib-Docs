@@ -181,7 +181,7 @@ As you can see, conditional commands are very useful for switching between state
 
 ### UninterruptibleCommand
 
-Schedules a given command as uninterruptible. This command's paramater is single command, so multiple commands need to be put in a CommandGroup first. See [#schedulecommand](convenience-commands.md#schedulecommand "mention")for scheduling commands as interruptible.
+Schedules a given command as uninterruptible. This command's parameter is a single command, so multiple commands need to be put in a CommandGroup first. See [#schedulecommand](convenience-commands.md#schedulecommand "mention") for scheduling commands as interruptible.
 
 ```java
 // With one command:
@@ -201,7 +201,7 @@ UninterruptibleCommand uninterruptibleCommand = new UninterruptibleCommand(
 
 ### ScheduleCommand
 
-Does exactly as the name suggests: schedules commands (all as interruptible). You can input a variable number of command arguments to schedule, and the command will schedule them on initialization. After this, the command will finish. This is useful for forking off of command groups. See [#uninterruptiblecommand](convenience-commands.md#uninterruptiblecommand "mention") for scheduling commands as interruptible.
+Does exactly as the name suggests: schedules commands (all as interruptible). You can input a variable number of command arguments to schedule, and the command will schedule them on initialization. After this, the command will finish. This is useful for forking off of command groups. See [#uninterruptiblecommand](convenience-commands.md#uninterruptiblecommand "mention") for scheduling commands as uninterruptible.
 
 So far we've been using the convenience commands we've learned in tandem and how they can be used together to produce more efficient paradigm utility. This is no exception for the `ScheduleCommand`. We can use a conditional command to schedule a desired command.
 
@@ -241,9 +241,9 @@ public Height height() {
 SelectCommand wobbleCommand = new SelectCommand(
     // the first parameter is a map of commands
     new HashMap<Object, Command>() {{
-        put(Height.ZERO, new new PurePursuitCommand(...)));
-        put(Height.ONE, new PurePursuitCommand(...)));
-        put(Height.FOUR, new PurePursuitCommand(...)));
+        put(Height.ZERO, new PurePursuitCommand(...));
+        put(Height.ONE, new PurePursuitCommand(...));
+        put(Height.FOUR, new PurePursuitCommand(...));
     }},
     // the selector
     this::height
@@ -265,11 +265,11 @@ public Height height() {
 public Command wobbleCommand() {
     Height rings = this.height();
     switch (rings) {
-        case Height.ZERO:
+        case ZERO:
             return ...;
-        case Height.ONE:
+        case ONE:
             return ...;
-        case Height.FOUR:
+        case FOUR:
             return ...;
     }
 }
@@ -329,23 +329,21 @@ new RepeatCommand(command, () -> someCondition);
 
 Effectively a repeat until loop, with the second parameter being a `BooleanSupplier` condition. In other words, it repeats `command` until `someCondition` is true.
 
-3. Repeat an integer amount of times
+#### 3. Repeat an integer amount of times
 
 ```java
 new RepeatCommand(command, repeatTimes);
 ```
 
-Repeats the wrapped command for the number given in the second parameter. As such, `repeatTimes` must be >= 0.
+Repeats the wrapped command for the number given in the second parameter. As such, `repeatTimes` must be greater than 0 (passing 0 or a negative number throws an `IllegalArgumentException`).
 
 ### RetryCommand
 
-`RetryCommand` is a command originating from [Marrow](https://skeleton-army.gitbook.io/marrow). Designed for SolversLib, it's been moved over to SolversLib natively for convenience. The documentation below for it is copied vertabrim from Marrow: \
+`RetryCommand` is a command originating from [Marrow](https://skeleton-army.gitbook.io/marrow). Designed for SolversLib, it's been moved over to SolversLib natively for convenience. The documentation below for it is copied verbatim from Marrow:\
 \
 `RetryCommand` is designed for building adaptable and reliable command sequences. It executes a command, and, if the specified condition is not met upon completion, automatically retries up to the specified amount of times.
 
 This is especially useful for actions that may fail on the first attempt, such as vision-based alignment, object grabbing, or precise mechanism positioning.
-
-
 
 To use `RetryCommand`, you need to provide the constructor with:
 
@@ -384,8 +382,6 @@ new RetryCommand(
 ```
 
 This repeats a command that isn't the original that fails.
-
-
 
 Here’s an example autonomous that uses `RetryCommand` together with SolversLib’s command system:
 
@@ -430,6 +426,27 @@ This is by no means a functional autonomous program, and is purely used as an ex
 
 Check out the [Marrow Retries page](https://skeleton-army.gitbook.io/marrow/concepts/beyond-the-basics/retries) for more info.
 
+### WaitCommand
+
+A `WaitCommand` does nothing and finishes after a specified duration, given in milliseconds. It is one of the most common pieces of "glue" inside a `SequentialCommandGroup`: use it whenever a mechanism needs real time to physically move before the next command should start, such as waiting for a servo to reach its position.
+
+```java
+WaitCommand(long millis)
+```
+
+For example, in a scoring sequence:
+
+```java
+SequentialCommandGroup score = new SequentialCommandGroup(
+    new InstantCommand(claw::open, claw),
+    // give the claw servo time to physically open
+    new WaitCommand(500),
+    new InstantCommand(lift::retract, lift)
+);
+```
+
+`WaitCommand` can also be subclassed to make a command with an internal `Timer` (the protected `m_timer` field). If you want to wait for a condition instead of a fixed amount of time, use the `WaitUntilCommand` below.
+
 ### WaitUntilCommand
 
 A `WaitUntilCommand` is run until the boolean supplied returns true. This is useful for when you have forked off from a command group. Let's expand upon the example from the [`ScheduleCommand`](convenience-commands.md#schedulecommand) but with a single schedule command.
@@ -450,7 +467,7 @@ The following commands in the auto command group are only run after that forked 
 
 ### StartEndCommand
 
-The `StartEndCommand` is essentially an `InstantCommand` with a custom end function. It takes two `Runnable` parameters an optional varargs of subsystems to require. The first parameter is run on initialize and the second is run on end.
+The `StartEndCommand` is essentially an `InstantCommand` with a custom end function. It takes two `Runnable` parameters and an optional varargs of subsystems to require. The first parameter is run on initialize and the second is run on end.
 
 ### DeferredCommand
 
@@ -461,7 +478,7 @@ Sometimes, you don't know what command you need until later. For example:
 * You want to choose the command based on **sensor data**
 * You want to choose the command based on the **most recent state of a variable**
 
-The `DeferredCommand` waits until the command is executed to decide which command to run. It takes a `command` and a `list` of required `subsystems` as input.
+The `DeferredCommand` waits until the command is initialized to decide which command to run. It takes a `Supplier<Command>` and a `List` of required `subsystems` as input.
 
 ```java
 
@@ -481,13 +498,117 @@ class Door extends SubsystemBase {
 }
 
 schedule(
-	new DeferredCommand(door.setOpen(false), door);
+	new DeferredCommand(() -> door.setOpen(false), Arrays.asList(door))
 )
 ```
 
 In this example, since the initial value of `isOpen` is `false`, without the use of `DeferredCommand`, no matter what the current state of the door is, `door.setOpen(false)` would return an `InstantCommand`. By using `DeferredCommand`, you can make the command use the current state instead of the state when the command was instantiated.
 
 Note that the example above is simple and can be handled by a [#conditionalcommand](convenience-commands.md#conditionalcommand "mention") more conveniently.
+
+### CallbackCommand
+
+`CallbackCommand` wraps a single command and lets you attach callbacks that fire the first time a condition becomes true while the wrapped command is running. On initialization it schedules the wrapped command separately (similar to `asProxy`), and it finishes once the wrapped command is no longer scheduled. Each callback fires at most once: after its condition first returns true, it is removed.
+
+```java
+CallbackCommand(T command)
+```
+
+`CallbackCommand<T extends Command>` is generic: the type parameter `T` is the type of the wrapped command, which gives the `whenSelf` callbacks typed access to it. Like the `UninterruptibleCommand`, the constructor expects a single command, so multiple commands need to be put in a command group first.
+
+The callback methods all return the `CallbackCommand` itself for chaining:
+
+* `when(BooleanSupplier condition, Runnable action)` — runs the `Runnable` the first time the condition is true.
+* `when(BooleanSupplier condition, Command action)` — schedules the `Command` the first time the condition is true.
+* `whenSelf(BooleanSupplier condition, Consumer<T> action)` — passes the wrapped command to the `Consumer` the first time the condition is true.
+* `whenSelf(Predicate<T> condition, Runnable action)` — like `when`, but the condition is a `Predicate` that receives the wrapped command.
+* `whenSelf(Predicate<T> condition, Command action)` — schedules the `Command` the first time the predicate is true.
+* `whenSelf(Predicate<T> condition, Consumer<T> action)` — passes the wrapped command to the `Consumer` the first time the predicate is true.
+
+```java
+schedule(
+    new CallbackCommand<>(new DriveForwardCommand(drive))
+        // raise the lift once the robot has driven 24 inches
+        .when(() -> drive.getDistance() > 24, new LiftUpCommand(lift))
+        // rumble the gamepad when the drive command reports it is finished
+        .whenSelf(cmd -> cmd.isFinished(), () -> gamepad1.rumble(250))
+);
+```
+
+Note that the `CallbackCommand` does not inherit the wrapped command's requirements; call `addRequirements()` on it separately if needed.
+
+Every command also has `when(BooleanSupplier, Runnable)` and `when(BooleanSupplier, Command)` decorators that wrap the command in a `CallbackCommand` for you:
+
+```java
+schedule(
+    new DriveForwardCommand(drive)
+        .when(() -> drive.getDistance() > 24, new LiftUpCommand(lift))
+);
+```
+
+### LambdaCommand
+
+`LambdaCommand` lets you build an entire command out of lambdas without creating a new class, analogous to lambda functions or closures. Every phase of the command (`initialize()`, `execute()`, `isFinished()`, `end()`) can be supplied either through a chainable builder or all at once through a constructor.
+
+{% hint style="warning" %}
+By default, `isFinished()` returns `true`, so a `LambdaCommand` without a `setIsFinished()` call runs `initialize()` and `execute()` once and then ends, just like an `InstantCommand`.
+{% endhint %}
+
+#### 1. Builder style
+
+Each setter returns the `LambdaCommand` itself for chaining:
+
+* `setInitialize(Runnable initialize)` — run once when the command is scheduled.
+* `setExecute(Runnable execute)` — run repeatedly while the command is scheduled.
+* `setIsFinished(BooleanSupplier isFinished)` — the command ends once this returns `true`.
+* `setEnd(Consumer<Boolean> end)` — run once when the command ends; the `Boolean` is whether it was interrupted.
+* `setEnd(Runnable end)` — an overload that ignores the interrupted flag.
+* `setRunWhenDisabled(BooleanSupplier runWhenDisabled)` / `setRunWhenDisabled(boolean runWhenDisabled)` — whether the command may run while the robot is disabled.
+* `setName(String name)`, `setSubsystem(String subsystem)`, and `addRequirements(Subsystem... requirements)` also return the `LambdaCommand` for chaining.
+
+```java
+Command driveForward = new LambdaCommand()
+    .setInitialize(() -> drivetrain.resetEncoders())
+    .setExecute(() -> drivetrain.drive(0.5))
+    .setIsFinished(() -> drivetrain.getDistance() > 24)
+    .setEnd(interrupted -> drivetrain.stop())
+    .setName("DriveForward")
+    .addRequirements(drivetrain);
+```
+
+#### 2. Functional style
+
+```java
+LambdaCommand(Runnable initialize,
+              Runnable execute,
+              BooleanSupplier isFinished,
+              Consumer<Boolean> end,
+              String name,
+              BooleanSupplier runWhenDisabled)
+```
+
+```java
+new LambdaCommand(
+    () -> drivetrain.resetEncoders(),
+    () -> drivetrain.drive(0.5),
+    () -> drivetrain.getDistance() > 24,
+    interrupted -> drivetrain.stop(),
+    "DriveForward",
+    () -> false
+).addRequirements(drivetrain);
+```
+
+#### 3. From an existing command
+
+The static factory `LambdaCommand.from(Command command)` copies the phases of an existing command into a new `LambdaCommand`, which is useful when you only need to change one part of the original:
+
+```java
+// the same as liftCommand, but with a custom finish condition
+Command liftUntilStalled = LambdaCommand.from(liftCommand)
+    .setIsFinished(() -> lift.isStalled());
+```
+
+Note that `from()` does not copy the original command's requirements, so re-add them with `addRequirements()` if needed.
 
 ### FunctionalCommand
 
@@ -509,7 +630,7 @@ SequentialCommandGroup auto = new SequentialCommandGroup(
             // remember run() returns void
         },
         // end actions
-        driveSubsystem::stop,
+        interrupted -> driveSubsystem.stop(),
         // is finished supplier
         () -> {
             /* logic that returns a boolean */
@@ -523,7 +644,63 @@ SequentialCommandGroup auto = new SequentialCommandGroup(
 );
 ```
 
+## The Commands Utility Class
 
+`Commands` is a utility class of static factory methods that construct the framework commands from this page with less boilerplate.
+
+{% hint style="info" %}
+`Commands` (plural) is not the `Command` interface. It is a `final` utility class that only builds and returns commands — it cannot be instantiated or implemented.
+{% endhint %}
+
+All of the factory methods below are `static` and return a `Command`:
+
+#### Action commands
+
+* `Commands.none()` — does nothing and finishes immediately (an `InstantCommand`).
+* `Commands.idle(Subsystem... requirements)` — does nothing until interrupted.
+* `Commands.runOnce(Runnable action, Subsystem... requirements)` — an `InstantCommand`.
+* `Commands.run(Runnable action, Subsystem... requirements)` — a `RunCommand`.
+* `Commands.startEnd(Runnable start, Runnable end, Subsystem... requirements)` — a `StartEndCommand`.
+* `Commands.runEnd(Runnable run, Runnable end, Subsystem... requirements)` — runs an action every iteration until interrupted, then runs the end action.
+* `Commands.startRun(Runnable start, Runnable run, Subsystem... requirements)` — runs an action once, then another action every iteration until interrupted.
+* `Commands.print(String message)` — a `PrintCommand` that prints a message and finishes.
+
+#### Idling commands
+
+* `Commands.waitMillis(long millis)` — a `WaitCommand`.
+* `Commands.waitUntil(BooleanSupplier condition)` — a `WaitUntilCommand`.
+
+#### Selector commands
+
+* `Commands.either(Command onTrue, Command onFalse, BooleanSupplier selector)` — a `ConditionalCommand`.
+* `Commands.select(Map<Object, Command> commands, Supplier<Object> selector)` — a `SelectCommand`.
+* `Commands.defer(Supplier<Command> supplier, List<Subsystem> requirements)` — a `DeferredCommand`.
+* `Commands.deferredProxy(Supplier<Command> supplier)` — defers to the supplied command and runs it by proxy.
+
+#### Command groups
+
+* `Commands.sequence(Command... commands)` — a `SequentialCommandGroup`.
+* `Commands.perpetuatingSequence(Command... commands)` — a sequence that restarts and runs perpetually once the last command ends.
+* `Commands.parallel(Command... commands)` — a `ParallelCommandGroup`.
+* `Commands.race(Command... commands)` — a `ParallelRaceGroup`.
+* `Commands.deadline(Command deadline, Command... otherCommands)` — a `ParallelDeadlineGroup`.
+
+Since every factory is static, whole routines can be written inline:
+
+```java
+schedule(
+    Commands.sequence(
+        Commands.runOnce(claw::grab, claw),
+        Commands.waitMillis(300),
+        Commands.parallel(
+            Commands.runOnce(lift::raise, lift),
+            Commands.print("Scoring!")
+        )
+    )
+);
+```
+
+You can see the full class in the [Commands source on GitHub](https://github.com/FTC-23511/SolversLib/blob/master/core/src/main/java/com/seattlesolvers/solverslib/command/Commands.java).
 
 ## Command Decorators
 
@@ -582,9 +759,9 @@ An overloaded method of [beforeStarting](convenience-commands.md#beforestarting)
 
 ```java
 schedule(
-    fooCommand.beforeStarting(() -> {
-        /* COMMAND */
-    })
+    fooCommand.beforeStarting(
+        barCommand    // a Command, not a Runnable
+    )
 );
 ```
 
@@ -644,7 +821,7 @@ Swallows the command into a `PerpetualCommand` and returns it.
 
 ```java
 // returns a perpetual command
-PerpetualCommand perpetual = fooCommand.perpetually();
+Command perpetual = fooCommand.perpetually();
 ```
 
 ### asProxy
@@ -652,6 +829,6 @@ PerpetualCommand perpetual = fooCommand.perpetually();
 Swallows the command into a `ProxyScheduleCommand` and returns it. This is similar to a `ScheduleCommand` except it ends when all the commands that it scheduled are finished rather than immediately.
 
 ```java
-// reurns a proxy schedule command
-ProxyScheduleCommand proxySchedule = fooCommand.asProxy();
+// returns a proxy schedule command
+Command proxySchedule = fooCommand.asProxy();
 ```
