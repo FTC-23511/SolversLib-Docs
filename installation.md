@@ -45,14 +45,6 @@ dependencies {
 ```
 {% endcode %}
 
-{% hint style="info" %}
-**New in pedroPathing 0.3.6:** the `pedroPathing` module now supports Pedro Pathing 3.0.0 (`com.pedropathing:revhub`). Pedro Pathing 3 removed `PathChain`, so `FollowPathCommand` only takes a `Path` now. Only `pedroPathing` changed in this release; `core` and `photon` stay at 0.3.5.
-{% endhint %}
-
-{% hint style="info" %}
-**New in 0.3.5:** SolversLib no longer pins a specific FTC SDK version (the SDK is now a `compileOnly` dependency), so it works with newer FTC SDK versions out of the box.
-{% endhint %}
-
 {% hint style="danger" %}
 **Important:** Different versions of SolversLib correlate with different versions of Pedro Pathing.
 
