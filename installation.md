@@ -40,13 +40,13 @@ dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     implementation "org.solverslib:core:0.3.5" // core
     implementation "org.solverslib:pedroPathing:0.3.6" // pedroPathing
-    implementation "org.solverslib:photon:0.3.6" // photon
+    implementation "org.solverslib:photon:0.3.5" // photon
 }
 ```
 {% endcode %}
 
 {% hint style="info" %}
-**New in pedroPathing 0.3.6:** the `pedroPathing` module now supports Pedro Pathing 3.0.0 (`com.pedropathing:revhub`). Pedro Pathing 3 removed `PathChain`, so `FollowPathCommand` only takes a `Path` now. `pedroPathing` and `photon` each pin `core` to their own version, so keep them on the same version (if you use Photon, update it to 0.3.6 as well); `core:0.3.5` can stay and Gradle will use `core:0.3.6` automatically.
+**New in pedroPathing 0.3.6:** the `pedroPathing` module now supports Pedro Pathing 3.0.0 (`com.pedropathing:revhub`). Pedro Pathing 3 removed `PathChain`, so `FollowPathCommand` only takes a `Path` now. Only `pedroPathing` changed in this release; `core` and `photon` stay at 0.3.5.
 {% endhint %}
 
 {% hint style="info" %}
