@@ -27,7 +27,7 @@ Or, if you are using [Pedro Pathing](pedro-pathing/pedro-commands/), change to t
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     implementation "org.solverslib:core:0.3.5" // core
-    implementation "org.solverslib:pedroPathing:0.3.5" // pedroPathing
+    implementation "org.solverslib:pedroPathing:0.3.6" // pedroPathing
 }
 ```
 {% endcode %}
@@ -39,11 +39,15 @@ And if you are using [Photon](photon/what-is-photon.md), change to this dependen
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
     implementation "org.solverslib:core:0.3.5" // core
-    implementation "org.solverslib:pedroPathing:0.3.5" // pedroPathing
-    implementation "org.solverslib:photon:0.3.5" // photon
+    implementation "org.solverslib:pedroPathing:0.3.6" // pedroPathing
+    implementation "org.solverslib:photon:0.3.6" // photon
 }
 ```
 {% endcode %}
+
+{% hint style="info" %}
+**New in pedroPathing 0.3.6:** the `pedroPathing` module now supports Pedro Pathing 3.0.0 (`com.pedropathing:revhub`). Pedro Pathing 3 removed `PathChain`, so `FollowPathCommand` only takes a `Path` now. `pedroPathing` and `photon` each pin `core` to their own version, so keep them on the same version (if you use Photon, update it to 0.3.6 as well); `core:0.3.5` can stay and Gradle will use `core:0.3.6` automatically.
+{% endhint %}
 
 {% hint style="info" %}
 **New in 0.3.5:** SolversLib no longer pins a specific FTC SDK version (the SDK is now a `compileOnly` dependency), so it works with newer FTC SDK versions out of the box.
@@ -52,7 +56,8 @@ dependencies {
 {% hint style="danger" %}
 **Important:** Different versions of SolversLib correlate with different versions of Pedro Pathing.
 
-[SolversLib 0.3.3](https://docs.seattlesolvers.com/0.3.3/installation)+ is for Pedro Pathing 2.0.0 and higher\
+[SolversLib 0.3.6](https://docs.seattlesolvers.com/installation)+ is for Pedro Pathing 3.0.0 and higher\
+[SolversLib 0.3.3](https://docs.seattlesolvers.com/0.3.3/installation) to [0.3.5](https://docs.seattlesolvers.com/0.3.5/installation) is for Pedro Pathing 2.x (2.0.0 to 2.1.2)\
 [SolversLib 0.3.2](https://docs.seattlesolvers.com/0.3.2/installation) is for Pedro Pathing 1.0.9\
 [SolversLib 0.3.1](https://docs.seattlesolvers.com/0.3.1/installation) is for Pedro Pathing 1.0.8
 {% endhint %}
@@ -64,7 +69,7 @@ The latest version numbers (as well as a list of all version numbers) are availa
 * Latest `photon` version: [https://repo.dairy.foundation/#/releases/org/solverslib/photon](https://repo.dairy.foundation/#/releases/org/solverslib/photon)
 
 {% hint style="danger" %}
-**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing 2.0.0](https://pedropathing.com/)+ in order to use it.
+**Warning:** If you choose to use the Pedro Pathing module, you still need to [install Pedro Pathing 3.0.0](https://pedropathing.com/docs/pathing/installation)+ (`com.pedropathing:revhub`) in order to use it.
 {% endhint %}
 
 Please note that you should not and cannot have both FTCLib and SolversLib installed at the same time.
@@ -125,4 +130,4 @@ Get-ChildItem -Recurse -Filter *.java | ForEach-Object {
 
 An alternative option is to simply use the SolversLib Quickstart. Similar to the FTCLib Quickstart, SolversLib has a Quickstart with this library fully set up. You can view it at [https://github.com/FTC-23511/SolversLib-Quickstart](https://github.com/FTC-23511/SolversLib-Quickstart). You can either fork or clone this repository as needed to use it.
 
-In addition, the Quickstart also has the Pedro Pathing library installed and added along with the SolversLib `pedroPathing`\` dependency, meaning that it is hassle-free. If you don't want the Pedro Pathing part, you can simply delete the relevant files and dependencies.
+In addition, the Quickstart also has the Pedro Pathing library installed and added along with the SolversLib `pedroPathing` dependency, meaning that it is hassle-free. If you don't want the Pedro Pathing part, you can simply delete the relevant files and dependencies.

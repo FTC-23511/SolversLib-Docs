@@ -2,7 +2,19 @@
 
 This is the Changelog for SolversLib versions for 0.3.1 and higher. It includes the changes made from the previous iteration, and important notes for it as well. You can change SolversLib documentation versions by using the selector in the top left corner.
 
-## [0.3.5](./)
+## [0.3.6](./)
+
+#### PedroPathing:
+
+* Added support for Pedro Pathing 3.0.0 and higher (`com.pedropathing:revhub`); Pedro Pathing 2.x is not supported by this version
+* Changed `FollowPathCommand` to only take a `Path`, since Pedro Pathing 3 removed `PathChain` (combine paths with `Paths.path(...)`)
+* Changed `FollowPathCommand`'s `maxPower` and `setGlobalMaxPower()` to limit the path speed through Foresight's `maxPathSpeed` (as a fraction of the robot's max speed) instead of capping motor power, so they require the Foresight algorithm; the global max power is remembered per follower, only applies to paths run through `FollowPathCommand`, and takes effect when that command runs (not when it is created)
+* Changed `FollowPathCommand` to temporarily override `follower.holdEnd` for its path, and to hold or stop the robot if it is interrupted
+* Changed `HoldPointCommand` to call `follower.hold(Pose)`, finish once the follower is no longer busy (settled, or Foresight's `timeoutConstraint` of 100 ms by default has elapsed) and keep holding the pose afterwards; its robot centric mode is now relative to the robot (+x forwards, +y left, +heading turns left) instead of being ignored
+* Changed `TurnCommand` and `TurnToCommand` to turn by holding the current position with the new heading (Pedro Pathing 3 has no turn methods) and finish once the heading is within a tolerance (0.01 rad by default, like Pedro Pathing 2.x's `turnHeadingErrorThreshold`; change it with `setHeadingTolerance()`); there is no timeout, so add `withTimeout()` in autos if the heading might not settle
+* Updated the `PedroCommandSample` examples (`Constants`, `PedroAutoSample`, `PedroCommands`, `PedroTeleOpSample`) for Pedro Pathing 3
+
+## [0.3.5](https://docs.seattlesolvers.com/0.3.5)
 
 #### Core:
 
