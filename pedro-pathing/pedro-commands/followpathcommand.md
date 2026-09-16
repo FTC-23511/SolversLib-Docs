@@ -39,7 +39,7 @@ new FollowPathCommand(follower, path).setGlobalMaxPower(0.5)
 Setting the Global Maximum Power limits this path and every later `FollowPathCommand` for the same follower that is not given its own `maxPower`. It takes effect when the command runs (not when it is created) and is remembered for as long as the follower exists, which is normally the OpMode. Setting `maxPower` as a parameter overwrites `globalMaxPower` for that path only, and passing 1.0 to `setGlobalMaxPower()` removes the limit again.
 
 {% hint style="info" %}
-Under the hood `maxPower` temporarily overrides Foresight's `maxPathSpeed`, so it only limits the target speed while the robot is coasting along the path: braking, error correction, holding and TeleOp driving are not affected, unlike Pedro Pathing 2.x's `maxPower` which capped motor power. Because of this, `maxPower` and `setGlobalMaxPower()` require the follower to use Pedro Pathing's Foresight algorithm (the default); commands without a `maxPower` work with any algorithm.
+`maxPower` temporarily overrides Foresight's `maxPathSpeed`, so it only limits the target speed while the robot is coasting along the path. This means that braking, error correction, holding and TeleOp driving are not affected, unlike Pedro Pathing 2.x's `maxPower` which capped motor power. Because of this, `maxPower` and `setGlobalMaxPower()` require the follower to use Pedro Pathing's Foresight algorithm (the default), while commands without a `maxPower` work with any algorithm.
 {% endhint %}
 
 ## How it ends

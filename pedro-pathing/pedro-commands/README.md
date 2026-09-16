@@ -15,10 +15,3 @@ SolversLib 0.3.6 and higher works with Pedro Pathing 3.0.0 and higher (`com.pedr
 These commands are for following Pedro Pathing's `Path` class (`com.pedropathing.paths.Path`), not SolversLib's Path class. Pedro Pathing 3 removed `PathChain`: a chain of paths is also a `Path`, built with `Paths.path(path1, path2, ...)`.
 
 All of the commands need `follower.update()` to be called every loop (for example in your `CommandOpMode`'s `run()` method), just like when you use Pedro Pathing without commands.
-
-| Command                                     | Calls                                                     | Finishes when                                                                                              |
-| ------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| [`FollowPathCommand`](followpathcommand.md) | `follower.follow(path)`                                   | the path is done and the robot has settled at the end pose (or the follower goes idle, with holdEnd false) |
-| [`HoldPointCommand`](hold-point-command.md) | `follower.hold(pose)`                                     | the follower is no longer busy                                                                             |
-| [`TurnCommand`](hold-point-command-1.md)    | `follower.hold(pose)` with the heading turned by an angle | the heading is within the tolerance                                                                        |
-| [`TurnToCommand`](hold-point-command-2.md)  | `follower.hold(pose)` with a new field heading            | the heading is within the tolerance                                                                        |
