@@ -16,7 +16,7 @@ The first thing you need to change from FTCLib is the dependency in `build.gradl
 ```groovy
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
-    implementation "org.solverslib:core:0.3.5" // core
+    implementation "org.solverslib:core:0.3.6" // core
 ```
 {% endcode %}
 
@@ -26,7 +26,7 @@ Or, if you are using [Pedro Pathing](pedro-pathing/pedro-commands/), change to t
 ```groovy
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
-    implementation "org.solverslib:core:0.3.5" // core
+    implementation "org.solverslib:core:0.3.6" // core
     implementation "org.solverslib:pedroPathing:0.3.6" // pedroPathing
 }
 ```
@@ -38,9 +38,9 @@ And if you are using [Photon](photon/what-is-photon.md), change to this dependen
 ```groovy
 dependencies {
     // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
-    implementation "org.solverslib:core:0.3.5" // core
+    implementation "org.solverslib:core:0.3.6" // core
     implementation "org.solverslib:pedroPathing:0.3.6" // pedroPathing
-    implementation "org.solverslib:photon:0.3.5" // photon
+    implementation "org.solverslib:photon:0.3.6" // photon
 }
 ```
 {% endcode %}

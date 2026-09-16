@@ -14,6 +14,10 @@ This is the Changelog for SolversLib versions for 0.3.1 and higher. It includes 
 * Changed `TurnCommand` and `TurnToCommand` to turn by holding the current position with the new heading (Pedro Pathing 3 has no turn methods) and finish once the heading is within a tolerance (0.01 rad by default, like Pedro Pathing 2.x's `turnHeadingErrorThreshold`; change it with `setHeadingTolerance()`); there is no timeout, so add `withTimeout()` in autos if the heading might not settle
 * Updated the `PedroCommandSample` examples (`Constants`, `PedroAutoSample`, `PedroCommands`, `PedroTeleOpSample`) for Pedro Pathing 3
 
+#### General:
+
+* `core` and `photon` are released as 0.3.6 with no changes, so that all three modules stay on the same version (each module depends on the same version of `core`)
+
 ## [0.3.5](https://docs.seattlesolvers.com/0.3.5)
 
 #### Core:
